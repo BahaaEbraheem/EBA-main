@@ -1,0 +1,26 @@
+﻿
+<button type="button" class="comp-icon-btn @ClassList" @onclick="BtnClick" @attributes="Attrs">
+    <i class="@IconClassList"></i>
+</button>
+
+@code{
+
+    [Parameter]
+    public string ClassList { get; set; }
+
+    [Parameter]
+    public string IconClassList { get; set; }
+
+    [Parameter]
+    public EventCallback ClickCallBack { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> Attrs { get; set; }
+
+    public async Task BtnClick()
+    {
+        if(ClickCallBack.HasDelegate)
+            await ClickCallBack.InvokeAsync(this);
+    }
+
+}

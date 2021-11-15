@@ -1,0 +1,107 @@
+﻿@page "/PushNotifications"
+@inherits PushNotificationsBase
+@attribute [Authorize(Policy = "push-notification-control")]
+
+<div class="page-title"> Push Notifications </div>
+
+<VerticalTabs ListSize="5">
+    <TabList>
+        <li class="tab-list-header p-3">
+            <span> @Localizer["Push Micanism"] </span>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" id="broadcast-tab" href="#broadcastContent" role="tab" aria-controls="broadcastContent">
+                @Localizer["BroadCast Push"]
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" id="toUser-tab" href="#toUserContent" role="tab" aria-controls="toUserContent">
+                @Localizer["Push To User"]
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" id="toRole-tab" href="#toRoleContent" role="tab" aria-controls="toRoleContent">
+                @Localizer["Push To Role Group"]
+            </a>
+        </li>
+
+    </TabList>
+    <TabContent>
+        
+        <EditForm Model="Notification">
+            <DataAnnotationsValidator />
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <MInputText @bind-Value="Notification.Title" For="@(() => Notification.Title )" Id="Title" Label="Title" />
+                </div>
+            </div>    
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <MInputText @bind-Value="Notification.Body" For="@(() => Notification.Body )" Id="Body" Label="Body" />
+                </div>
+            </div>
+
+            <div class="tab-pane active" id="broadcastContent" role="tabpanel" aria-labelledby="broadcast-tab">
+
+                <div class="form-group row mt-5">
+                    <div class="col-sm-5">
+                        <button class="btn btn-comp btn-block btn-sm" @onclick="BroadCast" > @Localizer["BroadCast"] </button>
+                    </div>
+                    <div class="col-sm-1 pt-1 text-center">
+                        @if (PushBusy)
+                        {<MiniLoading size="25px" />}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tab-pane" id="toUserContent" role="tabpanel" aria-labelledby="toUser-tab">
+
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <MInputSelect Items="Users" @bind-Value="Notification.UserId" For="@(()=> Notification.UserId)" Id="UserId" Label="User" />
+                    </div>
+                </div>
+
+                <div class="form-group row mt-5">
+                    <div class="col-sm-5">
+                        <button class="btn btn-comp btn-block btn-sm" @onclick="PushToUser"> @Localizer["Push To User"] </button>
+                    </div>
+                    <div class="col-sm-1 pt-1 text-center">
+                        @if (PushBusy)
+                        {<MiniLoading size="25px" />}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tab-pane" id="toRoleContent" role="tabpanel" aria-labelledby="toRole-tab">
+
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <MInputSelect Items="Roles" @bind-Value="Notification.UserId" For="@(()=> Notification.UserId)" Id="RoleId" Label="Role" />
+                    </div>
+                </div>
+
+                <div class="form-group row mt-5">
+                    <div class="col-sm-5">
+                        <button class="btn btn-comp btn-block btn-sm" @onclick="PushToRole"> @Localizer["Push To Role"] </button>
+                    </div>
+                    <div class="col-sm-1 pt-1 text-center">
+                        @if (PushBusy)
+                        {<MiniLoading size="25px" />}
+                    </div>
+                </div>
+
+            </div>
+
+        </EditForm>
+
+    </TabContent>
+</VerticalTabs>
+
+<ServerValidation @ref="Validation" Title="Validation" />
+
+

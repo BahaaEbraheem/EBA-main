@@ -1,0 +1,17 @@
+﻿@inherits MenueCategoryEditBase
+@page "/MenueCategory/Edit/{id}"
+@attribute [Authorize(Policy = "menues-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Edit"] @Localizer["Menue Category"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <MenueCategoryForm MenueCategory="EntityItem" IsEdit="true"/>
+
+    <SubmitBtn Text="Save" Busy="EditBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/MenueCategories/List"))" />

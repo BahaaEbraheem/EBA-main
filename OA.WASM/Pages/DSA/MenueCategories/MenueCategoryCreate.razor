@@ -1,0 +1,17 @@
+﻿@inherits MenueCategoryCreateBase
+@page "/MenueCategory/Create"
+@attribute [Authorize(Policy = "menues-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Create"] @Localizer["Menue Category"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <MenueCategoryForm MenueCategory="EntityItem" />
+
+    <SubmitBtn Text="Create" Busy="CreateBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/MenueCategories/List"))" />

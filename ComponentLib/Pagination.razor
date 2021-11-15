@@ -1,0 +1,51 @@
+﻿
+<style>
+    .paging-container{
+
+    }
+
+    .paging-group{
+        position: relative;
+    }
+
+    .paging-group .paging-item {
+        display: inline-block;
+        cursor: pointer;
+        min-width: 24px;
+        height: 27px;
+        padding-left: 5px;
+        padding-right: 5px;
+        text-align: center;
+        background-color: #DDD;
+        color: gray;
+    }
+
+    .paging-group .disabled{
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    .paging-group .enabled:hover{
+        border: 1px solid @Theme.MainBackground;
+    }
+
+    .paging-group .active {
+        background-color: @Theme.MainBackground;
+        color: #FFF;
+    }
+
+</style>
+
+<div class="paging-container">
+    <div class="paging-group">
+        @foreach (var link in Links)
+        {
+            <span @onclick="() => OnPageSelected(link)" 
+                  class="btn btn-sm paging-item @(link.Enabled? "enabled": "disabled") @(link.Active? "active": "")">
+                @link.Text 
+            </span>
+        }
+    </div>
+</div>
+<div class="mb-5 mt-2"> @Localizer["Total"] : [ @PagingData.TotalCount ] </div>
+

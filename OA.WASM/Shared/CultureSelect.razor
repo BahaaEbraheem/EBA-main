@@ -1,0 +1,36 @@
+﻿@inject IStringLocalizer<CommonResources> Localizer;
+
+<style>
+
+    .nav-drop-con{
+        list-style: none;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    .nav-drop-toggle{
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .nav-drop-item{
+        color: gray;
+        padding-left: 30px;
+        padding-right: 30px;
+        cursor: pointer;
+    }
+    .nav-drop-item:hover{
+        background-color: #DDD;
+    }
+
+</style>
+
+<li class="nav-drop-con">
+    <a class="nav-drop-toggle dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> 
+        <span class="nav-label"> @CurrentLang </span>
+        <span class="caret"> </span>
+    </a>
+    <ul class="dropdown-menu nav-drop-items">
+        <li class="nav-drop-item" @onclick='() => SelectLanguage("en-US")'>  EN  </li>
+        <li class="nav-drop-item" @onclick='() => SelectLanguage("ar-SY")' > AR  </li>
+    </ul>
+</li>
+

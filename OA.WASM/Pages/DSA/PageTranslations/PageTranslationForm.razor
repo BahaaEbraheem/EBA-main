@@ -1,0 +1,72 @@
+﻿@using OA.Domin.DSA
+@using OA.Domin.Settings
+
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="PageTranslation.Name" For="@(() => PageTranslation.Name)" Id="Name" EntityType="typeof(PageTranslation)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="PageTranslation.PageId" For="@(() => PageTranslation.PageId)" Items="PageItems" Id="PageId" EntityType="typeof(PageTranslation)" PropName="PageId" />
+    </div>
+</div>
+
+<div class="form-group row">
+    @*<div class="col-sm-4 select-col">
+        <MInputSelect @bind-Value="PageTranslation.Language" For="@(() => PageTranslation.Language)" Items="OA.Domin.StaticIndexes.Language" Id="Type" EntityType="typeof(PageTranslation)" PropName="Language" />
+    </div>*@
+    @*<div class="col-sm-4">
+        <MInputText @bind-Value="PageTranslation.Slug" For="@(() => PageTranslation.Slug)" Id="Slug" EntityType="typeof(PageTranslation)" PropName="Slug" Active="@Active" />
+    </div>*@
+    <div class="col-sm-2 offset-1 select-col">
+        <CheckBoxBtn Checked="PageTranslation.IsActive" Text="Active" OnChange="@((bool value) => PageTranslation.IsActive = value)" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="PageTranslation.Link1" For="@(() => PageTranslation.Link1)" Id="Link1" EntityType="typeof(PageTranslation)" PropName="Link1" Active="@Active" />
+    </div>
+    <div class="col-sm-6">
+        <MInputText @bind-Value="PageTranslation.Link2" For="@(() => PageTranslation.Link2)" Id="Link2" EntityType="typeof(PageTranslation)" PropName="Link2" Active="@Active" />
+    </div>
+</div>
+
+
+<div class="form-group row mb-5">
+    <div class="col-sm-12">
+        <CollapseContainer Title="Page Content">
+            <RishTextEditor @bind-Value="PageTranslation.HTMLContent" />
+        </CollapseContainer>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <UploadFile @ref="FileUploadControl"
+                    Label="File"
+                    Types='FileSettings.MimeTypes["HTML"]'
+                    ImagePreview="true"
+                    ShowUploaded="true"
+                    MaxSize="1024 * 1024 * 1"
+                    OnValidUpload="@(() => PageTranslation.File = FileUploadControl.Files[0] )"
+                    OnStartPreUpload="@(() => UploadBusy = true)"
+                    OnEndPreUpload="@(() => UploadBusy = false)" />
+        @if (IsEdit)
+        {
+            <div>
+                @PageTranslation.FilePath
+            </div>
+        }
+    </div>
+    <div class="col-md-6">
+        <div class="M-center">
+            @if (UploadBusy)
+            {
+                <MiniLoading />
+            }
+        </div>
+    </div>
+</div>
+
+

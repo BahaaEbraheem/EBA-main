@@ -1,0 +1,138 @@
+﻿@page "/Auditing"
+@inherits AuditingLogBase
+@attribute [Authorize(Policy = "audeting-access")]
+@using BlazorDateRangePicker
+
+<div class="page-title"> @Localizer["Auditing"] </div>
+
+<div class="">
+
+    <EditForm Model="AuditSearchRequest" OnValidSubmit="HandleSearch">
+        <DataAnnotationsValidator/>
+
+        <div class="row mt-3">
+            <div class="col-md-6 mt-3">
+                <MInputSelect Items="Users" @bind-Value="AuditSearchRequest.UserId" For="@(() => AuditSearchRequest.UserId)" Label="User" Id="UserId" />
+            </div>
+            <div class="col-md-6 mt-3">
+                <MInputSelect Items="Tables" @bind-Value="AuditSearchRequest.TableName" For="@(() => AuditSearchRequest.TableName)" Label="Table" Id="TableName" />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6 mt-3">
+                <MInputSelect Items="Operations" @bind-Value="AuditSearchRequest.Operation" For="@(() => AuditSearchRequest.Operation)" Label="Operation" Id="Operation" />
+            </div>
+            <div class="col-md-6 mt-3">
+                <DateRangePicker @bind-StartDate="AuditSearchRequest.FromDate" @bind-EndDate="AuditSearchRequest.ToDate"  
+                                 ShowOnlyOneCalendar="true" ApplyLabel="@Localizer["Applay"]" CancelLabel="@Localizer["Cancel"]" ApplyButtonClasses="btn btn-sm btn-comp" CancelButtonClasses="btn btn-sm btn-comp-s"
+                                 class="form-control form-control-sm date-picker-comp" placeholder="@Localizer["Select dates..."]"  />
+            </div>
+        </div>
+        <div class="form-group row mt-5 mb-5">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-block btn-sm btn-comp"> @Localizer["Search"] </button>
+            </div>
+            <div class="col-sm-1 pt-1 text-center">
+                @if (SearchBusy)
+                {<MiniLoading size="25px" />}
+            </div>
+        </div>
+    </EditForm>
+
+</div>
+
+@if (Audits.Count() == 0)
+{
+    <div class="text-center">
+        <small> Search View Only </small>
+    </div>
+}
+else
+{
+
+    <Grid Items="Audits">
+        <GridHeader>
+            <th> @Localizer["Table"] </th>
+            <th> @Localizer["Operation"]</th>
+            <th> @Localizer["User"] </th>
+            <th> @Localizer["Date"] </th>          
+            <th> @Localizer["Data"]</th>
+            <th> @Localizer["Options"] </th>
+        </GridHeader>
+        <GridRow>
+            <td> <span> @Localizer["Table"] </span> @context.TableName </td>
+            <td> <span> @Localizer["Operation"] </span> @(Operations.Keys.Contains(context.Operation)? Operations[context.Operation] : "")</td>
+            <td> <span> @Localizer["User"] </span> @((!string.IsNullOrEmpty(context.UserId))? Users[context.UserId] : "")</td>
+            <td> <span> @Localizer["Date"] </span> @context.Date </td>
+            <td> 
+                <span> @Localizer["Data"] </span>  
+                <IconBtn  ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-table" 
+                         ClickCallBack="@(() => DataChangeView(context.OldValues, context.NewValues))" data-toggle="modal" data-target="#DataChangeModal"  title="Data Change" />
+            </td>
+            <td>
+                @if (context.Operation == "Modified")
+                {
+                    <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fa fa-history" title="Try Reverse" />
+                }
+                else if (context.Operation == "Deleted")
+                {
+                    <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fa fa-history" title="Try Retrive" />
+                }
+            </td>
+        </GridRow>
+    </Grid>
+
+    <Pagination PagingData="PagingMetaData" SelectedPage="SelectedPageEvent" Spread="2"></Pagination>
+
+}
+
+<ModalContainer Size="lg" Id="DataChangeModal" Title="Data Changes">
+
+    <table class="table grid-comp">
+        <thead>
+            <tr>
+                <th> @Localizer["Old Data"] </th>
+                <th> @Localizer["New Data"] </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> 
+                    <span> @Localizer["Old Data"] </span>
+                    <div>
+                        @foreach (var keyVal in OldDataDic)
+                        {
+                            <div class="row">
+                                <div class="col-md-5 font-weight-bold">
+                                    @keyVal.Key :
+                                </div>
+                                <div class="col-md-7">
+                                    @keyVal.Value
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                </td>
+                <td> 
+                    <span> @Localizer["New Data"] </span> 
+                    <div>
+                        @foreach (var keyVal in NewDataDic)
+                        {
+                            <div class="row"> 
+                                <div class="col-md-5 font-weight-bold">
+                                    @keyVal.Key :
+                                </div>                                
+                                <div class="col-md-7">
+                                    @keyVal.Value
+                                </div>
+                               
+                            </div>
+                        }
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ModalContainer>

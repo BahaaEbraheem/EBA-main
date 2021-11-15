@@ -1,0 +1,32 @@
+﻿@typeparam T
+
+<div class="form-group row">
+    <div class="md-form col-md-4">
+        <input @bind-value="FilterValue" autocomplete="off" class="form-control" id="filter" />
+        <label for="filter" class="active"> @Localizer["Filter"] </label>
+    </div>   
+</div>
+
+<div class="checkbox-list"> 
+    @foreach(var item in Selected)
+    {
+        var Name = item.Key.GetType().GetProperty(NameField).GetValue(item.Key);
+        var Value = item.Key.GetType().GetProperty(ValueField).GetValue(item.Key);
+
+    <label class="check-container">
+        <span class="name">
+            @if (!string.IsNullOrEmpty(FilterValue) && ((string)Name).ToLower().Contains(FilterValue.ToLower()))
+            {
+                <span style="color:forestgreen; font-weight:bold"> @Name</span>
+            }
+            else
+            {
+                @Name
+            }
+        </span>
+        <input type="checkbox" @bind="Selected[item.Key]">
+        <span class="checkmark"></span>
+
+    </label>
+    }
+</div>

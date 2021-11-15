@@ -1,0 +1,9 @@
+﻿@inherits MInputRangeBase
+
+<div class="M-slider-con">
+    
+    <div class=""> @Localizer[Label] </div>
+    
+    <input type="range" class="M-slider @CssClass" id="@Id" @bind="@CurrentValue" max="@Max" min="@Min" />
+
+</div>

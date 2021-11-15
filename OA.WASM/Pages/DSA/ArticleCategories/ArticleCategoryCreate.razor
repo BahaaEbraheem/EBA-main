@@ -1,0 +1,17 @@
+﻿@inherits ArticleCategoryCreateBase
+@page "/ArticleCategory/Create"
+@attribute [Authorize(Policy = "articles-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Create"] @Localizer["Article Category"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <ArticleCategoryForm ArticleCategory="EntityItem" />
+
+    <SubmitBtn Text="Create" Busy="CreateBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/ArticleCategories/List"))" />

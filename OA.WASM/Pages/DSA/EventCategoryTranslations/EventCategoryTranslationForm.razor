@@ -1,0 +1,28 @@
+﻿@using OA.Domin.DSA;
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="EventCategoryTranslation.Name" For="@(() => EventCategoryTranslation.Name)" Id="Name" EntityType="typeof(EventCategoryTranslation)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-6 select-col">
+        @*<MInputSelect @bind-Value="EventCategoryTranslation.Language" For="@(() => EventCategoryTranslation.Language)" Items="OA.Domin.StaticIndexes.Language" Id="Language" EntityType="typeof(EventCategoryTranslation)" PropName="Language" />*@
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-6">
+        @*<MInputText @bind-Value="EventCategoryTranslation.Slug" For="@(() => EventCategoryTranslation.Slug)" Id="Slug" EntityType="typeof(EventCategoryTranslation)" PropName="Slug" Active="@Active" />*@
+    </div>
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="EventCategoryTranslation.EventCategoryId" For="@(() => EventCategoryTranslation.EventCategoryId)" Items="EventCategoryItems" Id="EventCategoryId" EntityType="typeof(EventCategoryTranslation)" PropName="EventCategoryId" />
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-12">
+        <MInputText @bind-Value="EventCategoryTranslation.Description" For="@(() => EventCategoryTranslation.Description)" Id="Description" EntityType="typeof(EventCategoryTranslation)" PropName="Description" Active="@Active" />
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-12">
+        <CheckBoxBtn Checked="EventCategoryTranslation.IsActive" Text="Active" OnChange="@((bool value) => EventCategoryTranslation.IsActive = value)" />
+    </div>
+</div>

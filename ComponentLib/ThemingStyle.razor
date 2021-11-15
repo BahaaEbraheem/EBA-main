@@ -1,0 +1,37 @@
+﻿
+    <style>
+
+    :root {
+        /* Global */
+        --main-background: @Theme.MainBackground;
+        --align: @Theme.Align;
+        --font-color: @Theme.MainColor;
+        --rev-align: @((Theme.Align == "left")? "right" : "left");
+        --font-family: @((Theme.Align == "left")? "'-webkit-pictograph'" : "'Almarai'");
+        --right: @((Theme.Align == "right")? "0" : "unset");
+        --left: @((Theme.Align == "left")? "0" : "unset");
+        --rev-right: @((Theme.Align == "right")? "unset" : "0");
+        --rev-left: @((Theme.Align == "left")? "unset" : "0");
+
+        /* Virtcal Tabs Related */
+        --tab-border-right: @((Theme.Align == "right")? "2px solid" : "0");
+        --tab-border-left: @((Theme.Align == "left")? "2px solid" : "0");
+        --tab-border-radius: @((Theme.Align == "right")? "0px 8px" : "8px 0px");
+
+        /* Profile */
+        @*--profile-radius: @((Theme.Align == "right")? "50% 0% 0% 0%" : "0% 50% 0% 0%");*@
+          --profile-radius: @((Theme.Align == "right")? "50% 0% 0% 0%" : "0% 50% 0% 0%");
+
+        /* Float */
+        --float: @Theme.Align;
+        --rev-float: @((Theme.Align == "right")? "left": "right");
+    }
+
+    </style>
+
+@code{
+
+    [CascadingParameter]
+    public Theme Theme { get; set; }
+
+}

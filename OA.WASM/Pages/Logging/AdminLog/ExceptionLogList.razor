@@ -1,0 +1,55 @@
+﻿@page "/ErrorsLog"
+@inherits ExceptionLogListBase
+@attribute [Authorize(Policy = "error-log-access")]
+
+@if (ListData == null)
+{
+    <Loading></Loading>
+}
+else
+{
+    <div style="position:relative" class="mb-4">
+
+        <div class="page-title filter-title"> @Localizer["Errors Log"] </div>
+
+        <GridFilter T="OA.Domin.Logging.ExceptionLog" SearchSubmit="SearchEvent" @ref="GridFilterRef"> </GridFilter>
+
+        <div class="export-links">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="far fa-file-excel i-lg" ClickCallBack="@(() => Export("Exel", nameof(OA.Domin.Logging.ExceptionLog)))"></IconBtn>
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="far fa-file-pdf i-lg" ClickCallBack="@(() => Export("Pdf", nameof(OA.Domin.Logging.ExceptionLog)))"></IconBtn>
+            @if (ExportBusy)
+            {<MiniLoading size="25px"></MiniLoading>}
+        </div>
+
+    </div>
+
+
+    <Grid Items="ListData">
+        <GridHeader>
+            <th> @Localizer["Message"] </th>
+            <th> @Localizer["Path"] </th>
+            <th> @Localizer["StackTrace"] </th>
+            <th> @Localizer["Date"] </th>
+            <th> @Localizer["Options"] </th>
+        </GridHeader>
+        <GridRow>
+            <td> <span> @Localizer["Message"] </span>  @context.Message </td>
+            <td> <span> @Localizer["Path"] </span>  @context.Path </td>
+            <td> <span> @Localizer["StackTrace"] </span>  @((context.StackTrace != null)? $"{context.StackTrace.Substring(0, 100)} ... ": "" ) </td>
+            <td> <span> @Localizer["Date"] </span>  @context.CreatedAt </td>
+            <td>
+                <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-info-circle"
+                         ClickCallBack="@(() => ShowDetails(context.StackTrace))" data-toggle="modal" data-target="#DetailsModal" />
+            </td>
+        </GridRow>
+    </Grid>
+
+    <Pagination PagingData="PagingMetaData" SelectedPage="SelectedPageEvent" Spread="2"></Pagination>
+
+}
+
+<ModalContainer Id="DetailsModal" Size="lg" Title="Error Details">
+    <div class="">
+        @CurrntDetails
+    </div>
+</ModalContainer>

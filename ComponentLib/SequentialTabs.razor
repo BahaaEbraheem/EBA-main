@@ -1,0 +1,80 @@
+﻿@typeparam TItem
+@*<div class="seq-tabs">
+
+    <ul class="panelNav" data-panelwrapper="panelWrapper" id="@PanelNavId">
+        <li> <a href="#panelA" @onclick:preventDefault="true" id="tabA" @onclick="@(() => OnTabClick("tabA"))" >A</a> </li>
+        <li> <a href="#panelB" @onclick:preventDefault="true" id="tabB" @onclick="@(() => OnTabClick("tabB"))" >B</a> </li>
+        <li> <a href="#panelC" @onclick:preventDefault="true" id="tabC" @onclick="@(() => OnTabClick("tabC"))" >C</a> </li>
+    </ul>
+
+    <div class="panelWrapper" id="panelWrapper" data-enter="slideright" data-exit="scaledown fade" data-sequential="yes">
+        <div class="panel current" id="panelA">A</div>
+        <div class="panel" id="panelB">B</div>
+        <div class="panel" id="panelC">C</div>
+    </div>
+
+</div>*@
+
+@*<div class="seq-tabs">
+
+    <ul class="panelNav" data-panelwrapper="panelWrapper" id="@PanelNavId">
+        @{ var i = 0; }
+        @foreach (var tab in Tabs)
+        {
+            <li class="seq-tab">
+                <a href="@($"#panel_{tab}")" class="@((i == 0)? "active": "")" @onclick:preventDefault="true" id="@($"tab_{tab}")" @onclick="@(() => OnTabClick($"tab_{tab}"))"> @tab </a>
+            </li>
+
+            i++;
+        }
+    </ul>
+    <div class="panelWrapper" id="panelWrapper" data-enter="@DataEnter" data-exit="@DataExit" data-sequential="@DataSequential">
+
+        @{ i = 0; }
+        @foreach (var tab in Tabs)
+        {
+
+            <div class="panel @((i == 0)? "current": "") " id="@($"panel_{tab}")">
+                @tab
+            </div>
+
+
+            i++;
+        }
+    </div>
+</div>*@
+
+<div class="seq-tabs">
+
+    <ul class="panelNav @PanelNavClassList" data-panelwrapper="panelWrapper_@PanelNavId" id="@PanelNavId">
+        @{ var i = 0; }
+        @foreach (var tabData in TabsData)
+        {
+            var tab = tabData.Key;
+
+            <li class="seq-tab">
+                <a href="@($"#panel_{tab}")" class="@((i == 0)? "active": "")" @onclick:preventDefault="true" id="@($"tab_{tab}")" @onclick="@(() => OnTabClick($"tab_{tab}"))"> @tab </a>
+            </li>
+
+            i++;
+        }
+    </ul>
+    <div class="panelWrapper @PanelWrapperClassList" id="panelWrapper_@PanelNavId" data-enter="@DataEnter" data-exit="@DataExit" data-sequential="@DataSequential">
+
+        @{ i = 0; }
+        @foreach (var tabData in TabsData)
+        {
+            var tab = tabData.Key;
+            var data = tabData.Value;
+
+            <div class="@PanelClassList panel @((i == 0)? "current": "") " id="@($"panel_{tab}")">
+                @TabTemplate(data)
+            </div>
+
+
+            i++;
+        }
+    </div>
+</div>
+
+

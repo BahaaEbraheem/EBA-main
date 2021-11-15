@@ -1,0 +1,46 @@
+﻿@page "/roles"
+@attribute [Authorize(Policy = "administration-roles")]
+
+
+@if (Roles == null)
+{
+    <Loading></Loading>
+}
+else
+{
+    <div style="position:relative; height:40px" class="mb-4">
+
+        <div class="page-title filter-title"> @Localizer["Roles"] </div>
+
+        <div class="filter-link">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-plus" ClickCallBack='@(() => NavigationManager.NavigateTo("/roles/create") )'></IconBtn>
+        </div>
+
+    </div>
+
+
+    <Grid Items="Roles">
+        <GridHeader>
+            <th> @Localizer["Role"] </th>
+            <th> @Localizer["Options"] </th>
+        </GridHeader>
+        <GridRow>
+            <td> <span> @Localizer["Role"] </span>  @context.Name </td>
+            <td>
+                @if (context.Id == "static-role-1-admin")
+                {
+                    <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-lock"> </IconBtn>
+                }
+                else
+                {
+                    <GridRowOptions EditEvent="@(() => NavigationManager.NavigateTo("/roles/edit/" + context.Id) )"
+                                    DeleteEvent="@(() => DeleteRole(context.Id) )"></GridRowOptions>
+                }
+            </td>
+        </GridRow>
+    </Grid>
+
+}
+
+
+<Confirm ConfirmationChanged="ConfirmationEvent" @ref="Confirmation" ConfirmTxt="Confirm" Title="Confirm Delete"> </Confirm>

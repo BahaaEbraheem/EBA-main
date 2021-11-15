@@ -1,0 +1,23 @@
+﻿@using OA.Domin.DSA
+@inherits MenueTranslationDetailsBase
+@page "/MenueTranslation/Details/{id}"
+@attribute [Authorize("menues-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Manue Translation"] @Localizer["Details"]
+</div>
+
+<DetailItem EntityType="typeof(MenueTranslation)" PropName="MenueId" Value="@EntityItem.Menue?.Name" />
+
+<DetailItem EntityType="typeof(MenueTranslation)" PropName="Name" Value="@EntityItem.Name" />
+
+@*<DetailItem EntityType="typeof(MenueTranslation)" PropName="Language" Value="@EntityItem.Language" />*@
+
+<DetailItem EntityType="typeof(MenueTranslation)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
+
+<DetailItem EntityType="typeof(MenueTranslation)" PropName="HTMLContent" Value="@EntityItem.HTMLContent" />
+
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/MenueTranslations/List"))" />
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/MenueTranslation/Edit/{EntityItem.Id}"))" />

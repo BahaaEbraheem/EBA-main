@@ -1,0 +1,106 @@
+﻿@page "/Reporting"
+@attribute [Authorize(Policy = "reporting-control")]
+
+<div class="page-title">  @Localizer["Reporting Settings"]  </div>
+
+
+<VerticalTabs ListSize="5">
+    <TabList>
+        <li class="tab-list-header">
+            <button class="btn btn-outline btn-rounded btn-sm comp-icon-btn px-2" data-toggle="modal" data-target="#ReportableTableAdd">
+                <i class="fas fa-plus"> </i>
+            </button>
+            <span> @Localizer["Reportable Tables"] </span>
+        </li>
+        @foreach (var item in ReportableTables)
+        {
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" id="@(item.TypeName)-tab" href="#@(item.TypeName)Content" role="tab" aria-controls="@(item.TypeName)Content"
+                   @onclick="@(() => SelectTable(item))">
+                    @Localizer[item.Name]
+                </a>
+            </li>
+        }
+    </TabList>
+    <TabContent>
+        @if(SelectedTable != null)
+        {
+            var item = SelectedTable;
+
+            <div class="tab-pane show active" id="@(item.TypeName)Content" role="tabpanel" aria-labelledby="@(item.TypeName)-tab">
+                
+                <VerticalTabs ListSize="5">
+                    <TabList>
+                        <li class="tab-list-header">
+                            <button class="btn btn-outline btn-rounded btn-sm comp-icon-btn px-2" data-toggle="modal" data-target="#ReportTemplateAdd">
+                                <i class="fas fa-plus"> </i>
+                            </button>
+                            <span> @Localizer["Report Templates"] </span>
+                        </li>
+                        @foreach (var template in item.ReportTemplates)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" id="@(template.Id)-tab" href="#Template@(template.Id)Content" role="tab" aria-controls="@(template.Id)Content"
+                                   @onclick="@(() => SelectTemplate(template) )">
+                                    @template.Title
+                                </a>
+                            </li>
+                        }
+                    </TabList>
+                    <TabContent>
+                        @if (SelectedTemplate != null) 
+                        { 
+                            <div class="tab-pane show active" id="Template@(SelectedTemplate.Id)Content" role="tabpanel" aria-labelledby="@(SelectedTemplate.Id)-tab">
+                                <TemplateEditor @ref="TemplateEditor" ReportTemplate="SelectedTemplate" TemplateEditedEvent="TemplateEdited"></TemplateEditor>
+                            </div>
+                        }
+                    </TabContent>
+                </VerticalTabs>
+            </div>
+        }
+    </TabContent>
+</VerticalTabs>
+
+
+<ModalContainer Id="ReportableTableAdd" Size="lg" Title="Add Reportable Table">
+    <EditForm Model="ReportableTable" OnValidSubmit="CreateReportableTable">
+        <DataAnnotationsValidator />
+        <div class="row">
+            <div class="col-md-10">
+                <MInputSelect Items="ReportableTypes" @bind-Value="ReportableTable.TypeName" For="@(() => ReportableTable.TypeName)" Id="TypeName" Label="Table" />
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-block btn-sm btn-comp"> @Localizer["Create"] </button>
+            </div>
+        </div>
+    </EditForm>
+</ModalContainer>
+
+<ModalContainer Id="ReportTemplateAdd" Size="lg" Title="Add Default Report Template">
+    <EditForm Model="ReportTemplate" OnValidSubmit="CreateReportTemplate">
+        <DataAnnotationsValidator />
+        <div class="row">
+            <div class="col-md-10">
+                <MInputText @bind-Value="ReportTemplate.Title" For="@(() => ReportTemplate.Title)" Id="ReportTitle" Label="Report Title" />
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-block btn-sm btn-comp"> @Localizer["Create"] </button>
+            </div>
+        </div>
+    </EditForm>
+</ModalContainer>
+
+
+
+
+
+
+
+
+
+
+

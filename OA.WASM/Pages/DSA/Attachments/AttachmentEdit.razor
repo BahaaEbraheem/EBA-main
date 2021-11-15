@@ -1,0 +1,17 @@
+﻿@inherits AttachmentEditBase
+@page "/Attachment/Edit/{id}"
+@attribute [Authorize(Policy = "attachments-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Edit"] @Localizer["Attachment"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <AttachmentForm Attachment="EntityItem" IsEdit="true"/>
+
+    <SubmitBtn Text="Save" Busy="EditBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/Attachments/List"))" />

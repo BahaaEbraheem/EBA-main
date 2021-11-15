@@ -1,0 +1,39 @@
+﻿@using OA.Domin.DSA
+@inherits EventDetailsBase
+@page "/Event/Details/{id}"
+@attribute [Authorize("events-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Event"] @Localizer["Details"]
+</div>
+
+
+<DetailItem EntityType="typeof(Event)" PropName="Name" Value="@EntityItem.Name" />
+
+<DetailItem EntityType="typeof(Event)" PropName="Order" Value="@EntityItem.Order.ToString()" />
+
+<DetailItem EntityType="typeof(Event)" PropName="EventCategoryId" Value="@EntityItem.EventCategory?.Name" />
+
+<DetailItem EntityType="typeof(Event)" PropName="StartDate" Value="@EntityItem.StartDate.ToShortDateString()" />
+
+<DetailItem EntityType="typeof(Event)" PropName="EndDate" Value="@EntityItem.EndDate.ToShortDateString()" />
+
+<DetailItem EntityType="typeof(Event)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
+
+<DetailItem EntityType="typeof(Event)" PropName="FilePath" Value="@EntityItem.FilePath" />
+
+<DetailItem EntityType="typeof(Event)" PropName="ImagePath" Value="@EntityItem.ImagePath" />
+
+<div class="row mt-3">
+    <div class="col-md-6">
+        <img src="@($"{PathPrefix}{EntityItem.ImagePath}")" class="doc-preview-image" />
+    </div>
+</div>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/Events/List"))" />
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/Event/Edit/{EntityItem.Id}"))" />
+
+
+
+

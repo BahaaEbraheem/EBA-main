@@ -1,0 +1,52 @@
+﻿
+<div class="options-con">   
+    <div class="option-toggle">
+        <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-cogs" ClickCallBack="ToggleOptions"></IconBtn>
+    </div>
+    <div class="options @open">
+        @if (EditEvent.HasDelegate)
+        {
+            <div class="option">
+                <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-edit" 
+                         ClickCallBack="EditEvent"></IconBtn>
+            </div>
+        }
+        @if (DeleteEvent.HasDelegate)
+        {
+            <div class="option">
+                <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-trash-alt"
+                         ClickCallBack="DeleteEvent"></IconBtn>
+            </div>
+        }
+        @if (DetailsEvent.HasDelegate)
+        {
+            <div class="option">
+                <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-info-circle"
+                         ClickCallBack="DetailsEvent"></IconBtn>
+            </div>
+        }
+    </div>
+</div>
+
+@code{
+
+    [Parameter]
+    public EventCallback EditEvent { get; set; }
+
+    [Parameter]
+    public EventCallback DeleteEvent { get; set; }
+
+    [Parameter]
+    public EventCallback DetailsEvent { get; set; }
+
+
+    public string open { get; set; } = "";
+
+    public void ToggleOptions()
+    {
+        if (string.IsNullOrEmpty(open))
+            open = "options-open";
+        else
+            open = "";
+    }
+}

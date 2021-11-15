@@ -1,0 +1,11 @@
+﻿@using OA.WASM.Services.Settings.Extentions;
+
+@if(AppSettings.Check("Profiling", "true"))
+{
+    <div class="nav-profile-link">
+        <a href="/profile">
+            <img src="@ImgData" class="nav-profile-pic" /> 
+        </a>
+    </div>
+}
+

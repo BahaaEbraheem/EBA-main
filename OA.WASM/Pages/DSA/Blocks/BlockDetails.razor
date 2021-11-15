@@ -1,0 +1,35 @@
+﻿@using OA.Domin.DSA
+@inherits BlockDetailsBase
+@page "/Block/Details/{id}"
+@attribute [Authorize("blocks-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Block"] @Localizer["Details"]
+</div>
+
+
+<DetailItem EntityType="typeof(Block)" PropName="Name" Value="@EntityItem.Name" />
+
+<DetailItem EntityType="typeof(Block)" PropName="Description" Value="@EntityItem.Description" />
+
+<DetailItem EntityType="typeof(Block)" PropName="BlockCategoryId" Value="@EntityItem.BlockCategory?.Name" />
+
+<DetailItem EntityType="typeof(Block)" PropName="IsVisible" Value="@EntityItem.IsVisible.ToString()" />
+
+<DetailItem EntityType="typeof(Block)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
+
+<DetailItem EntityType="typeof(Block)" PropName="FilePath" Value="@EntityItem.FilePath" />
+
+<DetailItem EntityType="typeof(Block)" PropName="ImagePath" Value="@EntityItem.ImagePath" />
+
+<div class="row mt-3">
+    <div class="col-md-6">
+        <img src="@($"{PathPrefix}{EntityItem.ImagePath}")" class="doc-preview-image" />
+    </div>
+</div>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/Blocks/List"))" />
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/Block/Edit/{EntityItem.Id}"))" />
+
+
+

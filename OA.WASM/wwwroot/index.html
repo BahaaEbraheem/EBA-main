@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Site Managment</title>
+    
+    <base href="/" />
+
+    <link href="_content/MatBlazor/dist/matBlazor.css" rel="stylesheet" />
+
+    <!-- FONT AWESOME CSS -->
+    <link href="css/font-awesome/css/all.min.css" rel="stylesheet" />
+    <!--<link href="css/font-awesome/css/brands.min.css" rel="stylesheet" />
+    <link href="css/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="css/font-awesome/css/regular.min.css" rel="stylesheet" />
+    <link href="css/font-awesome/css/v4-shims.min.css" rel="stylesheet" />-->
+    <!-- Bootstrap core CSS -->
+    <link href="_content/ComponentLib/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="_content/ComponentLib/css/mdb.min.css" rel="stylesheet">
+
+    <!-- Select2 CSS -->
+    <link href="_content/ComponentLib/css/select2.min.css" rel="stylesheet">
+
+    <!-- Date Range Picker -->
+    <link rel="stylesheet" href="_content/BlazorDateRangePicker/daterangepicker.min.css" />
+
+    <!-- Color Picker Css -->
+    <link href="_content/BlazorColorPicker/colorpicker.css" rel="stylesheet" />
+
+    <!-- Component Lib Styles -->
+    <link href="_content/ComponentLib/css/style.css" rel="stylesheet">
+    <!-- App Styles -->
+    <link href="css/app.css" rel="stylesheet" />
+
+    <!-- PWA Manifest -->
+    <link href="manifest.json" rel="manifest" />
+
+</head>
+
+<body>
+    <app>
+        <div class="loading-con">
+            <div class="lds-ripple"><div></div><div></div></div>
+        </div>
+    </app>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="_content/ComponentLib/js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="_content/ComponentLib/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="_content/ComponentLib/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="_content/ComponentLib/js/mdb.min.js"></script>
+
+    <script src="_framework/blazor.webassembly.js"></script>
+
+    <!-- PWA Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+    <!--<script>navigator.serviceWorker.register('service-worker.js');</script>-->
+
+    <script src="_content/MatBlazor/dist/matBlazor.js"></script>
+
+    <!-- Date Range Piker JS -->
+    <script src="_content/BlazorDateRangePicker/clickAndPositionHandler.js"></script>
+
+    <!-- Color Picker JS -->
+    <script src="_content/BlazorColorPicker/colorpicker.js"></script>
+
+    <!-- Select2 JS -->
+    <script type="text/javascript" src="_content/ComponentLib/js/select2.min.js"></script>
+
+    <!-- Sweet Alert JS -->
+    <script type="text/javascript" src="_content/ComponentLib/js/sweetalert.min.js"></script>
+
+    <!-- CKEditor JS -->
+    <script src="_content/ComponentLib/js/ckeditor.js"></script>
+
+    <!-- Component Lib JS -->
+    <script src="_content/ComponentLib/js/scripts.js"></script>
+    <!-- App JS -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>

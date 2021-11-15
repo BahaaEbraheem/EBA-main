@@ -1,0 +1,19 @@
+﻿@using OA.Domin.DSA
+@inherits MenueCategoryDetailsBase
+@page "/MenueCategory/Details/{id}"
+@attribute [Authorize("menues-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Menue Category"] @Localizer["Details"]
+</div>
+
+
+<DetailItem EntityType="typeof(EventTranslation)" PropName="Name" Value="@EntityItem.Name" />
+
+<DetailItem EntityType="typeof(EventTranslation)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
+
+
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/MenueCategories/List"))" />
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/MenueCategory/Edit/{EntityItem.Id}"))" />

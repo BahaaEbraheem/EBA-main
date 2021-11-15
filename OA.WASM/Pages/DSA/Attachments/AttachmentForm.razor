@@ -1,0 +1,58 @@
+﻿@using OA.Domin.DSA
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="Attachment.Name" For="@(() => Attachment.Name)" Id="Name" EntityType="typeof(Attachment)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="Attachment.Type" For="@(() => Attachment.Type)" Items="OA.Domin.StaticIndexes.AttachmentTypes" Id="Type" EntityType="typeof(Attachment)" PropName="Type" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputNumber @bind-Value="Attachment.Order" For="@(() => Attachment.Order)" Id="Order" EntityType="typeof(Attachment)" PropName="Order" />
+    </div>
+    <div class="col-sm-6">
+        <MInputText @bind-Value="Attachment.URL" For="@(() => Attachment.URL)" Id="URL" EntityType="typeof(Attachment)" PropName="URL" Active="@Active" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="Attachment.Reference" For="@(() => Attachment.Reference)" Items="OA.Domin.StaticIndexes.AttachemntReferences" Id="Reference" EntityType="typeof(Attachment)" PropName="Reference" ValueSelectedEvent="ReferenceSelected" />
+    </div>
+    @if(Initilzed && !string.IsNullOrEmpty(Attachment.Reference) && References.Keys.Contains(Attachment.Reference)) { 
+        <div class="col-sm-6 select-col">            
+            <MInputSelect @bind-Value="Attachment.ReferenceId" For="@(() => Attachment.ReferenceId)" Items="References[Attachment.Reference]" Id="ReferenceId" EntityType="typeof(Attachment)" PropName="ReferenceId" />
+        </div>
+    }
+</div>
+
+<div class="form-group row mt-4">
+    <div class="col-sm-8">
+        <UploadFile @ref="FileUploadControl"
+                    Label="File"
+                    ImagePreview="false"
+                    ShowUploaded="true"
+                    MaxSize="1024 * 1024 * 25"
+                    OnValidUpload="@(() => Attachment.File = FileUploadControl.Files[0] )"
+                    OnStartPreUpload="@(() => UploadBusy = true)"
+                    OnEndPreUpload="@(() => UploadBusy = false)" />
+        @if (IsEdit)
+        {
+            <div>
+                @Attachment.Path
+            </div>
+        }
+    </div>
+    <div class="col-sm-4">
+        <div class="M-center">
+            @if (UploadBusy)
+            {
+                <MiniLoading />
+            }
+        </div>
+    </div>
+</div>
+

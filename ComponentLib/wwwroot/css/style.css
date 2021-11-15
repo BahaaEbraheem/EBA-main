@@ -1,0 +1,939 @@
+
+
+/*********************** General ***************************/
+/**************************************************************/
+
+@font-face {
+    font-family: 'Almarai';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Almarai'), local('Almarai-Regular'), url(../fonts/Almaria/Almaria.woff2) format('woff2');
+    unicode-range: U+0600-06FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE80-FEFC;
+}
+
+
+html, body {
+    font-family: var(--font-family) !important;
+    color: #6f6565;
+    /*background: url(https://just.edu.bd/reserach.jpg);*/
+    background-size: cover;
+}
+
+.hide{
+    display: none;
+}
+
+.unvisible{
+    transition: .3s all ease-in-out;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.modal-body {
+    word-break: break-word;
+}
+
+textarea {
+    border: 0 !important;
+    outline: 0 !important;
+}
+
+.number {
+    display: inline-block;
+    background: var(--main-background);
+    /*background: linear-gradient(45deg, var(--main-background), #c5c5c5);*/
+    /*background: radial-gradient(var(--main-background) 65%, #DDD);*/
+    /*background: linear-gradient( 90deg, #DDD -40%, var(--main-background) 70%, #DDD);*/
+    color: #FFF;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    min-width: 25px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.check-mark {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 0;
+    padding: 5px;
+    background-color: var(--main-background);
+    color: #FFF;
+    border-radius: 50%;
+}
+
+/*********************** Scroll Bar ***************************/
+/**************************************************************/
+
+*::-webkit-scrollbar {
+    width: .5em;
+}
+
+*::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--main-background);
+    border-radius: 20px;
+}
+
+/******************** Buttons **************************/
+/*******************************************************/
+.btn-comp {
+    background-color: var(--main-background);
+    color: #FFF;
+    transition: .3s all ease-in-out;
+}
+
+.btn-comp:hover {
+    transform: scale(1.01);
+    color: #FFF;
+}
+
+.btn-comp-s {
+    background-color: #FFF;
+    border: 1px solid var(--main-background);
+    color: var(--main-background);
+}
+.btn-comp-s:hover {
+    transform: scale(1.01);
+    color: var(--main-background);
+}
+
+.comp-icon-btn {
+    background-color: #FFF;
+    color: var(--main-background);
+    border-color: var(--main-background);
+    transition: .1s all ease-in-out;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.comp-icon-btn:hover {
+    transform: scale(1.1);
+    color: var(--main-background);
+}
+
+.btn-check {
+    background-color: #FFF;
+    border: 1px solid var(--main-background);
+    color: var(--main-background);
+}
+.btn-check-active {
+    background-color: var(--main-background);
+    border: 1px solid var(--main-background);
+    color: #FFF;
+}
+
+/** Small Screen **/
+@media (max-width: 767.98px) {
+    .radio-list-flex-wrap {
+        flex-wrap: wrap !important;
+    }
+}
+/** Wide Screen **/
+@media (min-width: 768px) {
+    .radio-list-flex-wrap {
+        flex-wrap: nowrap !important;
+    }
+}
+
+/******************** Table Options **************************/
+/*******************************************************/
+.options {
+    height: 0px;
+    overflow: hidden;
+    transition: .3s all ease-in-out;
+}
+
+.options-open {
+    height: 135px
+}
+
+/******************** Inputs **************************/
+/*******************************************************/
+
+.md-form .valid:not(.modified) {
+    border-bottom: 1px solid var(--main-background) !important;
+    -webkit-box-shadow: 0 1px 0 0 var(--main-background) !important;
+    box-shadow: 0 1px 0 0 var(--main-background) !important;
+}
+
+.md-form .modified.valid {
+    border-bottom: 1px solid #00c851 !important;
+    -webkit-box-shadow: 0 1px 0 0 #00c851 !important;
+    box-shadow: 0 1px 0 0 #00c851 !important;
+}
+
+.md-form input{
+    text-align : var(--align) !important;
+}
+
+.md-form label{
+    left: unset !important;
+    right: unset !important;
+}
+.md-form label.active {
+    color: var(--main-background) !important;
+}
+
+
+/********************** Collapse ************************/
+/********************************************************/
+.collapse-comp {
+/*    background: transparent !important;
+    backdrop-filter: blur(10px);*/
+}
+
+.collapse-title {
+    cursor: pointer;
+    width: 90%;
+    display: block;
+    font-weight: bold;
+    color: var(--main-background) !important;
+}
+.collapse-title:hover {
+    transition: .3s all ease-in-out;
+    text-shadow: 3px 3px 3px 5px #DDD;
+}
+
+
+/******************** Grid *****************************/
+/*******************************************************/
+.grid-comp.table {
+    border-collapse: collapse;
+    text-align: var(--align);
+    width: 100%;
+}
+
+.grid-comp.table tr {
+    background: transparent;
+    border-bottom: 1px solid
+}
+
+.grid-comp.table th, table td {
+    padding: 10px 20px;
+}
+
+.grid-comp.table td span {
+    background: #eee;
+    color: dimgrey;
+    display: none;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 5px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+    left: 0;
+}
+
+.grid-comp thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid var(--main-background);
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--font-color);
+}
+
+.grid-comp td {
+    color: var(--font-color) !important;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+.grid-comp .odd {
+    background-color: #80808026;
+}
+
+/* Simple CSS for flexbox table on mobile */
+@media(max-width: 800px) {
+    .grid-comp.table thead {
+        left: -9999px;
+        position: absolute;
+        visibility: hidden;
+    }
+
+    .grid-comp.table tr {
+        border-bottom: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+
+    .grid-comp.table td {
+        border: 1px solid;
+        margin: 0 -1px -1px 0;
+        padding-top: 35px !important;
+        position: relative;
+        width: 50%;
+    }
+
+    .grid-comp.table td span {
+        display: block;
+    }
+}
+
+/******************* Select2 **************************/
+/******************************************************/
+.select2-container--default .select2-selection--single .select2-selection__clear {
+    float: var(--rev-align) !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: gray !important;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: transparent;
+    border: 0 !important;
+    border-radius: 0 !important;
+    border-bottom: 2px solid var(--main-background) !important;
+    min-height: 35px;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: var(--main-background) !important;
+}
+
+/** Small Screen **/
+@media (max-width: 767.98px) {
+    .collapse-comp .row .select2-container {
+    }
+    .select2-container{
+        margin-top:20px;
+        margin-bottom: 20px;
+    }
+}
+/** Wide Screen **/
+@media (min-width: 768px) {
+    .collapse-comp .row .select2-container {
+        /*margin-bottom: -70px;*/
+    }
+
+    .select-col{
+        margin-top: 30px;
+    }
+
+}
+
+
+/********************** Mini Loading Animation ***********************/
+/*********************************************************************/
+.mini-loading {
+    display: inline;
+}
+
+.mini-loading .lds-dual-ring {
+    display: inline-block;
+}
+
+.mini-loading .lds-dual-ring {
+    content: " ";
+    /* display: block; */
+    /* width: 64px; */
+    /* height: 64px; */
+    /* margin: 8px; */
+    border-radius: 50%;
+    border: 5px solid var(--main-background);
+    border-color: var(--main-background) transparent var(--main-background) transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/******************* Virtical Tabs **************************/
+/***********************************************************/
+.tabs-section {
+    overflow: hidden;
+    background-color: #f9f9f9;
+    padding: 15px 0px;
+    border-radius: 10px;
+}
+
+.tabs-section .nav-tabs {
+    border: 0;
+}
+
+.tabs-section .nav-link {
+    border: 0;
+    padding: 11px 15px;
+    transition: 0.3s;
+    color: var(--main-background);
+    border-radius: 0;
+    border-right: var(--tab-border-right);
+    border-left: var(--tab-border-left);
+    border-color: var(--main-background);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.tabs-section .nav-link:hover {
+    color: var(--main-background);
+}
+
+.tabs-section .nav-link.active, .tabs-section .nav-link.active:hover {
+    color: #FFF;
+    background: var(--main-background);
+    border-right: var(--tab-border-right);
+    border-left: var(--tab-border-left);
+    border-color: var(--main-background);
+}
+
+.tabs-section .nav-link:hover {
+    background: #DDD;
+    border-right: var(--tab-border-right);
+    border-left: var(--tab-border-left);
+    border-color: var(--main-background);
+}
+
+.tabs-section .tab-pane.active {
+    -webkit-animation: fadeIn 0.5s ease-out;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.tab-list-header {
+    border-top: 2px solid;
+    border-right: var(--tab-border-right);
+    border-left: var(--tab-border-left);
+    border-color: var(--main-background);
+    border-radius: var(--tab-border-radius);
+    padding-bottom: 5px;
+    background-color: #EEE;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.tab-pane{
+    display: none;
+}
+.tab-pane.active {
+    display: block;
+}
+/********************* Check Box **********************/
+/******************************************************/
+.checkbox-list {
+    width: 100%;
+    overflow-y: auto;
+}
+
+/* The container */
+.check-container {
+    float: var(--float);
+    position: relative;
+    height: 32px;
+    margin: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 2px solid var(--main-background);
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: #EEE;
+    border-radius: 5px 5px 0px 0px;
+    overflow: hidden;
+}
+
+/** Small Screen **/
+@media (max-width: 767.98px) {
+    .check-container {
+        width: 80%;
+    }
+}
+/** Wide Screen **/
+@media (min-width: 768px) {
+    .check-container {
+        width: 25%;
+    }
+}
+
+/* Hide the browser's default checkbox */
+.check-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.check-container .name {
+    color: gray;
+    font-size: 17px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0px;
+    left: var(--rev-left);
+    right: var(--rev-right);
+    height: 31px;
+    width: 28px;
+    background-color: #dadada;
+    transition: .3s all ease-in-out;
+}
+
+/* On mouse-over, add a grey background color */
+.check-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.check-container input:checked ~ .checkmark {
+    background-color: var(--main-background);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.check-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.check-container .checkmark:after {
+    left: 11px;
+    top: 5px;
+    width: 7px;
+    height: 16px;
+    border: solid white;
+    border-width: 0 3px 4px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+/*****************************************************************************/
+/****************************** Date Range Picker ****************************/
+
+.date-picker-comp{
+    background: transparent;
+    border: 0;
+    border-radius: 0px;
+    border-bottom: 2px solid var(--main-background);
+}
+
+.date-picker-comp:focus {
+    background-color: transparent !important;
+    border-color: unset !important;
+    box-shadow: unset !important;
+}
+
+.daterangepicker .drp-calendar {
+    max-width: unset !important;
+}
+
+.daterangepicker .drp-calendar.left {
+    padding: 8px !important;
+}
+
+.daterangepicker td.active, .daterangepicker td.active:hover {
+    background-color: var(--main-background);
+}
+
+.daterangepicker .calendar-table td {
+    line-height: 0px !important;
+}
+
+.daterangepicker{
+    width: unset;
+}
+
+
+/** Small Screen **/
+@media (max-width: 767.98px) {
+    .daterangepicker .calendar-table td {
+        max-width: 30px;
+    }
+}
+/** Wide Screen **/
+@media (min-width: 768px) {
+    .daterangepicker .calendar-table td {
+        
+    }
+}
+
+/************************** Range Slider ****************************/
+/********************************************************************/
+.M-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.M-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--main-background);
+    cursor: pointer;
+}
+
+.M-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--main-background);
+    cursor: pointer;
+}
+
+.M-slider-con .valid.modified:not([type=checkbox]) {
+    outline: none;
+}
+
+/************************* Uplaod Control ************************/
+/****************************************************************/
+
+.files {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top:10px;
+    font-size: 15px;
+    color: var(--main-background);
+}
+
+/*************************** Sequentail Tabs *************************/
+/*********************************************************************/
+
+.panelNav{
+    list-style: none;
+}
+
+.seq-tab {
+    display: inline-block;
+}
+
+.seq-tab a, .seq-tab a:hover {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: var(--main-background);
+    border: 1px solid var(--main-background);
+    background-color: #FFF;
+    text-align: center;
+    font-weight: bold;
+}
+
+.seq-tab a.active {
+    color: #FFF !important;
+    background-color: var(--main-background);
+}
+
+
+
+.panelWrapper {
+    width: 100%;
+    min-height: 500px;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 15px;
+    /* Prevent flickering of the screen when starting an animation */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/*
+    A panel can be in one of the following states:
+    - [default],
+    - current (= the current active panel),
+    - exit (= the panel to slide/fade out),
+    - enter (= the panel to slide/fade in)
+
+    All [default] panels are hidden.
+    Above that we make sure the current panel is on top of the other panels
+*/
+.panel {
+    z-index: -1;
+    display: none;
+}
+
+.panel.current, .panel.exit {
+    z-index: 2;
+    display: block;
+}
+
+.panel.enter {
+    display: block;
+}
+
+/*
+The key aspect in this example is the `.animating` class on the wrapper: only if the wrapper has the .animating class, CSS properties are transitioned.
+*/
+.animating .exit,
+.animating .enter {
+    -webkit-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+/* SLIDE OUT TRANSITIONS */
+.exit.stageback,
+.exit.stagetop,
+.exit.slideup {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.animating .exit.stageback,
+.animating .exit.stagetop,
+.animating .exit.slideup {
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+.exit.stagefront,
+.exit.stagebottom,
+.exit.slidedown {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.animating .exit.stagefront,
+.animating .exit.stagebottom,
+.animating .exit.slidedown {
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+.exit.stageleft,
+.exit.slideleft {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.animating .exit.stageleft,
+.animating .exit.slideleft {
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.exit.stageright,
+.exit.slideright {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.animating .exit.stageright,
+.animating .exit.slideright {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+
+/* SLIDE IN TRANSITIONS */
+.enter.stageback,
+.enter.stagetop,
+.enter.slidedown {
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+.animating .enter.stageback,
+.animating .enter.stagetop,
+.animating .enter.slidedown {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.enter.stagefront,
+.enter.stagebottom,
+.enter.slideup {
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+.animating .enter.stagefront,
+.animating .enter.stagebottom,
+.animating .enter.slideup {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.enter.stageleft,
+.enter.slideright {
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.animating .enter.stageleft,
+.animating .enter.slideright {
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+}
+
+.enter.stageright,
+.enter.slideleft {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.animating .enter.stageright,
+.animating .enter.slideleft {
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+}
+
+
+
+/* SCALE TRANSITIONS, BEST TO COBMINE WITH FADE/OPACITY */
+.enter.scaleup {
+    -webkit-transform: scale(0.1);
+    -ms-transform: scale(0.1);
+    transform: scale(0.1);
+}
+
+.animating .enter.scaleup {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.exit.scaleup {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.animating .exit.scaleup {
+    -webkit-transform: scale(1.9);
+    -ms-transform: scale(1.9);
+    transform: scale(1.9);
+    opacity: 0;
+}
+
+.enter.scaledown {
+    -webkit-transform: scale(1.9);
+    -ms-transform: scale(1.9);
+    transform: scale(1.9);
+}
+
+.animating .enter.scaledown {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.exit.scaledown {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.animating .exit.scaledown {
+    -webkit-transform: scale(0.1);
+    -ms-transform: scale(0.1);
+    transform: scale(0.1);
+}
+
+
+/* OPACITY/FADE TRANSITIONS */
+.enter.fade {
+    opacity: 0;
+}
+
+.animating .enter.fade {
+    opacity: 1;
+}
+
+.exit.fade {
+    opacity: 1;
+}
+
+.animating .exit.fade {
+    opacity: 0;
+}
+
+
+/* Sequential animations: delay the animation of the entering panel */
+.animating[data-concurrent="no"] .panel.enter,
+.animating[data-sequential="yes"] .panel.enter {
+    -webkit-transition-delay: .3s !important;
+    -ms-transition-delay: .3s !important;
+    transition-delay: .3s !important;
+}
+
+
+/*********************************** Ck Editor *********************************/
+/*******************************************************************************/
+
+.ck-content{
+    background: #FFF;
+    border: 1px solid var(--main-background) !important;
+    border-top: 0 !important;
+}
+
+.ck-toolbar {
+    border: 1px solid var(--main-background) !important;
+}
+
+.ck-icon {
+    color: var(--main-background) !important
+}
+

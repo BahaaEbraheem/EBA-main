@@ -1,0 +1,34 @@
+﻿@inherits AuthLayoutBase
+
+@*<MatThemeProvider Theme="@theme1">
+    
+    <MatAppBarContainer>
+        <MatAppBar Fixed="true">
+            <MatAppBarRow>
+                <MatAppBarSection Align="@MatAppBarSectionAlign.Start">
+                    <MatAppBarTitle> K Template </MatAppBarTitle>
+                </MatAppBarSection>
+                <MatAppBarSection Align="@MatAppBarSectionAlign.End">
+                    <MatIconButton Icon="login" @onclick="@(e => Navigate("auth/login"))">
+                    </MatIconButton>
+                </MatAppBarSection>
+            </MatAppBarRow>
+        </MatAppBar>
+    </MatAppBarContainer>
+
+    <div class="container-full">
+        @Body
+    </div>
+
+</MatThemeProvider>*@
+
+<CascadingValue Value="@AppSettings" Name="AppSettings">
+    <CascadingValue Value="@Theme">
+        <ThemingStyle></ThemingStyle>
+       
+        <div class="container-full">
+            @Body
+        </div>
+    </CascadingValue>
+</CascadingValue>
+

@@ -1,0 +1,23 @@
+﻿@page "/TextTemplates"
+@attribute [Authorize(Policy = "reporting-control")]
+
+<div class="m-4 page-title"> @Localizer["Report Templates"] </div>
+
+@if (ReportTextTemplates != null)
+{
+    @foreach (var reportTextTemplate in ReportTextTemplates)
+    {
+        <div class="row list-row">
+            <div class="col-md-4">
+                @reportTextTemplate.Name
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+                <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-edit"
+                         ClickCallBack="@(() => NavigationManager.NavigateTo($"/TextTemplateEditor/{reportTextTemplate.Id}"))"></IconBtn>
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,34 @@
+﻿
+<div class="options-con">
+    <div class="option-toggle">
+        <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-cogs" ClickCallBack="ToggleOptions"></IconBtn>
+    </div>
+    <div class="options @open">
+
+        <div class="option">
+            @Option
+        </div>
+        
+    </div>
+</div>
+
+@code{
+
+
+    //[Parameter]
+    //public IEnumerable<RenderFragment> Options {get; set;}
+
+    [Parameter]
+    public RenderFragment Option { get; set; }
+
+
+    public string open { get; set; } = "";
+
+    public void ToggleOptions()
+    {
+        if (string.IsNullOrEmpty(open))
+            open = "options-open";
+        else
+            open = "";
+    }
+}

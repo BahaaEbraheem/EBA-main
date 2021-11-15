@@ -1,0 +1,18 @@
+﻿@typeparam T
+
+<table class="table grid-comp">
+    <thead>
+        <tr> @GridHeader </tr>
+    </thead>
+    <tbody>
+        @{ 
+            int i = 0;
+            foreach (var item in Items)
+            {
+                <tr class="@((i%2 == 0)? "even" : "odd")" > @GridRow(item) </tr>
+
+                i++;
+            }
+        }
+    </tbody>
+</table>

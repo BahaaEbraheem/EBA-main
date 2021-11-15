@@ -1,0 +1,48 @@
+﻿@page "/auth/login"
+@layout AuthLayout
+@using OA.WASM.Services.Settings.Extentions; 
+
+<section class="middle-box">
+    <div class="box">
+        <div class="form">
+            <h2> @Localizer["Login"] . </h2>
+            <div class="form">
+                <EditForm Model="LoginRequest" OnValidSubmit="HandleSubmit">
+                    
+                    <FluentValidationValidator />
+
+                    <ServerValidation @ref="ServerValidationRef" Title="Login result"></ServerValidation>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10 auth-input">
+                            <MInputText @bind-Value="LoginRequest.UserName" For="@(() => LoginRequest.UserName)" Label="User Name" Id="UserName" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10 auth-input">
+                            <MInputText Type="password" @bind-Value="LoginRequest.Password" For="@(() => LoginRequest.Password)" Label="Password" Id="Password" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-5">
+                        <div class="col-sm-5">
+                            <button type="submit" class="btn btn-block btn-sm btn-comp"> @Localizer["Login"] </button>
+                        </div>
+                        <div class="col-sm-1 pt-1 text-center">
+                            @if (LoginBusy)
+                            {<MiniLoading size="25px" />}
+                        </div>
+                    </div>
+
+                </EditForm>
+
+            </div>
+            @if (AppSettings.Check("Registration", "true"))
+            {
+                <div> @Localizer["Not a Member"] ? <a href="auth/Register"> @Localizer["Register as Customer"] </a></div>
+            }
+        </div>
+    </div>
+</section>
+

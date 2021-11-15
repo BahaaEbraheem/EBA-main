@@ -1,0 +1,76 @@
+﻿@page "/settings"
+@inherits AppSettingsBase
+@attribute [Authorize(Policy = "app-settings-control")]
+
+<div class="page-title mb-3">  @Localizer["Application Settings"]  </div>
+
+<div class="setting-input">
+    <label class="check-container">
+        <span class="name"> @Localizer["User Profile"] </span>
+        <input type="checkbox" @bind="Profiling">
+        <span class="checkmark"></span>
+    </label>
+
+    <div class="setting-input @((Profiling)? "setting-on" : "setting-off")">
+        <label class="check-container">
+            <span class="name"> @Localizer["Change Password Policy"] </span>
+            <input type="checkbox" @bind="PasswordChangePoicy">
+            <span class="checkmark"></span>
+        </label>
+
+        <div class="setting-input @((Profiling && PasswordChangePoicy)? "setting-on" : "setting-off")">
+            <label class="check-container">
+                <span class="name"> @Localizer["Force Change On First Use"] </span>
+                <input type="checkbox" @bind="ForceChangeFirstUse">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+
+        <div class="setting-input @((Profiling && PasswordChangePoicy)? "setting-on" : "setting-off")">
+            <label class="check-container">
+                <span class="name"> @Localizer["Force Change Password Every"] </span>
+                <input type="checkbox" @bind="ForceChangeEvery">
+                <span class="checkmark"></span>
+            </label>
+
+            <div class="setting-input @((Profiling && PasswordChangePoicy && ForceChangeEvery)? "setting-on" : "setting-off")">
+                <div class="md-form">
+                    <input type="number" autocomplete="off" class="form-control" id="days" @bind="DaysToChangePassword" />
+                    <label for="days" class="active"> @Localizer["Days"] </label>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="setting-input">
+    <label class="check-container">
+        <span class="name"> @Localizer["Registration"] </span>
+        <input type="checkbox" @bind="Registration">
+        <span class="checkmark"></span>
+    </label>
+
+    <div class="setting-input @((Registration)? "setting-on" : "setting-off")">
+        <label class="check-container">
+            <span class="name"> @Localizer["Admin Confirmation"] </span>
+            <input type="checkbox" @bind="AdminConfirm">
+            <span class="checkmark"></span>
+        </label>
+    </div>
+</div>
+
+<div class="form-group row mt-5 pt-5">
+    <div class="col-sm-5">
+        <button type="button" class="btn btn-comp btn-block btn-sm" @onclick="SaveSettings" > @Localizer["Save"] </button>
+    </div>
+    <div class="col-sm-1 pt-1 text-center">
+        @if (SaveBusy)
+        {<MiniLoading size="25px" />}
+    </div>
+</div>
+
+
+
+

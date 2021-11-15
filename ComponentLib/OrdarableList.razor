@@ -1,0 +1,10 @@
+﻿@typeparam T
+
+<div ondragover="event.preventDefault();">
+    @foreach (var item in Items)
+    {
+        <div draggable="true" style="cursor:move" @ondrag="@(() => StartDrag(item))" @ondrop="@(() => Drop(item))">
+            @ItemTemplate(item)
+        </div>
+    }
+</div>

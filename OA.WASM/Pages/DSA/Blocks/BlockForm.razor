@@ -1,0 +1,82 @@
+﻿@using OA.Domin.DSA
+@using OA.Domin.Settings
+
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="Block.Name" For="@(() => Block.Name)" Id="Name" EntityType="typeof(Block)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="Block.BlockCategoryId" For="@(() => Block.BlockCategoryId)" Items="BlockCatigoryItems" Id="BlockCategoryId" EntityType="typeof(Block)" PropName="BlockCategoryId" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-12">
+        <MInputText @bind-Value="Block.Description" For="@(() => Block.Description)" Id="Description" EntityType="typeof(Block)" PropName="Description" Active="@Active" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-4">
+        <MInputText @bind-Value="Block.BlockURL" For="@(() => Block.BlockURL)" Id="Name" EntityType="typeof(Block)" PropName="BlockURL" Active="@Active" />
+    </div>
+    <div class="col-sm-4">
+        <MInputNumber @bind-Value="Block.Order" For="@(() => Block.Order)" Id="Order" EntityType="typeof(Block)" PropName="Order" />
+    </div>
+    <div class="col-sm-2 select-col">
+        <CheckBoxBtn Checked="Block.IsActive" Text="Active" OnChange="@((bool value) => Block.IsActive = value)" />
+    </div>
+    <div class="col-sm-2 select-col">
+        <CheckBoxBtn Checked="Block.IsVisible" Text="Visible" OnChange="@((bool value) => Block.IsVisible = value)" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <UploadFile @ref="FileUploadControl"
+                    Label="File"
+                    Types='FileSettings.MimeTypes["HTML"]'
+                    ImagePreview="false"
+                    ShowUploaded="true"
+                    MaxSize="1024 * 1024 * 1"
+                    OnValidUpload="@(() => Block.File = FileUploadControl.Files[0] )"
+                    OnStartPreUpload="@(() => UploadBusy = true)"
+                    OnEndPreUpload="@(() => UploadBusy = false)"
+                    />
+        @if (IsEdit) 
+        {
+            <div>
+                @Block.FilePath
+            </div>
+        }
+    </div>
+    <div class="col-sm-6">
+        <UploadFile @ref="ImageUploadControl"
+                    Label="Image"
+                    Types='FileSettings.MimeTypes["Image"]'
+                    ImagePreview="true"
+                    ShowUploaded="false"
+                    MaxSize="1024 * 1024 * 1"
+                    OnValidUpload="@(() => Block.Image = ImageUploadControl.Files[0] )"
+                    OnStartPreUpload="@(() => UploadBusy = true)"
+                    OnEndPreUpload="@(() => UploadBusy = false)" />
+        @if (IsEdit)
+        {
+            <div>
+                @Block.ImagePath
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="M-center">
+            @if (UploadBusy)
+            {
+                <MiniLoading />
+            }
+        </div>
+    </div>
+</div>

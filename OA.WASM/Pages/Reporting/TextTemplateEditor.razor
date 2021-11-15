@@ -1,0 +1,9 @@
+﻿@page "/TextTemplateEditor/{id}"
+@attribute [Authorize(Policy = "reporting-control")]
+
+<EditForm Model="ReportTextTemplate">
+    <RishTextEditor @bind-Value="ReportTextTemplate.Content" />
+</EditForm>
+
+
+<Btn ClassList="btn-sm btn-block mb-5" Text="Save" ClickCallBack="SaveTemplate" />

@@ -1,0 +1,77 @@
+﻿@using BlazorColorPicker;
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorageService;
+
+@*<li class="nav-drop-con">
+    <a class="nav-drop-toggle dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+        <span class="nav-label"> Theme </span>
+        <span class="caret"> </span>
+    </a>
+    <ul class="dropdown-menu nav-drop-items">
+        <li class="nav-drop-item" @onclick='() => SelectTheme(1)'> Theme 1  </li>
+        <li class="nav-drop-item" @onclick='() => SelectTheme(2)'> Theme 2  </li>
+    </ul>    
+</li>*@
+
+<i class="fa fa-tint color-picker-btn" @onclick="OpenModal"></i>
+
+<ColorPicker IsOpened="isOpened" Closed="ClosedEvent" MyColor="@color">
+</ColorPicker>
+
+@code {
+
+    [Parameter]
+    public Action<Theme> ThemeSelectEvent { get; set; }
+
+    public string color { get; set; } = "";
+
+    public bool isOpened { get; set; } = false;
+
+    protected async override Task OnInitializedAsync()
+    {
+        var currTheme = await LocalStorageService.GetItemAsync<Theme>("Theme");
+        color = (currTheme != null) ? currTheme.MainBackground : "";
+    }
+
+    void OpenModal()
+    {
+        isOpened = true;
+    }
+
+    public async Task ClosedEvent(string value)
+    {
+        color = value;
+        isOpened = false;
+
+        var currTheme = await LocalStorageService.GetItemAsync<Theme>("Theme");
+
+        var selectedTheme = (currTheme != null) ? currTheme : new Theme();
+
+        selectedTheme.MainBackground = color;
+
+        await LocalStorageService.SetItemAsync<Theme>("Theme", selectedTheme);
+
+        ThemeSelectEvent.Invoke(selectedTheme);
+
+    }
+
+
+    //public async void SelectTheme(int id)
+    //{
+    //    var currTheme = await LocalStorageService.GetItemAsync<Theme>("Theme");
+
+    //    var selectedTheme = (currTheme != null) ? currTheme : new Theme();
+    //    if (id == 1)
+    //    {
+    //        selectedTheme.MainBackground = "#ff8100";
+    //    }
+    //    else
+    //    {
+    //        selectedTheme.MainBackground = "#2782b7";
+    //    }
+
+    //    await LocalStorageService.SetItemAsync<Theme>("Theme", selectedTheme);
+
+    //    ThemeSelectEvent.Invoke(selectedTheme);
+    //}
+
+}

@@ -1,0 +1,33 @@
+﻿@using OA.Domin.DSA
+@inherits MenueDetailsBase
+@page "/Menue/Details/{id}"
+@attribute [Authorize("menues-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Menue"] @Localizer["Details"]
+</div>
+
+
+<DetailItem EntityType="typeof(Menue)" PropName="Name" Value="@EntityItem.Name" />
+
+<DetailItem EntityType="typeof(Menue)" PropName="Type" Value="@EntityItem.Type" />
+
+<DetailItem EntityType="typeof(Menue)" PropName="LevelOrder" Value="@EntityItem.LevelOrder.ToString()" />
+
+<DetailItem EntityType="typeof(Menue)" PropName="MenuCategoryId" Value="@EntityItem.MenuCategory?.Name" />
+
+<DetailItem EntityType="typeof(Menue)" PropName="MenueId" Value="@EntityItem.ParentMenue?.Name" />
+
+<DetailItem EntityType="typeof(Menue)" PropName="FilePath" Value="@EntityItem.FilePath" />
+
+<DetailItem EntityType="typeof(Menue)" PropName="ImagePath" Value="@EntityItem.ImagePath" />
+
+<div class="row mt-3">
+    <div class="col-md-6">
+        <img src="@($"{PathPrefix}{EntityItem.ImagePath}")" class="doc-preview-image" />
+    </div>
+</div>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/Menues/List"))" />
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/Menue/Edit/{EntityItem.Id}"))" />

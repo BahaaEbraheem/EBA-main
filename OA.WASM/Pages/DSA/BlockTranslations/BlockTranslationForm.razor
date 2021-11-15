@@ -1,0 +1,28 @@
+﻿@using OA.Domin.DSA;
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="BlockTranslation.Name" For="@(() => BlockTranslation.Name)" Id="Name" EntityType="typeof(BlockTranslation)" PropName="Name" Active="@Active" />
+    </div>
+    @*<div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="BlockTranslation.Language" For="@(() => BlockTranslation.Language)" Items="OA.Domin.StaticIndexes.Language" Id="Language" EntityType="typeof(BlockTranslation)" PropName="Language" />
+    </div>*@
+</div>
+<div class="form-group row">
+    @*<div class="col-sm-6">
+        <MInputText @bind-Value="BlockTranslation.Slug" For="@(() => BlockTranslation.Slug)" Id="Slug" EntityType="typeof(BlockTranslation)" PropName="Slug" Active="@Active" />
+    </div>*@
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="BlockTranslation.BlockId" For="@(() => BlockTranslation.BlockId)" Items="BlockItems" Id="BlockId" EntityType="typeof(BlockTranslation)" PropName="BlockId" />
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-12">
+        <MInputText @bind-Value="BlockTranslation.Description" For="@(() => BlockTranslation.Description)" Id="Description" EntityType="typeof(BlockTranslation)" PropName="Description" Active="@Active" />
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-12">
+        <CheckBoxBtn Checked="BlockTranslation.IsActive" Text="Active" OnChange="@((bool value) => BlockTranslation.IsActive = value)" />
+    </div>
+</div>

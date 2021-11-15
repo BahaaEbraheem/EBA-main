@@ -1,0 +1,295 @@
+﻿@using OA.WASM.Pages.Auth 
+@using OA.WASM.Pages.Profile
+@using OA.WASM.Pages.Notifications
+
+<div class="sidenav-comp">
+
+    <input type="checkbox" id="toggled" class="@Theme.Align-toggled" style="display:none" @attributes="@attr" />
+
+    <!-- header area start -->
+    <header>
+        <label @onclick="ToggleNav">
+            <i class="fas fa-bars @Theme.Align-sidebar-btn" id="SidebarBtn"></i>
+        </label>
+        
+        <div class="@(Theme.Align)-area prod-name">
+            <div @onclick="@(() => NavigateTo("/home"))" class="brand-text"> <span>IT S</span>tudios </div>
+        </div>
+
+        <div class="@((Theme.Align == "left")? "right" : "left" )-area">
+
+            <div>
+                <Logout></Logout>
+            </div>
+            <div>
+                <ProfileLink />
+            </div>
+            <div>
+                <UserNotifications />
+            </div>
+            <div class="resp-nav-link">
+                <CultureSelect ThemeSelectEvent="ThemeSelected" ></CultureSelect>
+            </div>
+            <div class="resp-nav-link">
+                <ThemeSelect ThemeSelectEvent="ThemeSelected"></ThemeSelect>
+            </div>
+
+        </div>
+        @*<div class="right-area">
+            
+        </div>
+
+        <div class="right-area">
+            
+        </div>*@
+
+    </header>
+    <!-- header area end -->
+    <!-- sidebar start -->
+    <div class="sidebar @Theme.Align-sidebar">
+
+        <AuthorizeView Policy="administration-users">
+            <Authorized>
+                <div class="submenu-group @sub[1]">
+                    <i class="fas fa-desktop"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(1))"> @Localizer["Administration"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        <li><a href="/signupRequests"> @Localizer["Signup Requests"] </a></li>
+                        <li><a href="/users"> @Localizer["Users"] </a></li>
+                        <li><a href="/roles"> @Localizer["Roles"] </a></li>
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Policy="app-settings-control">
+            <Authorized>
+                <a href="/settings">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>  @Localizer["Settings"] </span>
+                </a>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Policy="reporting-control">
+            <Authorized>
+                <div class="submenu-group @sub[2]">
+                    <i class="fas fa-book-reader"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(2))"> @Localizer["Reporting"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        <li><a href="/Reporting"> @Localizer["Table Reports"] </a></li>
+                        <li><a href="/TextTemplates"> @Localizer["Template Reports"] </a></li>
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+
+        <AuthorizeView Policy="audeting-access">
+            <Authorized>
+                <a href="/Auditing">
+                    <i class="fa fa-history"></i>
+                    <span> @Localizer["Audeting"] </span>
+                </a>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Policy="error-log-access">
+            <Authorized>
+                <a href="/ErrorsLog">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span> @Localizer["Errors Log"] </span>
+                </a>
+            </Authorized>
+        </AuthorizeView>
+
+
+        <AuthorizeView Policy="push-notification-control">
+            <Authorized>
+                <a href="/PushNotifications">
+                    <i class="fas fa-bell"></i>
+                    <span> @Localizer["Push Notification"] </span>
+                </a>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Policy="indexes-control">
+            <Authorized>
+                <div class="submenu-group @sub[7]">
+                    <i class="fas fa-database"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(7))"> @Localizer["Indexes"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        @*<li><a href="/Nationalities/List"> @Localizer["Nationalities"] </a></li>
+                        <li><a href="/Governorates/List"> @Localizer["Governorates"] </a></li>
+                        <li><a href="/Cities/List"> @Localizer["Cities"] </a></li>
+                        <li><a href="/Activities/List"> @Localizer["Activities"] </a></li>
+                        <li><a href="/JobTypes/List"> @Localizer["Job Types"] </a></li>
+                        <li><a href="/AcademicQualifications/List"> @Localizer["Qualifications"] </a></li>
+                        <li><a href="/DonationTypes/List"> @Localizer["Donation Types"] </a></li>*@
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Policy="blocks-control">
+            <Authorized>
+                <div class="submenu-group @sub[3]">
+                    <i class="fas fa-layer-group"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(3))"> @Localizer["Blocks"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        <li><a href="/Blocks/List"> @Localizer["Blocks"] </a></li>
+                        <li><a href="/BlockCategories/List"> @Localizer["Categories"] </a></li>
+                        <li><a href="/BlockTranslations/List"> @Localizer["Translations"] </a></li>
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Policy="events-control">
+            <Authorized>
+                <div class="submenu-group @sub[4]">
+                    <i class="fa fa-calendar"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(4))"> @Localizer["Events"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        <li><a href="/Events/List"> @Localizer["Events"] </a></li>
+                        <li><a href="/EventCategories/List"> @Localizer["Categories"] </a></li>
+                        <li><a href="/EventTranslations/List"> @Localizer["Translation"] </a></li>
+                        <li><a href="/EventCategoryTranslations/List"> @Localizer["Categories Translations"] </a></li>
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Policy="pages-control">
+            <Authorized>
+                <div class="submenu-group @sub[5]">
+                    <i class="fa fa-file"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(5))"> @Localizer["Pages"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        <li><a href="/Pages/List"> @Localizer["Pages"] </a></li>
+                        <li><a href="/PageTranslations/List"> @Localizer["Translation"] </a></li>
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Policy="menues-control">
+            <Authorized>
+                <div class="submenu-group @sub[6]">
+                    <i class="fa fa-list"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(6))"> @Localizer["Menues"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        <li><a href="/Menues/List"> @Localizer["Menues"] </a></li>
+                        <li><a href="/MenueCategories/List"> @Localizer["Categories"] </a></li>
+                        <li><a href="/MenueTranslations/List"> @Localizer["Translations"] </a></li>
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Policy="menues-control">
+            <Authorized>
+                <div class="submenu-group @sub[9]">
+                    <i class="fa fa-font"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(9))"> @Localizer["Articles"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        <li><a href="/Articles/List"> @Localizer["Articles"] </a></li>
+                        <li><a href="/ArticleCategories/List"> @Localizer["Categories"] </a></li>
+                        <li><a href="/ArticleTranslations/List"> @Localizer["Translations"] </a></li>
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Policy="attachments-control">
+            <Authorized>
+                <a href="/Attachments/List">
+                    <i class="fa fa-paperclip"></i>
+                    <span> @Localizer["Attachments"] </span>
+                </a>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Policy="donations-control">
+            <Authorized>
+                <div class="submenu-group @sub[8]">
+                    <i class="fas fa-donate"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(8))"> @Localizer["Donations"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        @*<li><a href="/CorporateDonators/List"> @Localizer["Corp Donators"] </a></li>
+                        <li><a href="/PersonDonators/List"> @Localizer["Person Donators"] </a></li>
+                        <li><a href="/Beneficiaries/List"> @Localizer["Beneficiaries"] </a></li>
+                        <li><a href="CorporateBeneficiaries/List"> @Localizer["Corp Beneficiaries"] </a></li>
+                        <li><a href="/Donations/List"> @Localizer["Donations"] </a></li>
+                        <li><a href="/DonationRequests/List"> @Localizer["Donation Requests"] </a></li>
+                        <li><a href="/DonationOffers/List"> @Localizer["Donation Offers"] </a></li>
+                        <li><a href="/Vacancies/List"> @Localizer["Vacancies"] </a></li>
+                        <li><a href="/Projects/List"> @Localizer["Projects"] </a></li>
+                        <li><a href="/Organizations/List"> @Localizer["Organizations"] </a></li>*@
+                        
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+        <div class="resp-sidenav-link">
+            <CultureSelect></CultureSelect>
+        </div>
+        <div class="resp-sidenav-link">
+            <ThemeSelect ThemeSelectEvent="ThemeSelected"></ThemeSelect>
+        </div>
+    </div>
+    <!-- sidebar end -->
+</div>
+
+@code{
+
+    [Inject]
+    IStringLocalizer<CommonResources> Localizer { get; set; }
+
+    [Inject]
+    NavigationManager NavigationManager { get; set; }
+
+    [CascadingParameter]
+    public Theme Theme { get; set; }
+
+
+    [Parameter]
+    public EventCallback<Theme> ThemeSelectEvent { get; set; }
+
+    IEnumerable<KeyValuePair<string, object>> attr = new List<KeyValuePair<string, object>>() { new KeyValuePair<string, object>("checked", "checked") };
+
+    List<string> sub = new List<string>() { string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty };
+
+    public void ToggleSubMenu(int i)
+    {
+        sub[i] = (string.IsNullOrEmpty(sub[i])) ? "submenu-open" : string.Empty;
+    }
+
+    public void NavigateTo(string link, bool forceLoad = false)
+    {
+        NavigationManager.NavigateTo(link, forceLoad);
+    }
+
+    public void CloseNav()
+    {
+        attr = new List<KeyValuePair<string, object>>() { new KeyValuePair<string, object>("checked", "checked") };
+        StateHasChanged();
+    }
+
+    public void ToggleNav()
+    {
+        if (attr.Count() > 0)
+            attr = new List<KeyValuePair<string, object>>();
+        else
+            attr = new List<KeyValuePair<string, object>>() { new KeyValuePair<string, object>("checked", "checked") };
+        StateHasChanged();
+    }
+
+    public async void ThemeSelected(Theme selectedTheme)
+    {
+
+        await ThemeSelectEvent.InvokeAsync(selectedTheme);
+    }
+
+}

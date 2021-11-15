@@ -1,0 +1,79 @@
+﻿@using OA.Domin.DSA
+@using OA.Domin.Settings
+
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="Menue.Name" For="@(() => Menue.Name)" Id="Name" EntityType="typeof(Menue)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="Menue.MenuCategoryId" For="@(() => Menue.MenuCategoryId)" Items="MenueCategoryItems" Id="MenuCategoryId" EntityType="typeof(Menue)" PropName="MenuCategoryId" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputNumber @bind-Value="Menue.LevelOrder" For="@(() => Menue.LevelOrder)" Id="LevelOrder" EntityType="typeof(Menue)" PropName="LevelOrder" />
+    </div>
+    <div class="col-sm-6">
+        <MInputSelect @bind-Value="Menue.Type" For="@(() => Menue.Type)" Items="MenuTypeItems" Id="Type" EntityType="typeof(Menue)" PropName="Type" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="Menue.PageUrl" For="@(() => Menue.PageUrl)" Id="PageUrl" EntityType="typeof(Menue)" PropName="PageUrl" Active="@Active" />
+    </div>
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="Menue.MenueId" For="@(() => Menue.MenueId)" Items="MenueItems" Id="MenueId" EntityType="typeof(Menue)" PropName="MenueId"  />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <UploadFile @ref="FileUploadControl"
+                    Label="File"
+                    Types='FileSettings.MimeTypes["HTML"]'
+                    ImagePreview="false"
+                    ShowUploaded="true"
+                    MaxSize="1024 * 1024 * 1"
+                    OnValidUpload="@(() => Menue.File = FileUploadControl.Files[0] )"
+                    OnStartPreUpload="@(() => UploadBusy = true)"
+                    OnEndPreUpload="@(() => UploadBusy = false)" />
+        @if (IsEdit)
+        {
+            <div>
+                @Menue.FilePath
+            </div>
+        }
+    </div>
+    <div class="col-sm-6">
+        <UploadFile @ref="ImageUploadControl"
+                    Label="Image"
+                    Types='FileSettings.MimeTypes["Image"]'
+                    ImagePreview="true"
+                    ShowUploaded="false"
+                    MaxSize="1024 * 1024 * 1"
+                    OnValidUpload="@(() => Menue.Image = ImageUploadControl.Files[0] )"
+                    OnStartPreUpload="@(() => UploadBusy = true)"
+                    OnEndPreUpload="@(() => UploadBusy = false)" />
+        @if (IsEdit)
+        {
+            <div>
+                @Menue.ImagePath
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="M-center">
+            @if (UploadBusy)
+            {
+                <MiniLoading />
+            }
+        </div>
+    </div>
+</div>
+

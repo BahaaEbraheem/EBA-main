@@ -1,0 +1,17 @@
+﻿@inherits BlockCreateBase
+@page "/Block/Create"
+@attribute [Authorize(Policy = "blocks-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Create"] @Localizer["Block"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <BlockForm Block="EntityItem" BlockCatigoryItems="BlockCatigoryItems" />
+
+    <SubmitBtn Text="Create" Busy="CreateBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/Blocks/List"))" />

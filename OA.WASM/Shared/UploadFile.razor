@@ -1,0 +1,22 @@
+﻿
+
+<MatFileUpload OnChange="@Upload" Label="@Localizer[Label]" AllowMultiple="Multible" Class="@CssClass" />
+
+@if (ShowUploaded)
+{
+    <ul class="files">
+        @foreach(var name in UploadedNames)
+        {
+            <li> @name </li>
+        }
+    </ul>
+}
+
+@if (ImagePreview)
+{
+    <div class="uploaded-img-preview">
+        <img style="width:100%; border-radius: 0px 0px 10px 10px;" src="@Base64Img" />
+    </div>
+}
+
+<ServerValidation @ref="Validation" Title="@Localizer["Uploaded File Validation"]" />

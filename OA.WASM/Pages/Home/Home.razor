@@ -1,0 +1,42 @@
+﻿@page "/home"
+@inherits MainLayout
+@attribute [Authorize]
+
+
+<div class="home-layout-container">
+
+    <h3 class="home-title m-5">  @Localizer["Giving Bridge Website Managment"]  </h3>
+
+    <div class="d-flex justify-content-lg-around flex-wrap">
+
+        @*<AuthorizeView Policy="customers-write">
+            <Authorized>
+                <div class="home-card" @onclick="@(() => NavigationManager.NavigateTo("/Customer/create"))">
+                    <div class="home-card-title"> @Localizer["Customers"] </div>
+                    <a class="home-card-btn">
+                        <i class="fa fa-house-user"></i>
+                    </a>
+                    <div class="home-card-desc">
+                        <div>KYC</div>
+                        <div><small>(Know Your Customer)</small> </div>
+                        <div>Fill Basic & Finantial Info About Your Customers</div>
+                    </div>
+                </div>
+            </Authorized>
+        </AuthorizeView>*@
+
+    </div>
+
+</div>
+
+@code{
+    [Inject]
+    public IStringLocalizer<CommonResources> Localizer { get; set; }
+
+    //[Inject]
+    //public new NavigationManager NavigationManager { get; set; }
+
+}
+
+
+

@@ -1,0 +1,10 @@
+﻿@inherits MInputNumberBase
+
+<div class="md-form">
+
+    <input type="number" autocomplete="off" class="form-control @CssClass" id="@Id" @bind="@CurrentValue" />
+    <label for="@Id" class="active"> @Localizer[Label] </label>
+
+    <CustomValidationMessage For="For" />
+
+</div>

@@ -1,0 +1,36 @@
+﻿
+@using OA.Domin.DSA
+@page "/ItemAttachments/{Reference}/{ReferenceId}"
+@attribute [Authorize(Policy = "attachments-control")]
+
+@if (Attachments == null)
+{
+    <Loading></Loading>
+}
+else
+{
+    <div class="page-title mt-5 mb-5"> @Reference @Localizer["Attachments"] </div>
+
+
+    <Grid Items="Attachments">
+        <GridHeader>
+            <th> @Localizer["Name"] </th>
+            <th> @Localizer["Type"]</th>
+            <th> @Localizer["Order"]</th>
+            <th> @Localizer["URL"]</th>
+            <th> @Localizer["Description"]</th>
+        </GridHeader>
+        <GridRow>
+            <td> <span> @Localizer["Name"] </span> @context.Name</td>
+            <td> <span> @Localizer["Type"] </span> @context.Type</td>
+            <td> <span> @Localizer["Order"] </span> @context.Order</td>
+            <td> <span> @Localizer["URL"] </span> @context.URL</td>
+            <td> <span> @Localizer["Description"] </span> @context.Description</td>
+        </GridRow>
+    </Grid>
+    
+}
+
+
+
+

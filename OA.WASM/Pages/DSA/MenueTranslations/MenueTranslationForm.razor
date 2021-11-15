@@ -1,0 +1,32 @@
+﻿@using OA.Domin.DSA
+@using OA.Domin.Settings
+
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="MenueTranslation.Name" For="@(() => MenueTranslation.Name)" Id="Name" EntityType="typeof(MenueTranslation)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="MenueTranslation.MenueId" For="@(() => MenueTranslation.MenueId)" Items="MenueItems" Id="MenueId" EntityType="typeof(MenueTranslation)" PropName="MenueId" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="MenueTranslation.Language" For="@(() => MenueTranslation.Language)" Items="OA.Domin.StaticIndexes.Language" Id="Type" EntityType="typeof(MenueTranslation)" PropName="Language" />
+    </div>
+    <div class="col-sm-2 offset-1 select-col">
+        <CheckBoxBtn Checked="MenueTranslation.IsActive" Text="Active" OnChange="@((bool value) => MenueTranslation.IsActive = value)" />
+    </div>
+</div>
+
+<div class="form-group row mb-5">
+    <div class="col-sm-12">
+        <CollapseContainer Title="Page Content">
+            <RishTextEditor @bind-Value="MenueTranslation.HTMLContent" />
+        </CollapseContainer>
+    </div>
+</div>
+
+
+

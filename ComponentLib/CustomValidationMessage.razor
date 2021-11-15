@@ -1,0 +1,10 @@
+﻿@typeparam T
+
+@if (ValidationMessages.Any())
+{
+    foreach(var msg in ValidationMessages)
+    {
+        <div class="@ClassList text-danger"> @Localizer[msg] </div>
+    }
+}
+

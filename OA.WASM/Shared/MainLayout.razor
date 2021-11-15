@@ -1,0 +1,31 @@
+﻿@using OA.WASM.Services.Settings.Extentions
+@using OA.WASM.Pages.Home
+@using OA.WASM.Pages.Notifications;
+@inherits MainLayoutBase
+
+
+<CascadingValue Value="@AppSettings" Name="AppSettings">
+    <CascadingValue Value="@Theme">
+        <ThemingStyle></ThemingStyle>
+
+            @if (AppSettings.Check("ResetPasswordPassed", "true") || AppSettings.Check("PasswordChangePoicy", "false"))
+            {
+                <SideNav @ref="SideNavRef" ThemeSelectEvent="ThemeSelected"></SideNav>
+
+                <div class="container" style="margin-top: 85px;" @onclick="CloseNav">
+                    @Body
+                </div>
+            }
+            else
+            {
+                <ForceChangePassword />
+            }
+
+
+        <NotificationPortal></NotificationPortal>
+
+    </CascadingValue>
+</CascadingValue>
+
+
+

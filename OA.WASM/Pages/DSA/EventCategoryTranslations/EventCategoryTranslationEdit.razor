@@ -1,0 +1,18 @@
+﻿
+@inherits EventCategoryTranslationEditBase
+@page "/EventCategoryTranslation/Edit/{id}"
+@attribute [Authorize(Policy = "blocks-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Edit"] @Localizer["Event Category Translation"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <EventCategoryTranslationForm EventCategoryTranslation="EntityItem" EventCategoryItems="EventCategoryItems" IsEdit="true" />
+
+    <SubmitBtn Text="Save" Busy="EditBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/EventCategoryTranslations/List"))" />

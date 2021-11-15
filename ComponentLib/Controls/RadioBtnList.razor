@@ -1,0 +1,16 @@
+﻿
+<div class="d-flex radio-list-flex-wrap justify-content-around">
+    @foreach (var btn in Buttons)
+    {
+        <button type="button" class='btn btn-sm btn-check@((btn.Value)? "-active" : "") @ClassList' @attributes="Attrs" @onclick="@(() => Changed(btn.Key) )"> 
+            @if (Names.Keys.Contains(btn.Key))
+            {
+                @Localizer[Names[btn.Key]]
+            }
+            else
+            {
+                @Localizer[btn.Key] 
+            }
+        </button>
+    }
+</div>

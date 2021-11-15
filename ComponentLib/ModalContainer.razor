@@ -1,0 +1,19 @@
+﻿<!-- Modal -->
+<div class="modal fade" id="@Id" tabindex="-1" role="dialog" aria-labelledby="@(Id)Label"
+     aria-hidden="true">
+    <div class="modal-dialog modal-@Size" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@Localizer[Title]</h5>
+            </div>
+            <div class="modal-body">
+                @ChildContent
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-comp-s" data-dismiss="modal" @onclick="OnClose"> @Localizer["Close"] </button> 
+            </div>
+        </div>
+    </div>
+</div>
+
+

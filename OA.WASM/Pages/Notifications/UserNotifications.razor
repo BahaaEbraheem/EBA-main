@@ -1,0 +1,36 @@
+﻿@inherits UserNotificationsBase
+
+<div class="notifications-list-con">
+    <i @onclick="NotificationListToggle" class="fas fa-bell not-btn">
+        @if(UnSeenCount != 0){
+            <span class="not-count"> @UnSeenCount </span>
+        }
+    </i>
+
+    <div class="notifications-list @ActiveNotList">
+        <div class="not-list-header">
+            <div class="not-list-title">
+                @Localizer["New Notifications"]
+            </div>
+            <div class="not-list-controls">
+                <a @onclick="MarkAllAsSeen"> @Localizer["Mark All As Seen"] </a>
+            </div>
+        </div>
+        @foreach (var not in UnSeenNotifications)
+        {
+            <div class="not-item-con">
+                <div class="not-item-head">
+                    <div class="not-item-title">
+                        @Localizer[not.Title]
+                    </div>
+                    <div class="not-item-date">
+                        @TimeSpan(not.Date)
+                    </div>
+                </div>
+                <div class="not-item-body">
+                    @Localizer[not.Body]
+                </div>
+            </div>
+        }
+    </div>
+</div>

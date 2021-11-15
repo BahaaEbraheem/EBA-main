@@ -1,0 +1,23 @@
+﻿@using OA.Domin.DSA
+@inherits BlockTranslationDetailsBase
+@page "/BlockTranslation/Details/{id}"
+@attribute [Authorize("events-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Block Translation"] @Localizer["Details"]
+</div>
+
+<DetailItem EntityType="typeof(BlockTranslation)" PropName="Block" Value="@EntityItem.Block?.Name" />
+
+<DetailItem EntityType="typeof(BlockTranslation)" PropName="Name" Value="@EntityItem.Name" />
+
+@*<DetailItem EntityType="typeof(BlockTranslation)" PropName="Language" Value="@EntityItem.Language" />
+
+<DetailItem EntityType="typeof(BlockTranslation)" PropName="Slug" Value="@EntityItem.Slug" />*@
+
+<DetailItem EntityType="typeof(BlockTranslation)" PropName="Description" Value="@EntityItem.Description" />
+
+<DetailItem EntityType="typeof(BlockTranslation)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/BlockTranslations/List"))" />
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/BlockTranslation/Edit/{EntityItem.Id}"))" />

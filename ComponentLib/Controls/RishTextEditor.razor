@@ -1,0 +1,51 @@
+﻿@using Microsoft.JSInterop
+@inherits InputTextArea
+@inject IJSRuntime JSRT
+
+<div id="toolbar_container_@Id"></div>
+
+<div id="@Id" class="@CssClass" @attributes="AdditionalAttributes">
+    
+</div>
+
+@*<textarea @attributes="AdditionalAttributes"
+          id="@Id"
+          class="@CssClass hide"
+          value="@CurrentValue"></textarea>*@
+
+@code {
+
+    string _Id;
+    [Parameter]
+    public string Id
+    {
+            get => _Id ?? $"CKEditor_{uid}";
+            set => _Id = value;
+    }
+
+    readonly string uid = Guid.NewGuid().ToString().ToLower().Replace("-", "");
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRT.InvokeVoidAsync("CKEditorInterop.init", Id, DotNetObjectReference.Create(this), CurrentValue);
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    [JSInvokable]
+    public Task EditorDataChanged(string data)
+    {
+        CurrentValue = data;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        JSRT.InvokeVoidAsync("CKEditorInterop.destroy", Id);
+        base.Dispose(disposing);
+    }
+}

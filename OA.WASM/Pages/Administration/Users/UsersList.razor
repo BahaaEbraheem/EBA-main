@@ -1,0 +1,70 @@
+﻿@page "/users"
+@using OA.Domin.Administration 
+@inherits UsersListBase
+@attribute [Authorize(Policy = "administration-users")]
+
+@if (Users == null)
+{
+    <Loading></Loading>
+}
+else
+{
+    <div style="position:relative; height:40px" class="mb-4">
+
+        <div class="page-title filter-title"> @Localizer["Users"] </div>
+
+        <div class="filter-link">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-plus" ClickCallBack='@(() => NavigationManager.NavigateTo("users/create") )'></IconBtn>
+        </div>
+
+    </div>
+    <div class="mt-5 mb-5">
+        <CollapseContainer Id="Filters" Title="Filters">
+            <EditForm Model="UserFilter">
+                <div class="row">
+                    <div class="col-md-6">
+                        <MInputText @bind-Value="UserFilter.UserName" For="@(() => UserFilter.UserName)" Id="UserNameFilter" EntityType="typeof(CustomUser)" PropName="UserName" />
+                    </div>
+                    <div class="col-md-6">
+                        <MInputText @bind-Value="UserFilter.Email" For="@(() => UserFilter.UserName)" Id="EmailFilter" EntityType="typeof(CustomUser)" PropName="Email" />
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <Btn type="button" ClassList="btn-sm" Text="Search" ClickCallBack="FilterUsers" />
+                    </div>
+                </div>
+            </EditForm>
+        </CollapseContainer>
+    </div>
+
+    <Grid Items="Users">
+        <GridHeader>
+            <th> @Localizer["User Name"] </th>
+            <th> @Localizer["Email"] </th>
+            <th> @Localizer["Options"] </th>
+        </GridHeader>
+        <GridRow>
+            <td> <span> @Localizer["Name"] </span>  @context.UserName </td>
+            <td> <span> @Localizer["Email"] </span>  @context.Email </td>
+            <td>
+                <GridRowOptions EditEvent="@(() => NavigationManager.NavigateTo("/users/edit/" + context.Id ) )"
+                                DeleteEvent="@(() => DeleteUser(context.Id) )"
+                                ></GridRowOptions>
+            </td>
+        </GridRow>
+    </Grid>
+
+    <Pagination PagingData="PagingMetaData" SelectedPage="SelectedPageEvent" Spread="2"></Pagination>
+
+}
+
+
+<Confirm ConfirmationChanged="ConfirmationEvent" @ref="Confirmation" ConfirmTxt="Confirm" Title="Confirm Delete"> </Confirm>
+
+

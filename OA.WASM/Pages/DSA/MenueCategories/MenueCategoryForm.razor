@@ -1,0 +1,12 @@
+﻿@using OA.Domin.DSA
+
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="MenueCategory.Name" For="@(() => MenueCategory.Name)" Id="Name" EntityType="typeof(MenueCategory)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-2 offset-2 select-col">
+        <CheckBoxBtn Checked="MenueCategory.IsActive" Text="Active" OnChange="@((bool value) => MenueCategory.IsActive = value)" />
+    </div>
+</div>
+

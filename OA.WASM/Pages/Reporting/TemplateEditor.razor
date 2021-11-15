@@ -1,0 +1,87 @@
+﻿
+
+<div class="tamplate-editor-con">
+
+    <div class="report-options-con">
+        <button class="btn btn-outline btn-rounded btn-sm comp-icon-btn px-2" data-toggle="modal" data-target="#EditTemplateName">
+            <i class="fas fa-pen"> </i>
+        </button>
+        <button class="btn btn-outline btn-rounded btn-sm comp-icon-btn px-2" @onclick="DeleteTemplate">
+            <i class="fas fa-trash"> </i>
+        </button>
+        <button class="btn btn-outline btn-rounded btn-sm comp-icon-btn px-2" @onclick="ChangeTemplateState">
+            @if (ReportTemplate.Status) 
+            { 
+                <i> @Localizer["Active"] </i> 
+            } else { 
+                <i> @Localizer["Passive"] </i> 
+            } 
+        </button>
+    </div>
+
+    <div class="report-headers-con">
+        <button class="btn btn-outline btn-rounded btn-sm comp-icon-btn px-2" data-toggle="modal" data-target="#AddHeaderModal">
+            <i class="fas fa-plus"> </i>
+        </button>
+        <span class="section-title"> @Localizer["Report Headers"] </span>
+
+        @foreach (var item in ReportTemplate.ReportHeaders)
+        {
+            <div class="row report-header">
+                <div class="col-md-10 report-header-text">
+                    @item.Header
+                </div>
+                <div class="col-md-2">
+                    <button class="close header-edit-icon" data-toggle="modal" data-target="#EditHeaderModal"> <i class="fas fa-pen"> </i> </button>
+                    <button class="close" @onclick="@(() => DeleteHeaedr(item.Id) )"> &times; </button>
+                </div>
+                
+            </div>
+        }
+
+    </div>
+
+    
+    <div class="report-fields-con">
+        <span class="section-title"> @Localizer["Report Fields"] </span>
+
+        <OrdarableList @ref="FieldsOrderList" Items="OrderedFields" KeyName="Key">
+            <ItemTemplate>
+                <div class="report-field row">
+                    <div class="col-md-10">
+                        @Localizer[context.Value]
+                    </div>
+                    <div class="col-md-2">
+                        <button class="close" @onclick="@(()=> RemoveFiled(context.Key))"> &times; </button>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </OrdarableList>
+
+        <button class="btn btn-sm btn-comp" @onclick="SaveFields"> @Localizer["Save"] </button>
+        <button class="btn btn-sm btn-comp-s" @onclick="ResetFields"> @Localizer["Reset"] </button>
+    </div>
+
+</div>
+
+<Confirm @ref="DeleteHeaderConfirm" ConfirmationChanged="DeleteHeaderConfirmEvent" ></Confirm>
+<Confirm @ref="DeleteTemplateConfirm" ConfirmationChanged="DeleteTemplateConfirmEvent"></Confirm>
+
+<ModalContainer Id="AddHeaderModal" Size="lg" Title="Add Report Header">
+    <EditForm Model="ReportHeader" OnValidSubmit="SaveReportHeader">
+        <DataAnnotationsValidator />
+        <div class="row">
+            <div class="col-md-10">
+                <MInputText @bind-Value="ReportHeader.Header" For="@(() => ReportHeader.Header)" Id="ReportHeader" Label="Report Header" />
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-block btn-sm btn-comp"> @Localizer["Save"] </button>
+            </div>
+        </div>
+    </EditForm>
+</ModalContainer>
+
+
+

@@ -1,0 +1,35 @@
+﻿
+
+@if (Show)
+{
+    <div class="modal fade d-block show" id="ValidationModal" tabindex="-1" role="dialog" aria-labelledby="ValidationModalLbl" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ValidationModalLbl"> @Localizer[Title] </h5>
+                </div>
+                <div class="modal-body pl-5 pr-5">
+                    <ul>
+                        @foreach (var error in Errors)
+                        {
+                            <li> 
+                                @Localizer[error.Field] : 
+                                <ul>
+                                    @foreach(var fieldError in error.Errors)
+                                    {
+                                        <li>
+                                            @Localizer[fieldError]
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-sm" @onclick="() => CloseValidation()" > Ok </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

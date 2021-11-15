@@ -1,0 +1,120 @@
+﻿@using OA.Domin.Administration 
+@page "/users/edit/{id}"
+@inherits UserEditBase
+@attribute [Authorize(Policy = "administration-users")]
+
+@if (!ProfileUse)
+{
+    @attribute [Authorize(Roles = "Admin")]
+}
+
+<div class="page-title">
+    @Localizer["Edit"]
+    @if (ProfileUse)
+        {<span> @Localizer["Profile"] </span> }
+    else
+        { <span> @Localizer["User"] </span>}
+</div>
+
+<EditForm Model="User" OnValidSubmit="HandleSubmit">
+    
+    <FluentValidationValidator />
+
+    <input type="hidden" @bind-value="User.Id" />
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <MInputText @bind-Value="User.UserName" For="@(() => User.UserName)" Label="User Name" Id="UserName" Active="active" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <MInputText @bind-Value="User.Phone" For="@(() => User.Phone)" Label="Phone" Id="Phone" Active="active" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <MInputText @bind-Value="User.Email" For="@(() => User.Email)" Label="Email" Id="Email" Active="active" />
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <InputText type="hidden" @bind-Value="User.Password"></InputText>
+            <InputText type="hidden" @bind-Value="User.ConfirmPassword"></InputText>
+
+            <button type="button" class="btn btn-sm btn-danger" data-target="#ResetPasswordModal" data-toggle="modal"> @Localizer["Reset Password"] </button>
+        </div>
+    </div>
+
+    @if (!ProfileUse)
+    {
+        <div class="m-3"> @Localizer["Select"] @Localizer["Roles"] </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <CheckBoxList @ref="RolesChecks" Selected="SelectedRoles"></CheckBoxList>
+            </div>
+        </div>
+    }
+
+
+    <div class="form-group row mt-5">
+        <div class="col-sm-5">
+            <button type="submit" class="btn btn-block btn-sm btn-comp"> @Localizer["Save"] </button>
+        </div>
+        <div class="col-sm-1 pt-1 text-center">
+            @if (EditBusy)
+            {<MiniLoading size="25px" />}
+        </div>
+    </div>
+
+</EditForm>
+
+
+@if (!ProfileUse)
+{
+    <button class="btn btn-comp-s btn-sm" @onclick="DeleteItem"> @Localizer["Delete"] </button>
+
+    <a class="btn btn-comp-s btn-sm" href="/users"> @Localizer["Back to list"] </a>
+
+    <Confirm @ref="Confirm" ConfirmationChanged="DeleteConfirm"></Confirm>
+}
+
+<ServerValidation @ref="Validation" />
+
+<ModalContainer Id="ResetPasswordModal" Size="lg" Title="Reset Password">
+
+    <EditForm Model="ResetPassword" OnValidSubmit="HandleResetPassword">
+        <DataAnnotationsValidator />
+
+        <InputText type="hidden" @bind-Value="ResetPassword.Id" />
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <MInputText @bind-Value="ResetPassword.Password" For="@(() => ResetPassword.Password)" Label="Password" Id="Password" Type="password"></MInputText>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <MInputText @bind-Value="ResetPassword.PasswordConfirm" For="@(() => ResetPassword.PasswordConfirm)" Label="Password Confirm" Id="ConfirmPassword" Type="password"></MInputText>
+            </div>
+        </div>
+
+        <div class="form-group row mt-5">
+            <div class="col-sm-5">
+                <button type="submit" class="btn btn-block btn-sm btn-comp"> @Localizer["Rest"] </button>
+            </div>
+            <div class="col-sm-1 pt-1 text-center">
+                @if (ResetBusy)
+                {<MiniLoading size="25px" />}
+            </div>
+        </div>
+    </EditForm>
+
+</ModalContainer>
+
+

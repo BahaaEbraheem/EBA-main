@@ -1,0 +1,17 @@
+﻿@inherits ArticleTranslationEditBase
+@page "/ArticleTranslation/Edit/{id}"
+@attribute [Authorize(Policy = "articles-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Edit"] @Localizer["Article Translation"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <ArticleTranslationForm ArticleTranslation="EntityItem" ArticleItems="ArticleItems" IsEdit="true" />
+
+    <SubmitBtn Text="Save" Busy="EditBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/ArticleTranslations/List"))" />

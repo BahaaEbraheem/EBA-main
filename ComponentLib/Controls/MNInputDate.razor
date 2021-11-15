@@ -1,0 +1,11 @@
+﻿@inherits MNInputDateBase
+
+
+<div class="md-form">
+
+    <input type="@Type" id="@Id" class="form-control @CssClass" @bind="@CurrentValue" @bind:format="@Format" />
+    <label for="@Id" class="active"> @Localizer[Label] </label>
+
+    <CustomValidationMessage For="For" />
+
+</div>

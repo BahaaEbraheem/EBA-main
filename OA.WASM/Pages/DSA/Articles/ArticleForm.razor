@@ -1,0 +1,81 @@
+﻿@using OA.Domin.DSA
+@using OA.Domin.Settings
+
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="Article.Name" For="@(() => Article.Name)" Id="Name" EntityType="typeof(Article)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="Article.ArticleCategoryId" For="@(() => Article.ArticleCategoryId)" Items="ArticleCatigoryItems" Id="ArticleCategoryId" EntityType="typeof(Article)" PropName="ArticleCategoryId" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-4">
+        <MInputDate Type="date" @bind-Value="Article.Date" For="@(() => Article.Date)" Id="Date" EntityType="typeof(Article)" PropName="Date" />
+    </div>
+    <div class="col-sm-4">
+        <MInputNumber @bind-Value="Article.Order" For="@(() => Article.Order)" Id="Order" EntityType="typeof(Article)" PropName="Order" />
+    </div>
+    <div class="col-sm-4 select-col">
+        <CheckBoxBtn Checked="Article.IsActive" Text="Active" OnChange="@((bool value) => Article.IsActive = value)" />
+    </div>
+</div>
+
+<div class="form-group row mb-5">
+    <div class="col-sm-12">
+        <CollapseContainer Title="Page Content">
+            <RishTextEditor @bind-Value="Article.Content" />
+        </CollapseContainer>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <UploadFile @ref="FileUploadControl"
+                    Label="File"
+                    Types='FileSettings.MimeTypes["HTML"]'
+                    ImagePreview="false"
+                    ShowUploaded="true"
+                    MaxSize="1024 * 1024 * 1"
+                    OnValidUpload="@(() => Article.File = FileUploadControl.Files[0] )"
+                    OnStartPreUpload="@(() => UploadBusy = true)"
+                    OnEndPreUpload="@(() => UploadBusy = false)" />
+        @if (IsEdit)
+        {
+            <div>
+                @Article.FilePath
+            </div>
+        }
+    </div>
+    <div class="col-sm-6">
+        <UploadFile @ref="ImageUploadControl"
+                    Label="Image"
+                    Types='FileSettings.MimeTypes["Image"]'
+                    ImagePreview="true"
+                    ShowUploaded="false"
+                    MaxSize="1024 * 1024 * 1"
+                    OnValidUpload="@(() => Article.Image = ImageUploadControl.Files[0] )"
+                    OnStartPreUpload="@(() => UploadBusy = true)"
+                    OnEndPreUpload="@(() => UploadBusy = false)" />
+        @if (IsEdit)
+        {
+            <div>
+                @Article.ImagePath
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="M-center">
+            @if (UploadBusy)
+            {
+                <MiniLoading />
+            }
+        </div>
+    </div>
+</div>
+

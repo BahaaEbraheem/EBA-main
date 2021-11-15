@@ -1,0 +1,21 @@
+﻿@using OA.Domin.DSA
+
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="BlockCategory.Name" For="@(() => BlockCategory.Name)" Id="Name" EntityType="typeof(BlockCategory)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="BlockCategory.Type" For="@(() => BlockCategory.Type)" Items="BlockCategoryTypeItems" Id="Type" EntityType="typeof(BlockCategory)" PropName="Type" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-10">
+        <MInputText @bind-Value="BlockCategory.Description" For="@(() => BlockCategory.Description)" Id="Description" EntityType="typeof(BlockCategory)" PropName="Description" Active="@Active" />
+    </div>
+    <div class="col-sm-2 select-col">
+        <CheckBoxBtn Checked="BlockCategory.IsActive" Text="Active" OnChange="@((bool value) => BlockCategory.IsActive = value)" />
+    </div>
+</div>
+

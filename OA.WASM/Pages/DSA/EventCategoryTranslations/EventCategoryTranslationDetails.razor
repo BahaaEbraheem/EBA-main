@@ -1,0 +1,26 @@
+﻿@using OA.Domin.DSA
+@inherits EventCategoryTranslationDetailsBase
+@page "/EventCategoryTranslation/Details/{id}"
+@attribute [Authorize("events-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Event Category Translation"] @Localizer["Details"]
+</div>
+
+<DetailItem EntityType="typeof(EventCategoryTranslation)" PropName="EventCategoryId" Value="@EntityItem.EventCategory?.Name" />
+
+<DetailItem EntityType="typeof(EventCategoryTranslation)" PropName="Name" Value="@EntityItem.Name" />
+
+@*<DetailItem EntityType="typeof(EventCategoryTranslation)" PropName="Language" Value="@EntityItem.LanguageId" />*@
+
+@*<DetailItem EntityType="typeof(EventCategoryTranslation)" PropName="Slug" Value="@EntityItem.Slug" />*@
+
+<DetailItem EntityType="typeof(EventCategoryTranslation)" PropName="Description" Value="@EntityItem.Description" />
+
+<DetailItem EntityType="typeof(EventCategoryTranslation)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
+
+
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/EventCategoryTranslations/List"))" />
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/EventCategoryTranslation/Edit/{EntityItem.Id}"))" />

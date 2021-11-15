@@ -1,0 +1,45 @@
+﻿@using OA.WASM.Pages.Administration.Users
+@using OA.Domin.Settings
+@page "/profile"
+@attribute [Authorize]
+
+<div class="profile-container">
+
+    <div class="profile-img-name">
+        <div class="profile-img">
+            <img src="@ImgData" />
+
+            <UploadFile @ref="UploadedPic" Types='FileSettings.MimeTypes["Image"]'
+                        ImagePreview="false" ShowUploaded="false"
+                        MaxSize="1024 * 1024 * 1"
+                        OnValidUpload="OnValidUpload"
+                        OnStartPreUpload="StartPreUpload"
+                        OnEndPreUpload="EndPreUpload"
+                        CssClass="profile-img-btn" />
+        </div>
+        <div class="profile-name">
+            @UserName
+        </div>
+    </div>
+    <div class="profie-form">
+        @if (!string.IsNullOrEmpty(UserId))
+        {
+            <UserEdit Id="@UserId" ProfileUse="true" />
+        }
+        else
+        {
+            <div class="M-center">
+                <MiniLoading size="70px" />
+            </div>
+        }
+
+
+        <Confirm @ref="Confirmation" Title="@Localizer["Confirm Set Profile Pic"]" ConfirmationChanged="SubmitProfilePic" />
+        @if(UploadBusy)
+        {
+            <MiniLoading size="35px" />
+        }
+    </div>
+
+</div>
+

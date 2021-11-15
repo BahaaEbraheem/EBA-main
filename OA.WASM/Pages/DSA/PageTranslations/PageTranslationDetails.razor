@@ -1,0 +1,31 @@
+﻿@using OA.Domin.DSA
+@inherits PageTranslationDetailsBase
+@page "/PageTranslation/Details/{id}"
+@attribute [Authorize("events-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Page Translation"] @Localizer["Details"]
+</div>
+
+<DetailItem EntityType="typeof(PageTranslation)" PropName="Page" Value="@EntityItem.Page?.Name" />
+
+<DetailItem EntityType="typeof(PageTranslation)" PropName="Name" Value="@EntityItem.Name" />
+
+@*<DetailItem EntityType="typeof(PageTranslation)" PropName="Language" Value="@EntityItem.Language" />
+
+<DetailItem EntityType="typeof(PageTranslation)" PropName="Slug" Value="@EntityItem.Slug" />*@
+
+<DetailItem EntityType="typeof(PageTranslation)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
+
+<DetailItem EntityType="typeof(PageTranslation)" PropName="Link1" Value="@EntityItem.Link1" />
+
+<DetailItem EntityType="typeof(PageTranslation)" PropName="Link2" Value="@EntityItem.Link2" />
+
+<DetailItem EntityType="typeof(PageTranslation)" PropName="FilePath" Value="@EntityItem.FilePath" />
+
+<DetailItem EntityType="typeof(PageTranslation)" PropName="HTMLContent" Value="@EntityItem.HTMLContent" />
+
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/PageTranslations/List"))" />
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/PageTranslation/Edit/{EntityItem.Id}"))" />

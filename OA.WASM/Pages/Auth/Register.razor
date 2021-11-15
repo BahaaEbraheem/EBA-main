@@ -1,0 +1,46 @@
+﻿@page "/auth/register"
+@layout AuthLayout
+
+<section class="middle-box">
+    <div class="box">
+        <div class="form">
+            <h2> @Localizer["Register"] . </h2>
+            <div class="form">
+                <EditForm Model="RegisterRequest" OnValidSubmit="HandleSubmit">
+                    <DataAnnotationsValidator />
+                    <ServerValidation @ref="ServerValidationRef"></ServerValidation>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10 auth-input">
+                            <MInputText @bind-Value="RegisterRequest.UserName" For="@(() => RegisterRequest.UserName)" Label="UserName" Id="UserName" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10 auth-input">
+                            <MInputText Type="password" @bind-Value="RegisterRequest.Password" For="@(() => RegisterRequest.Password)" Label="Password" Id="Password" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10 auth-input">
+                            <MInputText Type="password" @bind-Value="RegisterRequest.ConfirmPassword" For="@(() => RegisterRequest.ConfirmPassword)" Label="Password Confirm" Id="ConfirmPassword" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-5">
+                        <div class="col-sm-5">
+                            <button type="submit" class="btn btn-block btn-sm btn-comp"> @Localizer["Register"] </button>
+                        </div>
+                        <div class="col-sm-1 pt-1 text-center">
+                            @if (RegisterBusy)
+                            {<MiniLoading size="25px" />}
+                        </div>
+                    </div>
+
+                </EditForm>
+            </div>
+            <div> @Localizer["Already a Member"] ? <a href="auth/login">@Localizer["Login"]</a></div>
+        </div>
+    </div>
+</section>
+
+

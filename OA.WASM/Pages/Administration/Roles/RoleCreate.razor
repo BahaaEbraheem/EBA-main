@@ -1,0 +1,36 @@
+﻿@page "/roles/create"
+@attribute [Authorize(Policy = "administration-roles")]
+
+<div class="page-title"> @Localizer["Add"] @Localizer["Role"] </div>
+
+<EditForm Model="Role" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group row mt-3">
+        <div class="col-md-10">
+            <MInputText @bind-Value="Role.Name" For="@(() => Role.Name)" Label="Name" Id="Role" Active="active" />
+        </div>
+    </div>
+
+    <div class="m-3"> @Localizer["Select"] @Localizer["Permissions"] </div>
+    <div class="form-group row mt-3">
+        <div class="col-md-10">
+            <CheckBoxList @ref="PermissionsChecks" Selected="SelectedPermissions" NameField="Name" ValueField="Value" />
+        </div>
+    </div>
+
+    <div class="form-group row mt-5">
+        <div class="col-sm-5">
+            <button type="submit" class="btn btn-block btn-sm btn-comp"> @Localizer["Create"] </button>
+        </div>
+        <div class="col-sm-1 pt-1 text-center">
+            @if (CreateBusy)
+            {<MiniLoading size="25px" />}
+        </div>
+    </div>
+
+</EditForm>
+
+<a class="btn btn-comp-s btn-sm" href="/roles"> @Localizer["Back to list"] </a>
+
+<ServerValidation @ref="ServerValidation" Title="Validation Errors" />

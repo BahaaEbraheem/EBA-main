@@ -1,0 +1,61 @@
+﻿@page "/signupRequests"
+@inherits SignupRequestsBase
+@attribute [Authorize(Policy = "administration-users")]
+
+@if (Requests == null)
+{
+    <Loading></Loading>
+}
+else
+{
+    <div style="position:relative; height:40px" class="mb-4">
+
+        <div class="page-title filter-title"> @Localizer["Signup Requests"] </div>
+
+    </div>
+
+
+    <Grid Items="Requests">
+        <GridHeader>
+            <th> @Localizer["Email"] </th>
+            <th> @Localizer["Date"] </th>
+            <th>  </th>
+            <th>  </th>
+        </GridHeader>
+        <GridRow>
+            <td> <span> @Localizer["Email"] </span>  @context.Email </td>
+            <td> <span> @Localizer["Date"] </span>  @context.CreatedAt </td>
+            <td>
+                <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fa fa-check" ClickCallBack="@(() => ConfirmRequest(context))">
+                </IconBtn>
+            </td>
+            <td>
+                <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fa fa-times" ClickCallBack="@(() => DeclineRequest(context))" 
+                         data-toggle="modal" data-target="#DeclineRequestModal">
+                </IconBtn>
+            </td>
+        </GridRow>
+    </Grid>
+
+}
+
+<Confirm @ref="Confirmation" ConfirmationChanged="ConfirmationEvent" ></Confirm>
+
+<ModalContainer Id="DeclineRequestModal" Title="Decline Signup Request" Size="lg">
+    <EditForm Model="Request" OnSubmit="DeclineRequestConfirmed">
+        <div class="row">
+            <div class="col-md-12">
+                <MInputText @bind-Value="Request.Reason" For="@(() => Request.Reason)" Label="Reason" Id="Reason" />
+            </div>
+        </div>
+        <div class="form-group row mt-5">
+            <div class="col-sm-5">
+                <button type="submit" class="btn btn-block btn-sm btn-comp"> @Localizer["Save"] </button>
+            </div>
+            <div class="col-sm-1 pt-1 text-center">
+                @if (ChangeBusy)
+                {<MiniLoading size="25px" />}
+            </div>
+        </div>
+    </EditForm>
+</ModalContainer>

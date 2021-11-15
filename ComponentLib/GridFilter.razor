@@ -1,0 +1,156 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@using ComponentLib.Controls
+@typeparam T
+
+    <style>
+    .radio-btn {
+        color: @Theme.MainBackground;
+        border-color: @Theme.MainBackground;
+    }
+
+    .radio-active {
+        background-color: @Theme.MainBackground;
+        color: #FFF;
+    }
+
+    add-filter-form {
+        background-color: #EEE;
+        padding: 10px;
+        border: 1px solid #DDD;
+        border-radius: 5px;
+        color: gray;
+    }
+
+    .added-filter {
+        background-color: #DDD;
+        padding: 15px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-top: 10px;
+    }
+
+    .filter-card-header{
+        padding: 0 !important;
+    }
+    .filter-toggle-btn{
+        text-align: @Theme.Align;
+    }
+
+    </style>
+
+<div class="card">
+    <div class="card-header filter-card-header" id="headingOne">
+        <div class="mb-0">
+            <div class="btn btn-block filter-toggle-btn">
+                <button class="comp-icon-btn btn btn-outline btn-rounded btn-sm px-2" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <i class="fas fa-sliders-h"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+        <div class="card-body">
+            @*Add Filter Form*@
+            <EditForm Model="Filter" OnValidSubmit="AddFilter">
+                <DataAnnotationsValidator></DataAnnotationsValidator>
+
+                <div class="row add-filter-form">
+                    <div class="col-md-3">
+                        <InputSelect ValueExpression="@(()=>Filter.ColumnName)"
+                                     Value="@Filter.ColumnName"
+                                     ValueChanged="@((string value) => SetFilterType(value))" class="form-control">
+                            <option selected value=""> @Localizer["Filter Field"] </option>
+                            @foreach (var prop in PropNames)
+                            {
+                                <option value="@prop.Key"> @Localizer[prop.Value] </option>
+                            }
+                        </InputSelect>
+                    </div>
+                    @if (FilterType != null)
+                    {
+                        <div class="col-md-3">
+                            <InputSelect @bind-Value="Filter.FilterOption" class="form-control">
+                                @foreach (var op in TypeOperator)
+                                    {
+                                    <option value="@op.Key"> @Localizer[op.Value] </option>
+                                    }
+                            </InputSelect>
+                        </div>
+                        <div class="col-md-4">
+                            @switch (FilterType)
+                            {
+                                case "STRING":
+                                    <InputText @bind-Value="Filter.FilterValue" class="form-control" placeholder="@Localizer["Value"]" />
+                                    break;
+                                case "DATETIME":
+                                    <InputText type="date" @bind-Value="Filter.FilterValue" class="form-control" />
+                                    break;
+                                case "INT":
+                                    <InputText type="number" @bind-Value="Filter.FilterValue" class="form-control" />
+                                    break;
+                                case "BOOLEAN":
+                                    <InputSelect @bind-Value="Filter.FilterValue" class="form-control">
+                                        <option selected value=""> @Localizer["Select value"] </option>
+                                        <option value="true"> True </option>
+                                        <option value="false"> False </option>
+                                    </InputSelect>
+                                    break;
+                                default:
+                                    <InputSelect @bind-Value="Filter.FilterValue" class="form-control">
+                                        <option selected value=""> @Localizer["Select value"] </option>
+                                        @foreach (var item in IndexDatas)
+                                        {
+                                            <option value="@item.Id.ToString()"> @item.Name </option>
+                                        }
+                                    </InputSelect>
+                                    break;
+
+                            }
+                        </div>
+                        <div class="col-md-2">
+                            <Btn Text="@Localizer["Add"]" ClassList="btn-sm"></Btn>
+                        </div>                        
+                    }
+                </div>                
+            </EditForm>
+
+            @*List Of Added Filters*@
+            @foreach (var f in Filters)
+                                {
+                <div class="added-filter row">
+                    <div class="col-md-3"> @PropNames[f.ColumnName]  </div>
+                    <div class="col-md-3"> @f.FilterOption  </div>
+                    <div class="col-md-3"> @f.FilterValue </div>
+                    <div class="col-md-3">
+                        <button @onclick="() => RemoveFilter(f)" class="close"> &times; </button>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-4">
+                    @if (Filters.Count > 1)
+                    {
+                        <button @onclick="() => SetGather(0) " class="btn btn-sm radio-btn @((Gather == "AND")? "radio-active" : "")" title="Cross Conditions"> ^ </button>
+                        <button @onclick="() => SetGather(1) " class="btn btn-sm radio-btn @((Gather == "OR")? "radio-active" : "")" title="Union Conditions" > U </button>
+                    }
+                </div>
+                <div class="col-md-4">
+                    <Btn Text="@Localizer["Search"]" ClassList="btn-block btn-sm" ClickCallBack="Search"></Btn>
+                </div>
+                <div class="col-md-4">
+                    @if (Filters.Count > 0)
+                    {
+                        <Btn Text="@Localizer["Clear"]" ClassList="btn-sm" ClickCallBack="ClearFilters"></Btn>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

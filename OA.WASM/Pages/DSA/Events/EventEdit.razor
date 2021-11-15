@@ -1,0 +1,17 @@
+﻿@inherits EventEditBase
+@page "/Event/Edit/{id}"
+@attribute [Authorize(Policy = "events-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Edit"] @Localizer["Event"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <EventForm Event="EntityItem" EventCategoryItems="EventCategoryItems" IsEdit="true" />
+
+    <SubmitBtn Text="Save" Busy="EditBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/Events/List"))" />

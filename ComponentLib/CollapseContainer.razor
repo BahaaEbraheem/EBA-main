@@ -1,0 +1,24 @@
+﻿
+<div class="card mt-3 collapse-comp">
+    <div class="card-header" id="heading_@Id">
+        <div class="mb-0">
+            <div class="">
+                <a class="collapse-title" data-toggle="collapse" data-target="#collapse_@Id" aria-expanded="@Show.ToString()" aria-controls="collapse_@Id">
+                    @Localizer[Title]
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="collapse_@Id" class="collapse @((Show)? "show" : "")" aria-labelledby="heading_@Id">
+        <div class="card-body">
+            @ChildContent
+        </div>
+        @if (HasFooter)
+        {
+            <div class="card-footer">
+                @Footer
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@using OA.Domin.DSA
+@inherits EventTranslationDetailsBase
+@page "/EventTranslation/Details/{id}"
+@attribute [Authorize("events-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Event Translation"] @Localizer["Details"]
+</div>
+
+<DetailItem EntityType="typeof(EventTranslation)" PropName="Event" Value="@EntityItem.Event?.Name" />
+
+<DetailItem EntityType="typeof(EventTranslation)" PropName="Name" Value="@EntityItem.Name" />
+
+@*<DetailItem EntityType="typeof(EventTranslation)" PropName="Language" Value="@EntityItem.Language" />
+
+<DetailItem EntityType="typeof(EventTranslation)" PropName="Slug" Value="@EntityItem.Slug" />*@
+
+<DetailItem EntityType="typeof(EventTranslation)" PropName="Description" Value="@EntityItem.Description" />
+
+<DetailItem EntityType="typeof(EventTranslation)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
+
+
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/EventTranslations/List"))" />
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/EventTranslation/Edit/{EntityItem.Id}"))" />

@@ -1,0 +1,66 @@
+﻿@page "/users/create"
+@inherits UserCreateBase
+@attribute [Authorize(Policy = "administration-users")]
+
+<div class="page-title"> @Localizer["Create"] @Localizer["User"]  </div>
+
+<EditForm Model="User" OnValidSubmit="HandleSubmit">
+
+    <FluentValidationValidator />
+
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <MInputText @bind-Value="User.UserName" For="@(() => User.UserName)" Label="User Name" Id="UserName" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <MInputText @bind-Value="User.Phone" For="@(() => User.Phone)" Label="Phone" Id="Phone" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <MInputText @bind-Value="User.Email" For="@(() => User.Email)" Label="Email" Id="Email" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <MInputText @bind-Value="User.Password" For="@(() => User.Password)" Label="Password" Id="Password" Type="password" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <MInputText @bind-Value="User.ConfirmPassword" For="@(() => User.ConfirmPassword)" Label="Password Confirm" Id="ConfirmPassword" Type="password" />
+        </div>
+    </div>
+
+    <div class="m-3"> @Localizer["Select"] @Localizer["Roles"] </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <CheckBoxList @ref="RolesChecks" Selected="SelectedRoles"></CheckBoxList>
+        </div>
+    </div>
+
+
+    <div class="form-group row mt-5">
+        <div class="col-sm-5">
+            <button type="submit" class="btn btn-block btn-sm btn-comp"> @Localizer["Create"] </button>
+        </div>
+        <div class="col-sm-1 pt-1 text-center">
+            @if (CreateBusy)
+            {<MiniLoading size="25px" />}
+        </div>
+    </div>
+
+</EditForm>
+
+<a class="btn btn-comp-s btn-sm" href="/users"> @Localizer["Back to list"] </a>
+
+<ServerValidation @ref="Validation" />
+
+
