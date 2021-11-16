@@ -38,16 +38,16 @@ else
             <GridHeader>
                 <th> @Localizer["Event"] </th>
                 <th> @Localizer["Name"] </th>
-                <th> @Localizer["Language"]</th>
-                <th> @Localizer["Slug"]</th>
+                <th> @Localizer["Languages"]</th>
+                @*<th> @Localizer["Slug"]</th>*@
                 <th> @Localizer["Is Active"]</th>
                 <th> @Localizer["Options"] </th>
             </GridHeader>
             <GridRow>
                 <td> <span> @Localizer["Event"] </span> @context.Event?.Name</td>
                 <td> <span> @Localizer["Name"] </span> @context.Name</td>
-                @*<td> <span> @Localizer["Language"] </span> @context.Language</td>
-                <td> <span> @Localizer["Slug"] </span> @context.Slug</td>*@
+                <td> <span> @Localizer["Languages"] </span> @context.Language?.Name</td>
+                @*<td> <span> @Localizer["Slug"] </span> @context.Slug</td>*@
                 <td> <span> @Localizer["Is Active"] </span> <CheckMark Checked="context.IsActive" /> </td>
                 <td>
                     <GridRowOptions EditEvent="@(() => NavigationManager.NavigateTo($"/EventTranslation/Edit/{context.Id}"))"

@@ -4,14 +4,12 @@
     <div class="col-sm-6">
         <MInputText @bind-Value="EventTranslation.Name" For="@(() => EventTranslation.Name)" Id="Name" EntityType="typeof(EventTranslation)" PropName="Name" Active="@Active" />
     </div>
-    @*<div class="col-sm-6 select-col">
-        <MInputSelect @bind-Value="EventTranslation.Language" For="@(() => EventTranslation.Language)" Items="OA.Domin.StaticIndexes.Language" Id="Language" EntityType="typeof(EventTranslation)" PropName="Language" />
-    </div>*@
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="EventTranslation.LanguageId" For="@(() => EventTranslation.LanguageId)" Items="LanguageItems" Id="LanguageId" EntityType="typeof(EventTranslation)" PropName="LanguageId" />
+    </div>
 </div>
 <div class="form-group row">
-    @*<div class="col-sm-6">
-        <MInputText @bind-Value="EventTranslation.Slug" For="@(() => EventTranslation.Slug)" Id="Slug" EntityType="typeof(EventTranslation)" PropName="Slug" Active="@Active" />
-    </div>*@
+  ID
     <div class="col-sm-6 select-col">
         <MInputSelect @bind-Value="EventTranslation.EventId" For="@(() => EventTranslation.EventId)" Items="EventItems" Id="EventId" EntityType="typeof(EventTranslation)" PropName="EventId" />
     </div>

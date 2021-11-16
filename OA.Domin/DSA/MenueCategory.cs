@@ -1,4 +1,5 @@
-﻿using OA.Domin.Attributes;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+using OA.Domin.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,17 @@ namespace OA.Domin.DSA
 {
     public class MenueCategory : BaseEntity
     {
-        [DisplayName("Category")]
+        private readonly ILazyLoader Loader;
+        public MenueCategory(ILazyLoader loader)
+        {
+            Loader = loader;
+        }
+
+        public MenueCategory()
+        {
+
+        }
+      
         public string Name { get; set; }
 
         [DisplayName("Is Active")]

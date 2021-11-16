@@ -56,6 +56,7 @@ namespace OA.WASM.Pages.DSA.Attachments
                 data = reference switch
                 {
                     nameof(Page) => await GetIndexData<Page>(),
+                    nameof(New) => await GetIndexData<New>(),
                     nameof(Block) => await GetIndexData<Block>(),
                     nameof(Menue) => await GetIndexData<Menue>(),
                     nameof(Event) => await GetIndexData<Event>(),

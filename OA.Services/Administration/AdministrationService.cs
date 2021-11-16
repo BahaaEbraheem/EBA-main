@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Query.Internal;
 using OA.DataAccess;
 using OA.Domain.Requests;
 using OA.Domin.Administration;
-//using OA.Domin.AutoMapper;
+using OA.Domin.AutoMapper;
 using OA.Domin.Logging;
 using OA.Domin.Requests;
 using OA.Domin.Responces;

@@ -1,6 +1,6 @@
 ﻿@inherits EventTranslationEditBase
 @page "/EventTranslation/Edit/{id}"
-@attribute [Authorize(Policy = "blocks-control")]
+@attribute [Authorize(Policy = "events-control")]
 
 <div class="page-title mt-3 mb-4"> @Localizer["Edit"] @Localizer["Event Translation"] </div>
 
@@ -8,7 +8,7 @@
 
     <FluentValidationValidator />
 
-    <EventTranslationForm EventTranslation="EntityItem" EventItems="EventItems" IsEdit="true" />
+    <EventTranslationForm EventTranslation="EntityItem" EventItems="EventItems"  LanguageItems="LanguageItems" IsEdit="true" />
 
     <SubmitBtn Text="Save" Busy="EditBusy" />
 

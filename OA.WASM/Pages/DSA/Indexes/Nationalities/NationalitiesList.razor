@@ -1,0 +1,57 @@
+﻿@*@using OA.Domin.DSA.Indexes
+@page "/Nationalities/List"
+@inherits NationalitiesListBase
+@attribute [Authorize(Policy = "indexes-control")]
+
+@if (ListData == null)
+{
+    <Loading></Loading>
+}
+else
+{
+    <div style="position:relative" class="mb-4">
+
+        <div class="page-title filter-title"> @Localizer["Nationalities"] </div>
+
+        <GridFilter T="Nationality" SearchSubmit="SearchEvent" @ref="GridFilterRef"></GridFilter>
+
+        <div class="filter-link">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-plus" ClickCallBack='@(() => NavigationManager.NavigateTo("/Nationality/Create") )'></IconBtn>
+        </div>
+
+        <div class="export-links">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="far fa-file-excel i-lg" ClickCallBack="@(() => Export("Exel", nameof(Nationality)))"></IconBtn>
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="far fa-file-pdf i-lg" ClickCallBack="@(() => Export("Pdf", nameof(Nationality)))"></IconBtn>
+            @if (ExportBusy)
+            {<MiniLoading size="25px"></MiniLoading>}
+        </div>
+
+    </div>
+
+    if (GetBusy)
+    {
+        <Loading></Loading>
+    }
+    else
+    {
+        <Grid Items="ListData">
+            <GridHeader>
+                <th> @Localizer["Name"] </th>
+                <th> @Localizer["Options"] </th>
+            </GridHeader>
+            <GridRow>
+                <td> <span> @Localizer["Name"] </span> @context.Name</td>
+                <td>
+                    <GridRowOptions EditEvent="@(() => NavigationManager.NavigateTo($"/Nationality/Edit/{context.Id}"))"
+                                    DeleteEvent="@(() => DeleteItem(context.Id) )">
+                    </GridRowOptions>
+                </td>
+            </GridRow>
+        </Grid>
+
+        <Pagination PagingData="PagingMetaData" SelectedPage="SelectedPageEvent" Spread="2"></Pagination>
+    }
+}
+
+<Confirm ConfirmationChanged="ConfirmationEvent" @ref="Confirmation" ConfirmTxt="Confirm" Title="Confirm Delete"> </Confirm>*@
+

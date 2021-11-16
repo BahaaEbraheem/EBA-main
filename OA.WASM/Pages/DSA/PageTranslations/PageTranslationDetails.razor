@@ -11,9 +11,9 @@
 
 <DetailItem EntityType="typeof(PageTranslation)" PropName="Name" Value="@EntityItem.Name" />
 
-@*<DetailItem EntityType="typeof(PageTranslation)" PropName="Language" Value="@EntityItem.Language" />
+<DetailItem EntityType="typeof(PageTranslation)" PropName="LanguageId" Value="@EntityItem.Language?.Name" />
 
-<DetailItem EntityType="typeof(PageTranslation)" PropName="Slug" Value="@EntityItem.Slug" />*@
+@*<DetailItem EntityType="typeof(PageTranslation)" PropName="Slug" Value="@EntityItem.Slug" />*@
 
 <DetailItem EntityType="typeof(PageTranslation)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
 

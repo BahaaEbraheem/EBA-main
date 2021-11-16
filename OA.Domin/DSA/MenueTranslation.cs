@@ -1,4 +1,5 @@
-﻿using OA.Domin.Attributes;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+using OA.Domin.Attributes;
 using OA.Domin.DSA.Indexes;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,16 @@ namespace OA.Domin.DSA
 {
     public class MenueTranslation : BaseEntity
     {
+        private readonly ILazyLoader Loader;
+        public MenueTranslation(ILazyLoader loader)
+        {
+            Loader = loader;
+        }
+
+        public MenueTranslation()
+        {
+
+        }
         [DisplayName("Translation")]
         public string Name { get; set; }
 
@@ -16,8 +27,13 @@ namespace OA.Domin.DSA
         [DisplayName("Language")]
         public int? LanguageId { get; set; }
 
+        private Language _Language;
         [PropFlag("FK_REF")]
-        public virtual Language Language { get; set; }
+        public Language Language
+        {
+            get => Loader.Load(this, ref _Language);
+            set => _Language = value;
+        }
 
         [DisplayName("Active")]
         public bool IsActive { get; set; }
@@ -29,8 +45,12 @@ namespace OA.Domin.DSA
         [DisplayName("Menue")]
         public int MenueId { get; set; }
 
+        private Menue _Menue;
         [PropFlag("FK_REF")]
-        public virtual Menue Menue { get; set; }
-
+        public Menue Menue
+        {
+            get => Loader.Load(this, ref _Menue);
+            set => _Menue = value;
+        }
     }
 }

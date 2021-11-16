@@ -1,0 +1,17 @@
+﻿@using OA.Domin.DSA.Indexes
+
+
+<div class="form-group row">
+
+ 
+    <div class="col-sm-4">
+        <MInputText @bind-Value="Language.Name" For="@(() => Language.Name)" Id="Name" EntityType="typeof(Language)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-4">
+        <MInputText @bind-Value="Language.Slug" For="@(() => Language.Slug)" Id="Slug" EntityType="typeof(Language)" PropName="Slug" Active="@Active" />
+    </div>
+    <div class="col-sm-4">
+        <CheckBoxBtn Checked="Language.IsActive" Text="Active" OnChange="@((bool value) => Language.IsActive = value)" />
+    </div>
+</div>
+

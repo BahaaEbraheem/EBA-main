@@ -15,11 +15,8 @@ namespace OA.Domin.DSA.Indexes
         /// <summary>
         ///  اسم اللغة بالعربي
         /// </summary>
-        public string Name_Ar { get; set; }
-        /// <summary>
-        /// اسم اللغة بالأجنبي
-        /// </summary>
-        public string Name_En { get; set; }
+        public string Name { get; set; }
+
         /// <summary>
         /// ترميز اللغة
         /// </summary>
@@ -27,7 +24,7 @@ namespace OA.Domin.DSA.Indexes
 
 
         [DisplayName("Active")]
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
         /// <summary>
         /// وصف 
         /// </summary>

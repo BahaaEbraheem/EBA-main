@@ -1,0 +1,41 @@
+﻿@using OA.Domin.DSA
+@inherits NewDetailsBase
+@page "/New/Details/{id}"
+@attribute [Authorize("news-control")]
+
+<div class="page-title mb-5">
+    @Localizer["New"] @Localizer["Details"]
+</div>
+
+
+<DetailItem EntityType="typeof(New)" PropName="Name" Value="@EntityItem.Name" />
+
+<DetailItem EntityType="typeof(New)" PropName="Order" Value="@EntityItem.Order.ToString()" />
+
+<DetailItem EntityType="typeof(New)" PropName="NewCategoryId" Value="@EntityItem.NewCategory?.Name" />
+
+<DetailItem EntityType="typeof(New)" PropName="StartDate" Value="@EntityItem.StartDate.ToShortDateString()" />
+
+<DetailItem EntityType="typeof(New)" PropName="EndDate" Value="@EntityItem.EndDate.ToShortDateString()" />
+
+<DetailItem EntityType="typeof(New)" PropName="Year" Value="@EntityItem.Year.ToString()" />
+
+<DetailItem EntityType="typeof(New)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
+
+<DetailItem EntityType="typeof(New)" PropName="FilePath" Value="@EntityItem.FilePath" />
+
+<DetailItem EntityType="typeof(New)" PropName="ImagePath" Value="@EntityItem.ImagePath" />
+
+<div class="row mt-3">
+    <div class="col-md-6">
+        <img src="@($"{PathPrefix}{EntityItem.ImagePath}")" class="doc-preview-image" />
+    </div>
+</div>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/News/List"))" />
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/New/Edit/{EntityItem.Id}"))" />
+
+
+
+

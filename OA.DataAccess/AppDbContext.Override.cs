@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyModel;
 using OA.DataAccess.Auditing;
 using OA.Domin;
-using OA.Domin.DSA;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +9,6 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -256,17 +254,15 @@ namespace OA.DataAccess
                 var method = SetGlobalQueryMethod.MakeGenericMethod(type);
                 method.Invoke(this, new object[] { modelBuilder });
             }
-    
 
             //Set Delete Behavior If Safe Delete not Applyed
             //var relationships = modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys());
             //foreach (var relationship in relationships)            
             //    relationship.DeleteBehavior = DeleteBehavior.Cascade;
-
+            
 
             base.OnModelCreating(modelBuilder);
         }
-
 
     }
 }

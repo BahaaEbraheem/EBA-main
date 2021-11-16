@@ -20,7 +20,7 @@ using OA.Domin.Auditing;
 using OA.Domin.Reporting.TemplateReporting;
 using OA.Domin.DSA;
 using OA.Domin.DSA.Indexes;
-using OA.Domin.DSA.Indexes;
+//using OA.Domin.DSA.Indexes;
 
 namespace OA.DataAccess
 {
@@ -62,16 +62,14 @@ namespace OA.DataAccess
         public DbSet<Block> Blocks { get; set; }
         public DbSet<BlockCategory> BlockCategories { get; set; }
         public DbSet<BlockTranslation> BlockTranslations { get; set; }
-
-        public DbSet<News> News { get; set; }
-        public DbSet<NewsCategory> NewsCategories { get; set; }
-        public DbSet<NewsCategoryTranslation> NewsCategoryTranslations { get; set; }
-        public DbSet<NewsTranslation> NewsTranslations { get; set; }
-
         public DbSet<Event> Events { get; set; }
         public DbSet<EventCategory> EventCategories { get; set; }
         public DbSet<EventCategoryTranslation> EventCategoryTranslations { get; set; }
         public DbSet<EventTranslation> EventTranslations { get; set; }
+        public DbSet<New> News { get; set; }
+        public DbSet<NewCategory> NewCategories { get; set; }
+        public DbSet<NewCategoryTranslation> NewCategoryTranslations { get; set; }
+        public DbSet<NewTranslation> NewTranslations { get; set; }
         public DbSet<MenueCategory> MenuCategories { get; set; }
         public DbSet<Menue> Menues { get; set; }
         public DbSet<MenueTranslation> MenueTranslations { get; set; }
@@ -81,6 +79,7 @@ namespace OA.DataAccess
         public DbSet<ArticleCategory> ArticleCategories { get; set; }
         public DbSet<ArticleTranslation> ArticleTranslations { get; set; }
         public DbSet<Attachment> Attachments { get; set; }
+
 
         public DbSet<AdministrationBoard> AdministrationBoards { get; set; }
         public DbSet<Album> Albums { get; set; }
@@ -95,7 +94,7 @@ namespace OA.DataAccess
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseSubscriberRequest> CourseSubscriberRequests { get; set; }
         public DbSet<Decision> Decisions { get; set; }
-         public DbSet<Fcility> Fcilities { get; set; }
+        public DbSet<Fcility> Fcilities { get; set; }
         public DbSet<GameType> GameTypes { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<ImportantAchievement> ImportantAchievements { get; set; }
@@ -106,7 +105,7 @@ namespace OA.DataAccess
         public DbSet<PersonType> PersonTypes { get; set; }
         public DbSet<AlbumContent> AlbumContent { get; set; }
         public DbSet<Player> Players { get; set; }
-         public DbSet<PType> PTypes { get; set; }
+        public DbSet<PType> PTypes { get; set; }
         public DbSet<RequestState> RequestStates { get; set; }
         public DbSet<Stadium> Stadiums { get; set; }
         //public DbSet<SubsecriberRequest> SubsecriberRequests { get; set; }
@@ -123,8 +122,6 @@ namespace OA.DataAccess
         public DbSet<ChampionshipRanking> ChampionshipRanking { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<TrainingCourseType> TrainingCourseTypes { get; set; }
-
-
 
 
         //Testing functionality

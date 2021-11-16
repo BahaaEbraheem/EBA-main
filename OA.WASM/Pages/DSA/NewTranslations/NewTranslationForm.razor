@@ -1,0 +1,32 @@
+﻿@using OA.Domin.DSA;
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="NewTranslation.Name" For="@(() => NewTranslation.Name)" Id="Name" EntityType="typeof(NewTranslation)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="NewTranslation.LanguageId" For="@(() => NewTranslation.LanguageId)" Items="LanguageItems" Id="LanguageId" EntityType="typeof(NewTranslation)" PropName="LanguageId" />
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="NewTranslation.NewId" For="@(() => NewTranslation.NewId)" Items="NewItems" Id="NewId" EntityType="typeof(NewTranslation)" PropName="NewId" />
+    </div>
+</div>
+@*<div class="form-group row">
+    <div class="col-sm-12">
+        <MInputText @bind-Value="NewTranslation.Description" For="@(() => NewTranslation.Description)" Id="Description" EntityType="typeof(NewTranslation)" PropName="Description" Active="@Active" />
+    </div>
+</div>*@
+<div class="form-group row">
+    <div class="col-sm-12">
+        <CheckBoxBtn Checked="NewTranslation.IsActive" Text="Active" OnChange="@((bool value) => NewTranslation.IsActive = value)" />
+    </div>
+</div>
+<div class="form-group row mb-5">
+    <div class="col-sm-12">
+        <CollapseContainer Title="Page Content">
+            <RishTextEditor @bind-Value="NewTranslation.HTMLContent" />
+        </CollapseContainer>
+    </div>
+</div>

@@ -18,7 +18,8 @@ namespace OA.WASM.Pages.DSA.EventCategoryTranslations
 
         [Parameter]
         public Dictionary<string, string> EventCategoryItems { get; set; } = new Dictionary<string, string>();
-
+        [Parameter]
+        public Dictionary<string, string> LanguageItems { get; set; } = new Dictionary<string, string>();
         public string Active { get; set; } = "";
 
         public bool UploadBusy { get; set; }

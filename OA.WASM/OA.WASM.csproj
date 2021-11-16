@@ -10,13 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\Indexes\**" />
-    <Content Remove="Pages\Indexes\**" />
-    <EmbeddedResource Remove="Pages\Indexes\**" />
-    <None Remove="Pages\Indexes\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Pages\DSA\Articles\ArticleEditBase.cs~RFd59b79b.TMP" />
   </ItemGroup>
 
@@ -43,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Indexes\" />
     <Folder Include="Pages\Status\" />
   </ItemGroup>
 

@@ -1,0 +1,16 @@
+﻿@*@using OA.Domin.DSA
+@using OA.WASM.Pages.DSA.People
+@inherits BeneficiaryDetailsBase
+@page "/Beneficiary/Details/{id}"
+@attribute [Authorize("donations-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Beneficiary"] @Localizer["Details"]
+</div>
+
+
+<PersonDetails Person="EntityItem.Person" />
+
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/Beneficiaries/List"))" />
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/Beneficiary/Edit/{EntityItem.Id}"))" />*@

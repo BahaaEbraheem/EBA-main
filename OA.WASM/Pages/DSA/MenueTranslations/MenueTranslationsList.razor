@@ -38,14 +38,14 @@ else
             <GridHeader>
                 <th> @Localizer["Page"] </th>
                 <th> @Localizer["Name"] </th>
-                <th> @Localizer["Language"]</th>
+                <th> @Localizer["Languages"]</th>
                 <th> @Localizer["Is Active"]</th>
                 <th> @Localizer["Options"] </th>
             </GridHeader>
             <GridRow>
                 <td> <span> @Localizer["Page"] </span> @context.Menue?.Name</td>
                 <td> <span> @Localizer["Name"] </span> @context.Name</td>
-                <td> <span> @Localizer["Language"] </span> @context.Language</td>
+                <td> <span> @Localizer["Languages"] </span> @context.Language?.Name</td>
                 <td> <span> @Localizer["Is Active"] </span> <CheckMark Checked="context.IsActive" /> </td>
                 <td>
                     <GridRowOptions EditEvent="@(() => NavigationManager.NavigateTo($"/MenueTranslation/Edit/{context.Id}"))"

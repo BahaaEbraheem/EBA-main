@@ -16,20 +16,26 @@ namespace OA.Domin.DSA
 
         }
 
-        private readonly ILazyLoader LazyLoader;
+        private readonly ILazyLoader Loader;
         public ArticleTranslation(ILazyLoader lazyLoader)
         {
-            LazyLoader = lazyLoader;
+            Loader = lazyLoader;
         }
 
         public string Name { get; set; }
+
         [PropFlag("FK")]
         [DisplayName("Language")]
         public int? LanguageId { get; set; }
 
-        [PropFlag("FK_REF")]
-        public virtual Language Language { get; set; }
+        private Language _Language;
 
+        [PropFlag("FK_REF")]
+        public Language Language
+        {
+            get => Loader.Load(this, ref _Language);
+            set => _Language = value;
+        }
         public string Content { get; set; }
 
         public bool IsActive { get; set; }
@@ -43,7 +49,7 @@ namespace OA.Domin.DSA
         [PropFlag("FK_REF")]
         public virtual Article Article
         {
-            get => LazyLoader.Load(this, ref _Article);
+            get => Loader.Load(this, ref _Article);
             set => _Article = value;
         }
 

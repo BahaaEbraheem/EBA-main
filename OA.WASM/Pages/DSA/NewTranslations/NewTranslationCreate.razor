@@ -1,0 +1,18 @@
+﻿
+@inherits NewTranslationCreateBase
+@page "/NewTranslation/Create"
+@attribute [Authorize(Policy = "news-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Create"] @Localizer["New Translation"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <NewTranslationForm NewTranslation="EntityItem" NewItems="NewItems" LanguageItems="LanguageItems" />
+
+    <SubmitBtn Text="Create" Busy="CreateBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/NewTranslations/List"))" />

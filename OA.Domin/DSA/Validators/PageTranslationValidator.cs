@@ -15,7 +15,6 @@ namespace OA.Domin.DSA.Validators
 
             RuleFor(pageTranslation => pageTranslation.LanguageId).NotEmpty().WithMessage(Messages.REQUIRED);
 
-            //RuleFor(pageTranslation => pageTranslation.Slug).NotEmpty().WithMessage(Messages.REQUIRED);
 
             RuleFor(pageTranslation => pageTranslation.HTMLContent).NotEmpty().WithMessage(Messages.REQUIRED);
 

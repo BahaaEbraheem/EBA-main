@@ -100,8 +100,9 @@ namespace OA_API.Controllers
                     new PermissionClaim { Type = "Permission", Name = "Control Reporting", Value = "reporting-control" },
                     new PermissionClaim { Type = "Permission", Name = "Control Indexes", Value = "indexes-control" },
 
+         
                 };
-
+             
                 DbContext.PermissionClaims.AddRange(permissions);
                 DbContext.SaveChanges();
             }

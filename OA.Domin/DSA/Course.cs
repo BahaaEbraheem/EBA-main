@@ -18,7 +18,6 @@ namespace OA.Domin.DSA.Indexes
         {
             Loader = loader;
         }
-
         public Course()
         {
 
@@ -43,11 +42,8 @@ namespace OA.Domin.DSA.Indexes
         /// </summary>
         [PropFlag("FK")]
         [DisplayName("Staff")]
-
         public int? StaffId { get; set; }
-
         private Staff _Staff;
-
         [PropFlag("FK_REF")]
         public Staff Staff
         {

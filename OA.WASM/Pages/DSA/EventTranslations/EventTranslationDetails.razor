@@ -11,9 +11,9 @@
 
 <DetailItem EntityType="typeof(EventTranslation)" PropName="Name" Value="@EntityItem.Name" />
 
-@*<DetailItem EntityType="typeof(EventTranslation)" PropName="Language" Value="@EntityItem.Language" />
+<DetailItem EntityType="typeof(EventTranslation)" PropName="LanguageId" Value="@EntityItem.Language?.Name" />
 
-<DetailItem EntityType="typeof(EventTranslation)" PropName="Slug" Value="@EntityItem.Slug" />*@
+@*<DetailItem EntityType="typeof(EventTranslation)" PropName="Slug" Value="@EntityItem.Slug" />*@
 
 <DetailItem EntityType="typeof(EventTranslation)" PropName="Description" Value="@EntityItem.Description" />
 

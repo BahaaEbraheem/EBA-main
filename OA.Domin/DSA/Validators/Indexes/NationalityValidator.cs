@@ -12,9 +12,7 @@ namespace OA.Domin.DSA.Validators.Indexes
 
         public NationalityValidator()
         {
-            RuleFor(nat => nat.Code).NotEmpty().WithMessage(Messages.REQUIRED);
             RuleFor(nat => nat.Title_Ar).NotEmpty().WithMessage(Messages.REQUIRED);
-           
         }
 
     }

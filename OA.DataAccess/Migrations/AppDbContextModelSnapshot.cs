@@ -2081,7 +2081,7 @@ namespace OA.DataAccess.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("IsActive")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
@@ -2094,10 +2094,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name_En")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Slug")
@@ -2684,7 +2681,7 @@ namespace OA.DataAccess.Migrations
                     b.Property<int?>("MenuCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MenueId")
+                    b.Property<int?>("MenueCategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -2693,14 +2690,17 @@ namespace OA.DataAccess.Migrations
                     b.Property<string>("PageUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ParentMenueId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MenuCategoryId");
+                    b.HasIndex("MenueCategoryId");
 
-                    b.HasIndex("MenueId");
+                    b.HasIndex("ParentMenueId");
 
                     b.ToTable("Menues");
                 });
@@ -2788,15 +2788,12 @@ namespace OA.DataAccess.Migrations
                     b.ToTable("MenueTranslations");
                 });
 
-            modelBuilder.Entity("OA.Domin.DSA.News", b =>
+            modelBuilder.Entity("OA.Domin.DSA.New", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("AddedDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -2805,7 +2802,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<DateTime?>("EndDate")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FilePath")
@@ -2827,30 +2824,29 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
-                        .IsRequired()
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name_En")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("NewsCategoryId")
+                    b.Property<int?>("NewCategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("Order")
                         .HasColumnType("int");
 
-                    b.Property<string>("Year")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NewsCategoryId");
+                    b.HasIndex("NewCategoryId");
 
                     b.ToTable("News");
                 });
 
-            modelBuilder.Entity("OA.Domin.DSA.NewsCategory", b =>
+            modelBuilder.Entity("OA.Domin.DSA.NewCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2891,10 +2887,10 @@ namespace OA.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("NewsCategories");
+                    b.ToTable("NewCategories");
                 });
 
-            modelBuilder.Entity("OA.Domin.DSA.NewsCategoryTranslation", b =>
+            modelBuilder.Entity("OA.Domin.DSA.NewCategoryTranslation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2930,19 +2926,19 @@ namespace OA.DataAccess.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NewsCategoryId")
+                    b.Property<int>("NewCategoryId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("LanguageId");
 
-                    b.HasIndex("NewsCategoryId");
+                    b.HasIndex("NewCategoryId");
 
-                    b.ToTable("NewsCategoryTranslations");
+                    b.ToTable("NewCategoryTranslations");
                 });
 
-            modelBuilder.Entity("OA.Domin.DSA.NewsTranslation", b =>
+            modelBuilder.Entity("OA.Domin.DSA.NewTranslation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2978,16 +2974,16 @@ namespace OA.DataAccess.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NewsId")
+                    b.Property<int?>("NewId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("LanguageId");
 
-                    b.HasIndex("NewsId");
+                    b.HasIndex("NewId");
 
-                    b.ToTable("NewsTranslations");
+                    b.ToTable("NewTranslations");
                 });
 
             modelBuilder.Entity("OA.Domin.DSA.PType", b =>
@@ -3995,13 +3991,13 @@ namespace OA.DataAccess.Migrations
 
             modelBuilder.Entity("OA.Domin.DSA.Menue", b =>
                 {
-                    b.HasOne("OA.Domin.DSA.MenueCategory", "MenuCategory")
+                    b.HasOne("OA.Domin.DSA.MenueCategory", "MenueCategory")
                         .WithMany("Menues")
-                        .HasForeignKey("MenuCategoryId");
+                        .HasForeignKey("MenueCategoryId");
 
                     b.HasOne("OA.Domin.DSA.Menue", "ParentMenue")
                         .WithMany("Menues")
-                        .HasForeignKey("MenueId");
+                        .HasForeignKey("ParentMenueId");
                 });
 
             modelBuilder.Entity("OA.Domin.DSA.MenueTranslation", b =>
@@ -4017,37 +4013,35 @@ namespace OA.DataAccess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OA.Domin.DSA.News", b =>
+            modelBuilder.Entity("OA.Domin.DSA.New", b =>
                 {
-                    b.HasOne("OA.Domin.DSA.NewsCategory", "NewsCategory")
+                    b.HasOne("OA.Domin.DSA.NewCategory", "NewCategory")
                         .WithMany("News")
-                        .HasForeignKey("NewsCategoryId");
+                        .HasForeignKey("NewCategoryId");
                 });
 
-            modelBuilder.Entity("OA.Domin.DSA.NewsCategoryTranslation", b =>
+            modelBuilder.Entity("OA.Domin.DSA.NewCategoryTranslation", b =>
                 {
                     b.HasOne("OA.Domin.DSA.Indexes.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId");
 
-                    b.HasOne("OA.Domin.DSA.NewsCategory", "NewsCategory")
-                        .WithMany("GetNewCategoryTranslations")
-                        .HasForeignKey("NewsCategoryId")
+                    b.HasOne("OA.Domin.DSA.NewCategory", "NewCategory")
+                        .WithMany("NewCategoryTranslations")
+                        .HasForeignKey("NewCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OA.Domin.DSA.NewsTranslation", b =>
+            modelBuilder.Entity("OA.Domin.DSA.NewTranslation", b =>
                 {
                     b.HasOne("OA.Domin.DSA.Indexes.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId");
 
-                    b.HasOne("OA.Domin.DSA.News", "News")
+                    b.HasOne("OA.Domin.DSA.New", "New")
                         .WithMany("NewTranslations")
-                        .HasForeignKey("NewsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NewId");
                 });
 
             modelBuilder.Entity("OA.Domin.DSA.PageTranslation", b =>

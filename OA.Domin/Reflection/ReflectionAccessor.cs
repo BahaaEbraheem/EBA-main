@@ -1,6 +1,7 @@
 ﻿using OA.Domain;
 using OA.Domin.Attributes;
 using OA.Domin.DSA;
+using OA.Domin.DSA.Indexes;
 //using OA.Domin.DSA.Indexes;
 using OA.Domin.Logging;
 using System;
@@ -23,6 +24,12 @@ namespace OA.Domin.Reflection
                 { nameof(EventCategory), "Event Category" },
                 { nameof(EventCategoryTranslation), "Event Category Translation" },
                 { nameof(EventTranslation), "Event Translation" },
+
+                { nameof(New), "News" },
+                { nameof(NewCategory), "New Category" },
+                { nameof(NewCategoryTranslation), "New Category Translation" },
+                { nameof(NewTranslation), "New Translation" },
+
                 { nameof(Page), "Page" },
                 { nameof(PageTranslation), "Page Translation" },
                 { nameof(Menue), "Menue" },
@@ -33,19 +40,11 @@ namespace OA.Domin.Reflection
                 { nameof(ArticleCategory), "Article Category" },
                 { nameof(Attachment), "Attachment" },
 
-                //{ nameof(Donation), "Donation" },
-                //{ nameof(Person), "Person" },
-                //{ nameof(CorporateDonator), "Corporate Donator" },
-                //{ nameof(PersonDonator), "Person Donator" },
-                //{ nameof(Beneficiary), "Beneficiary" },
-                //{ nameof(CorporateBeneficiary), "Corporate Beneficiary" },
 
-                //{ nameof(Activity), "Activity" },
-                //{ nameof(AcademicQualification), "Academic Qualification" },
-                //{ nameof(JobType), "JobType" },
-                //{ nameof(Governorate), "Governorate" },
-                //{ nameof(City), "City" },
-                //{ nameof(Nationality), "Nationality" },
+                { nameof(Language), "Language" },
+                { nameof(Nationality), "Nationality" },
+
+
             };
 
             //typeof(BaseEntity).GetNestedTypes();
@@ -60,6 +59,12 @@ namespace OA.Domin.Reflection
             { nameof(EventCategory), typeof(EventCategory) },
             { nameof(EventCategoryTranslation), typeof(EventCategoryTranslation) },
             { nameof(EventTranslation), typeof(EventTranslation) },
+
+            { nameof(New), typeof(New) },
+            { nameof(NewCategory), typeof(NewCategory) },
+            { nameof(NewCategoryTranslation), typeof(NewCategoryTranslation) },
+            { nameof(NewTranslation), typeof(NewTranslation) },
+
             { nameof(Page), typeof(Page) },
             { nameof(PageTranslation),typeof(PageTranslation) },
             { nameof(Menue), typeof(Menue) },
@@ -70,20 +75,11 @@ namespace OA.Domin.Reflection
             { nameof(ArticleCategory), typeof(ArticleCategory) },
             { nameof(Attachment), typeof(Attachment) },
 
-            //{ nameof(Donation), typeof(Donation) },
-            //{ nameof(Person), typeof(Person) },
-            //{ nameof(CorporateDonator), typeof(CorporateDonator) },
-            //{ nameof(PersonDonator), typeof(PersonDonator) },
-            //{ nameof(Beneficiary), typeof(Beneficiary) },            
-            //{ nameof(CorporateBeneficiary), typeof(CorporateBeneficiary) },            
 
-            //{ nameof(Activity), typeof(Activity) },
-            //{ nameof(AcademicQualification), typeof(AcademicQualification) },
-            //{ nameof(JobType), typeof(JobType) },
-            //{ nameof(Governorate), typeof(Governorate) },
-            //{ nameof(City), typeof(City) },
-            //{ nameof(Nationality), typeof(Nationality) },
-            //{ nameof(DonationType), typeof(DonationType) },
+
+            { nameof(Language), typeof(Language) },
+            { nameof(Nationality), typeof(Nationality) },
+   
 
             { nameof(ExceptionLog), typeof(ExceptionLog)}
         };

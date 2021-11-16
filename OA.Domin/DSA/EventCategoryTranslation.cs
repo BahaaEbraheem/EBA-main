@@ -37,12 +37,17 @@ namespace OA.Domin.DSA
             get => Loader.Load(this, ref _EventCategory);
             set => _EventCategory = value;
         }
+
         [PropFlag("FK")]
         [DisplayName("Language")]
         public int? LanguageId { get; set; }
-
+        private Language _Language;
         [PropFlag("FK_REF")]
-        public virtual Language Language { get; set; }
+        public Language Language
+        {
+            get => Loader.Load(this, ref _Language);
+            set => _Language = value;
+        }
 
         [DisplayName("Active")]
         public bool IsActive { get; set; }

@@ -34,6 +34,8 @@ using OA.WASM.Services.Auditing;
 using OA.WASM.Services.Auth.Extention;
 using OA.Domin.DSA;
 using OA.WASM.Services.DSA;
+using OA.Domin.DSA.Indexes;
+using OA.WASM.Services.DSA.Indexes;
 //using OA.Domin.DSA.Indexes;
 //using OA.WASM.Services.DSA.Indexes;
 
@@ -95,10 +97,17 @@ namespace OA.WASM
             builder.Services.AddScoped<ServiceBase<Block>, BlocksService>();
             builder.Services.AddScoped<ServiceBase<BlockCategory>, BlockCategoriesService>();
             builder.Services.AddScoped<ServiceBase<BlockTranslation>, BlockTranslationsService>();
+
             builder.Services.AddScoped<ServiceBase<Event>, EventsService>();
             builder.Services.AddScoped<ServiceBase<EventTranslation>, EventTranslationsService>();
             builder.Services.AddScoped<ServiceBase<EventCategory>, EventCategoriesService>();
             builder.Services.AddScoped<ServiceBase<EventCategoryTranslation>, EventCategoryTranslationsService>();
+
+            builder.Services.AddScoped<ServiceBase<New>, NewsService>();
+            builder.Services.AddScoped<ServiceBase<NewTranslation>, NewTranslationsService>();
+            builder.Services.AddScoped<ServiceBase<NewCategory>, NewCategoriesService>();
+            builder.Services.AddScoped<ServiceBase<NewCategoryTranslation>, NewCategoryTranslationsService>();
+
             builder.Services.AddScoped<ServiceBase<Page>, PagesService>();
             builder.Services.AddScoped<ServiceBase<PageTranslation>, PageTranslationsService>();
             builder.Services.AddScoped<ServiceBase<Menue>, MenuesService>();
@@ -109,7 +118,7 @@ namespace OA.WASM
             builder.Services.AddScoped<ServiceBase<ArticleTranslation>, ArticleTranslationsService>();
             builder.Services.AddScoped<ServiceBase<Attachment>, AttachmentsServices>();
             builder.Services.AddScoped<AttachmentsServices>();
-            
+
 
             //builder.Services.AddScoped<ServiceBase<Person>, PeopleService>();
             //builder.Services.AddScoped<ServiceBase<CorporateDonator>, CorporateDonatorsService>();
@@ -123,11 +132,13 @@ namespace OA.WASM
             //builder.Services.AddScoped<ServiceBase<Project>, ProjectsService>();
             //builder.Services.AddScoped<ServiceBase<Vacancy>, VacanciesService>();
 
-            ////Indexes
+            //Indexes
+            builder.Services.AddScoped<ServiceBase<Language>, LanguegesService>();
+            builder.Services.AddScoped<ServiceBase<Nationality>, NationalitiesService>();
+
             //builder.Services.AddScoped<ServiceBase<City>, CitiesService>();
             //builder.Services.AddScoped<ServiceBase<Governorate>, GovernoratesService>();
             //builder.Services.AddScoped<ServiceBase<Activity>, ActivitiesService>();
-            //builder.Services.AddScoped<ServiceBase<Nationality>, NationalitiesService>();
             //builder.Services.AddScoped<ServiceBase<JobType>, JobTypesService>();
             //builder.Services.AddScoped<ServiceBase<AcademicQualification>, AcademicQualificationsService>();
             //builder.Services.AddScoped<ServiceBase<City>, CitiesService>();

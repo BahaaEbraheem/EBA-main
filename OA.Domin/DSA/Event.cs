@@ -1,4 +1,5 @@
-﻿using OA.Domin.Attributes;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+using OA.Domin.Attributes;
 using OA.Domin.RequestFeatures;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,16 @@ namespace OA.Domin.DSA
 {
     public class Event : BaseEntity
     {
+        private readonly ILazyLoader Loader;
+        public Event(ILazyLoader loader)
+        {
+            Loader = loader;
+        }
+
+        public Event()
+        {
+
+        }
         [DisplayName("Event")]
         public string Name { get; set; }
 
@@ -17,9 +28,15 @@ namespace OA.Domin.DSA
         [DisplayName("Event Category")]
         public int EventCategoryId { get; set; }
 
-        [PropFlag("FK_REF")]
-        public virtual EventCategory EventCategory { get; set; }
+      
+        private EventCategory _EventCategory;
 
+        [PropFlag("FK_REF")]
+        public virtual EventCategory EventCategory
+        {
+            get => Loader.Load(this, ref _EventCategory);
+            set => _EventCategory = value;
+        }
         [DisplayName("Start Date")]
         public DateTime StartDate { get; set; }
 

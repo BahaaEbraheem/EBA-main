@@ -15,7 +15,6 @@ namespace OA.Domin.DSA.Validators
 
             RuleFor(eventCategoryTranslation => eventCategoryTranslation.LanguageId).NotEmpty().WithMessage(Messages.REQUIRED);
 
-            //RuleFor(eventCategoryTranslation => eventCategoryTranslation.Slug).NotEmpty().WithMessage(Messages.REQUIRED);
 
             RuleFor(eventCategoryTranslation => eventCategoryTranslation.EventCategoryId).NotEqual(0).WithMessage(Messages.REQUIRED);
         }

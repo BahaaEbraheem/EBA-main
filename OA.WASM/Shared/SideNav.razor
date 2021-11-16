@@ -119,13 +119,16 @@
                     <i class="fas fa-database"></i>
                     <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(7))"> @Localizer["Indexes"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
                     <ul class="submenu">
-                        @*<li><a href="/Nationalities/List"> @Localizer["Nationalities"] </a></li>
-                        <li><a href="/Governorates/List"> @Localizer["Governorates"] </a></li>
+                        <li><a href="/Languages/List"> @Localizer["Languages"] </a></li>
+                        @*<li><a href="/Nationalities/List"> @Localizer["Nationalities"] </a></li>*@
+
+                        @*<li><a href="/Governorates/List"> @Localizer["Governorates"] </a></li>
                         <li><a href="/Cities/List"> @Localizer["Cities"] </a></li>
                         <li><a href="/Activities/List"> @Localizer["Activities"] </a></li>
                         <li><a href="/JobTypes/List"> @Localizer["Job Types"] </a></li>
                         <li><a href="/AcademicQualifications/List"> @Localizer["Qualifications"] </a></li>
                         <li><a href="/DonationTypes/List"> @Localizer["Donation Types"] </a></li>*@
+
                     </ul>
                 </div>
             </Authorized>
@@ -159,7 +162,20 @@
                 </div>
             </Authorized>
         </AuthorizeView>
-
+        @*<AuthorizeView Policy="news-control">
+            <Authorized>
+                <div class="submenu-group @sub[10]">
+                    <i class="fa fa-calendar"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(10))"> @Localizer["News"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        <li><a href="/News/List"> @Localizer["News"] </a></li>
+                        <li><a href="/NewCategories/List"> @Localizer["Categories"] </a></li>
+                        <li><a href="/NewTranslations/List"> @Localizer["Translation"] </a></li>
+                        <li><a href="/NewCategoryTranslations/List"> @Localizer["Categories Translations"] </a></li>
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>*@
         <AuthorizeView Policy="pages-control">
             <Authorized>
                 <div class="submenu-group @sub[5]">
@@ -187,7 +203,7 @@
             </Authorized>
         </AuthorizeView>
 
-        <AuthorizeView Policy="menues-control">
+        <AuthorizeView Policy="Articles-control">
             <Authorized>
                 <div class="submenu-group @sub[9]">
                     <i class="fa fa-font"></i>
@@ -200,7 +216,20 @@
                 </div>
             </Authorized>
         </AuthorizeView>
-
+        <AuthorizeView Policy="news-control">
+            <Authorized>
+                <div class="submenu-group @sub[0]">
+                    <i class="fa fa-calendar"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(0))"> @Localizer["News"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        <li><a href="/News/List"> @Localizer["News"] </a></li>
+                        <li><a href="/NewCategories/List"> @Localizer["Categories"] </a></li>
+                        <li><a href="/NewTranslations/List"> @Localizer["Translation"] </a></li>
+                        <li><a href="/NewCategoryTranslations/List"> @Localizer["Categories Translations"] </a></li>
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
         <AuthorizeView Policy="attachments-control">
             <Authorized>
                 <a href="/Attachments/List">
@@ -210,27 +239,7 @@
             </Authorized>
         </AuthorizeView>
 
-        <AuthorizeView Policy="donations-control">
-            <Authorized>
-                <div class="submenu-group @sub[8]">
-                    <i class="fas fa-donate"></i>
-                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(8))"> @Localizer["Donations"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
-                    <ul class="submenu">
-                        @*<li><a href="/CorporateDonators/List"> @Localizer["Corp Donators"] </a></li>
-                        <li><a href="/PersonDonators/List"> @Localizer["Person Donators"] </a></li>
-                        <li><a href="/Beneficiaries/List"> @Localizer["Beneficiaries"] </a></li>
-                        <li><a href="CorporateBeneficiaries/List"> @Localizer["Corp Beneficiaries"] </a></li>
-                        <li><a href="/Donations/List"> @Localizer["Donations"] </a></li>
-                        <li><a href="/DonationRequests/List"> @Localizer["Donation Requests"] </a></li>
-                        <li><a href="/DonationOffers/List"> @Localizer["Donation Offers"] </a></li>
-                        <li><a href="/Vacancies/List"> @Localizer["Vacancies"] </a></li>
-                        <li><a href="/Projects/List"> @Localizer["Projects"] </a></li>
-                        <li><a href="/Organizations/List"> @Localizer["Organizations"] </a></li>*@
-                        
-                    </ul>
-                </div>
-            </Authorized>
-        </AuthorizeView>
+ 
 
         <div class="resp-sidenav-link">
             <CultureSelect></CultureSelect>
@@ -259,7 +268,7 @@
 
     IEnumerable<KeyValuePair<string, object>> attr = new List<KeyValuePair<string, object>>() { new KeyValuePair<string, object>("checked", "checked") };
 
-    List<string> sub = new List<string>() { string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty };
+    List<string> sub = new List<string>() { string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty };
 
     public void ToggleSubMenu(int i)
     {

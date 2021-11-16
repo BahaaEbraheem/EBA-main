@@ -30,9 +30,14 @@ namespace OA.Domin.DSA
         [DisplayName("Language")]
         public int? LanguageId { get; set; }
 
-        [PropFlag("FK_REF")]
-        public virtual Language Language { get; set; }
+        private Language _Language;
 
+        [PropFlag("FK_REF")]
+        public Language Language
+        {
+            get => LazyLoader.Load(this, ref _Language);
+            set => _Language = value;
+        }
         [PropFlag("FK")]
         [DisplayName("Block")]
         public int BlockId { get; set; }

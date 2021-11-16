@@ -13,7 +13,7 @@
 
 <div class="form-group row">
     <div class="col-sm-6 select-col">
-        <MInputSelect @bind-Value="MenueTranslation.Language" For="@(() => MenueTranslation.Language)" Items="OA.Domin.StaticIndexes.Language" Id="Type" EntityType="typeof(MenueTranslation)" PropName="Language" />
+        <MInputSelect @bind-Value="MenueTranslation.LanguageId" For="@(() => MenueTranslation.LanguageId)" Items="LanguageItems" Id="LanguageId" EntityType="typeof(MenueTranslation)" PropName="LanguageId" />
     </div>
     <div class="col-sm-2 offset-1 select-col">
         <CheckBoxBtn Checked="MenueTranslation.IsActive" Text="Active" OnChange="@((bool value) => MenueTranslation.IsActive = value)" />

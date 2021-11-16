@@ -1,4 +1,5 @@
-﻿using OA.Domin.Attributes;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+using OA.Domin.Attributes;
 using OA.Domin.RequestFeatures;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,19 @@ using System.Text;
 
 namespace OA.Domin.DSA
 {
+
     public class Menue : BaseEntity
     {
+        private readonly ILazyLoader Loader;
+        public Menue(ILazyLoader loader)
+        {
+            Loader = loader;
+        }
+
+        public Menue()
+        {
+
+        }
         [DisplayName("Menue")]
         public string Name { get; set; }
 
@@ -21,18 +33,31 @@ namespace OA.Domin.DSA
 
         [PropFlag("FK")]
         [DisplayName("Parent Menue")]
-        public int? MenueId { get; set; }
+        public int? ParentMenueId { get; set; }
+
+        //[PropFlag("FK_REF")]
+        //public virtual Menue ParentMenue { get; set; }
+        private Menue _ParentMenue;
 
         [PropFlag("FK_REF")]
-        public virtual Menue ParentMenue { get; set; }
-
+        [InverseProperty("Menues")]
+        public  Menue ParentMenue
+        {
+            get => Loader.Load(this, ref _ParentMenue);
+            set => _ParentMenue = value;
+        }
         [PropFlag("FK")]
-        [DisplayName("Category")]
+        [DisplayName("Menue Category")]
         public int? MenuCategoryId { get; set; }
 
-        [PropFlag("FK_REF")]
-        public virtual MenueCategory MenuCategory { get; set; }
+        private MenueCategory _MenueCategory;
 
+        [PropFlag("FK_REF")]
+        public MenueCategory MenueCategory
+        {
+            get => Loader.Load(this, ref _MenueCategory);
+            set => _MenueCategory = value;
+        }
         public string Type { get; set; }
 
         public string FilePath { get; set; }

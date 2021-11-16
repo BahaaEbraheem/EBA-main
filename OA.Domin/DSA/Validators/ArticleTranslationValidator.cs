@@ -12,7 +12,7 @@ namespace OA.Domin.DSA.Validators
         {
             RuleFor(artCat => artCat.Name).NotEmpty().WithMessage(Messages.REQUIRED);
 
-            RuleFor(artCat => artCat.Language).NotEmpty().WithMessage(Messages.REQUIRED);
+            RuleFor(artCat => artCat.LanguageId).NotEmpty().WithMessage(Messages.REQUIRED);
 
             RuleFor(artCat => artCat.Content).NotEmpty().WithMessage(Messages.REQUIRED);
 

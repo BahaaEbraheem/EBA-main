@@ -20,7 +20,7 @@ namespace OA.Domin
             Sharjah=4,
             Fujairah=5,
             RasAlKhaimah=6,
-            UmmalQuwain=7
+            UmmAlQuwain = 7
         }
         //public static Dictionary<string, string> Emirate = new Dictionary<string, string>
         //{
@@ -192,11 +192,11 @@ namespace OA.Domin
         };
 
 
-        public static Dictionary<string, string> Language = new Dictionary<string, string>
-        {
-            { "AR", "Arabic"},
-            { "EN", "English"}
-        };
+        //public static Dictionary<string, string> Language = new Dictionary<string, string>
+        //{
+        //    { "AR", "Arabic"},
+        //    { "EN", "English"}
+        //};
 
         public static Dictionary<string, string> ArticleCategoryTypes = new Dictionary<string, string>
         {
@@ -213,6 +213,7 @@ namespace OA.Domin
 
         public static Dictionary<string, string> AttachemntReferences = new Dictionary<string, string>
         {
+            { nameof(New), "New" },
             { nameof(Block), "Block" },
             { nameof(Event), "Event" },
             { nameof(Menue), "Menu"},

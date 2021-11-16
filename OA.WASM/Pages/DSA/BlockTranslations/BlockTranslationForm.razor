@@ -4,9 +4,9 @@
     <div class="col-sm-6">
         <MInputText @bind-Value="BlockTranslation.Name" For="@(() => BlockTranslation.Name)" Id="Name" EntityType="typeof(BlockTranslation)" PropName="Name" Active="@Active" />
     </div>
-    @*<div class="col-sm-6 select-col">
-        <MInputSelect @bind-Value="BlockTranslation.Language" For="@(() => BlockTranslation.Language)" Items="OA.Domin.StaticIndexes.Language" Id="Language" EntityType="typeof(BlockTranslation)" PropName="Language" />
-    </div>*@
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="BlockTranslation.LanguageId" For="@(() => BlockTranslation.LanguageId)" Items="LanguageItems" Id="LanguageId" EntityType="typeof(BlockTranslation)" PropName="LanguageId" />
+    </div>
 </div>
 <div class="form-group row">
     @*<div class="col-sm-6">

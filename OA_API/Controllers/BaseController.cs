@@ -132,7 +132,7 @@ namespace OA_API.Controllers
             var result = list.Select(item => new IndexData
             {
                 Id = (item.GetType().GetProperty("Id").GetValue(item) != null) ? Convert.ToInt32(item.GetType().GetProperty("Id").GetValue(item)) : 0,
-                Name = (item.GetType().GetProperty("Name").GetValue(item) != null) ? item.GetType().GetProperty("Name").GetValue(item).ToString() : ""
+                Name = (item.GetType().GetProperty("Name").GetValue(item) != null) ? item.GetType().GetProperty("Name").GetValue(item).ToString() : "",
             });
 
             return Ok(result);

@@ -15,7 +15,6 @@ namespace OA.Domin.DSA.Validators
 
             RuleFor(blockTranslation => blockTranslation.LanguageId).NotEmpty().WithMessage(Messages.REQUIRED);
 
-            
 
             RuleFor(blockTranslation => blockTranslation.BlockId).NotEqual(0).WithMessage(Messages.NOTVALID);
         }

@@ -25,7 +25,7 @@
         <MInputText @bind-Value="Menue.PageUrl" For="@(() => Menue.PageUrl)" Id="PageUrl" EntityType="typeof(Menue)" PropName="PageUrl" Active="@Active" />
     </div>
     <div class="col-sm-6 select-col">
-        <MInputSelect @bind-Value="Menue.MenueId" For="@(() => Menue.MenueId)" Items="MenueItems" Id="MenueId" EntityType="typeof(Menue)" PropName="MenueId"  />
+        <MInputSelect @bind-Value="Menue.ParentMenueId" For="@(() => Menue.ParentMenueId)" Items="MenueItems" Id="ParentMenueId" EntityType="typeof(Menue)" PropName="ParentMenueId"  />
     </div>
 </div>
 

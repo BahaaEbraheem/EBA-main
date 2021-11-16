@@ -1,0 +1,26 @@
+﻿@using OA.Domin.DSA
+@inherits NewTranslationDetailsBase
+@page "/NewTranslation/Details/{id}"
+@attribute [Authorize("news-control")]
+
+<div class="page-title mb-5">
+    @Localizer["New Translation"] @Localizer["Details"]
+</div>
+
+<DetailItem EntityType="typeof(NewTranslation)" PropName="New" Value="@EntityItem.New?.Name" />
+
+<DetailItem EntityType="typeof(NewTranslation)" PropName="Name" Value="@EntityItem.Name" />
+
+<DetailItem EntityType="typeof(NewTranslation)" PropName="LanguageId" Value="@EntityItem.Language?.Name" />
+
+<DetailItem EntityType="typeof(NewTranslation)" PropName="HTMLContent" Value="@EntityItem.HTMLContent" />
+
+@*<DetailItem EntityType="typeof(NewTranslation)" PropName="Description" Value="@EntityItem.Description" />*@
+
+<DetailItem EntityType="typeof(NewTranslation)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
+
+
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/NewTranslations/List"))" />
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/NewTranslation/Edit/{EntityItem.Id}"))" />

@@ -11,7 +11,7 @@
 
 <DetailItem EntityType="typeof(MenueTranslation)" PropName="Name" Value="@EntityItem.Name" />
 
-@*<DetailItem EntityType="typeof(MenueTranslation)" PropName="Language" Value="@EntityItem.Language" />*@
+<DetailItem EntityType="typeof(MenueTranslation)" PropName="LanguageId" Value="@EntityItem.Language?.Name" />
 
 <DetailItem EntityType="typeof(MenueTranslation)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
 

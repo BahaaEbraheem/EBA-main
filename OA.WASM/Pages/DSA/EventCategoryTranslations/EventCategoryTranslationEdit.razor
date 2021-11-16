@@ -1,7 +1,7 @@
 ﻿
 @inherits EventCategoryTranslationEditBase
 @page "/EventCategoryTranslation/Edit/{id}"
-@attribute [Authorize(Policy = "blocks-control")]
+@attribute [Authorize(Policy = "events-control")]
 
 <div class="page-title mt-3 mb-4"> @Localizer["Edit"] @Localizer["Event Category Translation"] </div>
 
@@ -9,7 +9,7 @@
 
     <FluentValidationValidator />
 
-    <EventCategoryTranslationForm EventCategoryTranslation="EntityItem" EventCategoryItems="EventCategoryItems" IsEdit="true" />
+    <EventCategoryTranslationForm EventCategoryTranslation="EntityItem" EventCategoryItems="EventCategoryItems" LanguageItems="LanguageItems" IsEdit="true" />
 
     <SubmitBtn Text="Save" Busy="EditBusy" />
 

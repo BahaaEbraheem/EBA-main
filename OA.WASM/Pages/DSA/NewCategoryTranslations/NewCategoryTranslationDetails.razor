@@ -1,0 +1,26 @@
+﻿@using OA.Domin.DSA
+@inherits NewCategoryTranslationDetailsBase
+@page "/NewCategoryTranslation/Details/{id}"
+@attribute [Authorize("news-control")]
+
+<div class="page-title mb-5">
+    @Localizer["New Category Translation"] @Localizer["Details"]
+</div>
+
+<DetailItem EntityType="typeof(NewCategoryTranslation)" PropName="NewCategoryId" Value="@EntityItem.NewCategory?.Name" />
+
+<DetailItem EntityType="typeof(NewCategoryTranslation)" PropName="Name" Value="@EntityItem.Name" />
+
+<DetailItem EntityType="typeof(NewCategoryTranslation)" PropName="LanguageId" Value="@EntityItem.Language?.Name" />
+
+@*<DetailItem EntityType="typeof(NewCategoryTranslation)" PropName="Slug" Value="@EntityItem.Slug" />*@
+
+<DetailItem EntityType="typeof(NewCategoryTranslation)" PropName="Description" Value="@EntityItem.Description" />
+
+<DetailItem EntityType="typeof(NewCategoryTranslation)" PropName="IsActive" Value="@EntityItem.IsActive.ToString()" />
+
+
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/NewCategoryTranslations/List"))" />
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/NewCategoryTranslation/Edit/{EntityItem.Id}"))" />

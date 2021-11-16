@@ -11,9 +11,9 @@
 
 <DetailItem EntityType="typeof(BlockTranslation)" PropName="Name" Value="@EntityItem.Name" />
 
-@*<DetailItem EntityType="typeof(BlockTranslation)" PropName="Language" Value="@EntityItem.Language" />
+<DetailItem EntityType="typeof(BlockTranslation)" PropName="Language" Value="@EntityItem.Language?.Name" />
 
-<DetailItem EntityType="typeof(BlockTranslation)" PropName="Slug" Value="@EntityItem.Slug" />*@
+@*<DetailItem EntityType="typeof(BlockTranslation)" PropName="Slug" Value="@EntityItem.Slug" />*@
 
 <DetailItem EntityType="typeof(BlockTranslation)" PropName="Description" Value="@EntityItem.Description" />
 

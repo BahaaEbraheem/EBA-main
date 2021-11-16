@@ -1,0 +1,17 @@
+﻿@inherits NewCreateBase
+@page "/New/Create"
+@attribute [Authorize(Policy = "news-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Create"] @Localizer["New"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <NewForm New="EntityItem" NewCategoryItems="NewCategoryItems" />
+
+    <SubmitBtn Text="Create" Busy="CreateBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/News/List"))" />

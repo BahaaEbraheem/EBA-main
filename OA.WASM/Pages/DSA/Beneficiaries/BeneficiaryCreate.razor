@@ -1,0 +1,18 @@
+﻿@*@using OA.WASM.Pages.DSA.People
+@inherits BeneficiaryCreateBase
+@page "/Beneficiary/Create"
+@attribute [Authorize(Policy = "donations-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Create"] @Localizer["Beneficiary"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <PersonForm Person="EntityItem.Person" />
+
+    <SubmitBtn Text="Create" Busy="CreateBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/Beneficiaries/List"))" />*@

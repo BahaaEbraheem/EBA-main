@@ -1,5 +1,4 @@
 ﻿@using OA.Domin.DSA;
-
 <div class="form-group row">
     <div class="col-sm-6">
         <MInputText @bind-Value="ArticleTranslation.Name" For="@(() => ArticleTranslation.Name)" Id="Name" EntityType="typeof(ArticleTranslation)" PropName="Name" Active="@Active" />
@@ -9,18 +8,16 @@
     </div>
 </div>
 <div class="form-group row">
-    @*<div class="col-sm-4 select-col">
-        <MInputSelect @bind-Value="ArticleTranslation.Language" For="@(() => ArticleTranslation.Language)" Items="OA.Domin.StaticIndexes.Language" Id="Language" EntityType="typeof(ArticleTranslation)" PropName="Language" />
+    <div class="col-sm-4 select-col">
+        <MInputSelect @bind-Value="ArticleTranslation.LanguageId" For="@(() => ArticleTranslation.LanguageId)" Items="LanguageItems" Id="LanguageId" EntityType="typeof(ArticleTranslation)" PropName="LanguageId" />
     </div>
-    <div class="col-sm-4">
+    @*<div class="col-sm-4">
         <MInputText @bind-Value="ArticleTranslation.Slug" For="@(() => ArticleTranslation.Slug)" Id="Slug" EntityType="typeof(ArticleTranslation)" PropName="Slug" Active="@Active" />
     </div>*@
     <div class="col-sm-4 select-col">
         <CheckBoxBtn Checked="ArticleTranslation.IsActive" Text="Active" OnChange="@((bool value) => ArticleTranslation.IsActive = value)" />
     </div>
 </div>
-
-
 <div class="form-group row mb-5">
     <div class="col-sm-12">
         <CollapseContainer Title="Article Translation Content">
