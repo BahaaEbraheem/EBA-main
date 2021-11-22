@@ -120,29 +120,15 @@ namespace OA.WASM
             builder.Services.AddScoped<AttachmentsServices>();
 
 
-            //builder.Services.AddScoped<ServiceBase<Person>, PeopleService>();
-            //builder.Services.AddScoped<ServiceBase<CorporateDonator>, CorporateDonatorsService>();
-            //builder.Services.AddScoped<ServiceBase<PersonDonator>, PersonDonatorsService>();
-            //builder.Services.AddScoped<ServiceBase<Beneficiary>, BeneficiariesService>();
-            //builder.Services.AddScoped<ServiceBase<CorporateBeneficiary>, CorporateBeneficiariesService>();
-            //builder.Services.AddScoped<ServiceBase<Donation>, DonationsService>();
-            //builder.Services.AddScoped<ServiceBase<DonationRequest>, DonationRequestsService>();
-            //builder.Services.AddScoped<ServiceBase<DonationOffer>, DonationOffersService>();
-            //builder.Services.AddScoped<ServiceBase<Organization>, OrganizationsService>();
-            //builder.Services.AddScoped<ServiceBase<Project>, ProjectsService>();
-            //builder.Services.AddScoped<ServiceBase<Vacancy>, VacanciesService>();
-
             //Indexes
             builder.Services.AddScoped<ServiceBase<Language>, LanguegesService>();
             builder.Services.AddScoped<ServiceBase<Nationality>, NationalitiesService>();
-
-            //builder.Services.AddScoped<ServiceBase<City>, CitiesService>();
-            //builder.Services.AddScoped<ServiceBase<Governorate>, GovernoratesService>();
-            //builder.Services.AddScoped<ServiceBase<Activity>, ActivitiesService>();
-            //builder.Services.AddScoped<ServiceBase<JobType>, JobTypesService>();
-            //builder.Services.AddScoped<ServiceBase<AcademicQualification>, AcademicQualificationsService>();
-            //builder.Services.AddScoped<ServiceBase<City>, CitiesService>();
-            //builder.Services.AddScoped<ServiceBase<DonationType>, DonationTypesService>();
+            builder.Services.AddScoped<ServiceBase<Adjective>, AdjectivesService>();
+            builder.Services.AddScoped<ServiceBase<ChampionshipRanking>, ChampionshipRankingService>();
+            builder.Services.AddScoped<ServiceBase<ArrowType>, ArrowTypesService>();
+            builder.Services.AddScoped<ServiceBase<TrainingCourseType>, TrainingCourseTypesService>();
+            builder.Services.AddScoped<ServiceBase<AgeCategory>, AgeCategoriesService>();
+         
 
             var host = builder.Build();
 

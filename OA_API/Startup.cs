@@ -41,6 +41,7 @@ using OA_API.Extentions;
 using OA.Domin.Notifications;
 using FluentValidation.AspNetCore;
 using OA.Domin.DSA.Validators;
+//using Catel.Services;
 //using OA.Services.DSA;
 //using OA.Services.DSA.Interfaces;
 
@@ -60,7 +61,6 @@ namespace OA_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             #region "Controller"
             services.AddControllers(options =>
                     {
@@ -176,6 +176,14 @@ namespace OA_API
 
             #region "CORS"
             // Allow cross origin
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy(name: AllowAllPolicy, builder =>
+            //                      {
+            //                          builder.WithOrigins("https://uaearchery.online/",
+            //                                              "https://api.uaearchery.online/");
+            //                      });
+            //});
             services.AddCors(o => o.AddPolicy(AllowAllPolicy, builder =>
             {
                 builder.AllowAnyOrigin()
@@ -252,6 +260,13 @@ namespace OA_API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            app.UseWebSockets();
+            //now handle other requests (default, static files, mvc actions, ...)
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+
             if (env.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");
@@ -299,6 +314,7 @@ namespace OA_API
                 endpoints.MapHub<NotificationHub>("/hubs/notificationHub");
                 endpoints.MapControllers();
             });
+
         }
     }
 }

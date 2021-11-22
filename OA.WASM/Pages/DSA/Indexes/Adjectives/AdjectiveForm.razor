@@ -1,0 +1,17 @@
+﻿@using OA.Domin.DSA.Indexes
+
+
+<div class="form-group row">
+
+ 
+    <div class="col-sm-4">
+        <MInputText @bind-Value="Adjective.Name_Ar" For="@(() => Adjective.Name_Ar)" Id="Name_Ar" EntityType="typeof(Adjective)" PropName="Name_Ar"  />
+    </div>
+    <div class="col-sm-4">
+        <MInputText @bind-Value="Adjective.Name_En" For="@(() => Adjective.Name_En)" Id="Name_En" EntityType="typeof(Adjective)" PropName="Name_En"  />
+    </div>
+    <div class="col-sm-4">
+        <MInputText @bind-Value="Adjective.Description" For="@(() => Adjective.Description)" Id="Description" EntityType="typeof(Adjective)" PropName="Description"  />
+    </div>
+</div>
+

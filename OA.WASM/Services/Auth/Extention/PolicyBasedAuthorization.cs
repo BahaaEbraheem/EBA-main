@@ -27,9 +27,7 @@ namespace OA.WASM.Services.Auth.Extention
                 options.AddPolicy("blocks-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "blocks-control")));
                 options.AddPolicy("pages-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "pages-control")));
                 options.AddPolicy("events-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "events-control")));
-
                 options.AddPolicy("news-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "news-control")));
-
                 options.AddPolicy("articles-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "articles-control")));
                 options.AddPolicy("attachments-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "attachments-control")));
 

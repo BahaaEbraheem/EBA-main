@@ -133,6 +133,14 @@
     <value>إضافة</value>
     <comment>NAME</comment>
   </data>
+  <data name="Adjective" xml:space="preserve">
+    <value>الصفة</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Adjectives" xml:space="preserve">
+    <value>الصفات</value>
+    <comment>DSA</comment>
+  </data>
   <data name="Admin Confirmation" xml:space="preserve">
     <value>يتطلب موافقة مدير النظام</value>
     <comment>APPSETTINGS</comment>
@@ -140,6 +148,14 @@
   <data name="Administration" xml:space="preserve">
     <value>إدارة</value>
     <comment>NAV</comment>
+  </data>
+  <data name="AgeCategories" xml:space="preserve">
+    <value>الفئات العمرية</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="AgeCategory" xml:space="preserve">
+    <value>الفئة الععمرية</value>
+    <comment>DSA</comment>
   </data>
   <data name="Al-Ibdaa Bank Loans Service Portal" xml:space="preserve">
     <value>بوابة خدمات القروض ل بنك الإبداع</value>
@@ -156,6 +172,26 @@
   <data name="Are you sure ?" xml:space="preserve">
     <value> تأكيد العملية ؟</value>
     <comment>MSG</comment>
+  </data>
+  <data name="ArrowType" xml:space="preserve">
+    <value>نوع السهم</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="ArrowTypes" xml:space="preserve">
+    <value>أنواع السهم</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Article" xml:space="preserve">
+    <value>المقال</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>المقالات</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>المرفقات</value>
+    <comment>DSA</comment>
   </data>
   <data name="Audeting" xml:space="preserve">
     <value>تدقيق</value>
@@ -183,6 +219,10 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>فئة</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="ChampionshipRanking" xml:space="preserve">
+    <value>تصنيف البطولات</value>
     <comment>DSA</comment>
   </data>
   <data name="Change Password Policy" xml:space="preserve">
@@ -253,6 +293,14 @@
     <value>سجل الأخطاء</value>
     <comment>NAV</comment>
   </data>
+  <data name="Event" xml:space="preserve">
+    <value>الحدث</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>الأحداث</value>
+    <comment>DSA</comment>
+  </data>
   <data name="Field Value Must Be Between 0 and 100" xml:space="preserve">
     <value>قيمة الحقل يجب أن تكون بين 0 و 100</value>
     <comment>MSG</comment>
@@ -321,6 +369,18 @@
     <value>لا يساوي</value>
     <comment>FILTER OP</comment>
   </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>الفعالية</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>اللغة</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>اللغات</value>
+    <comment>DSA</comment>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>تسجيل دخول</value>
     <comment>AUTH</comment>
@@ -333,6 +393,34 @@
     <value>الحد الأقصى محرفين</value>
     <comment>MSG</comment>
   </data>
+  <data name="Menue" xml:space="preserve">
+    <value>القائمة</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Menues" xml:space="preserve">
+    <value>القوائم</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Name_Ar" xml:space="preserve">
+    <value>الإسم/عربي</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Name_En" xml:space="preserve">
+    <value>الإسم/إنكليزي</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Nationalities" xml:space="preserve">
+    <value>الجنسيات</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Nationality" xml:space="preserve">
+    <value>الجنسية</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>الخبر</value>
+    <comment>DSA</comment>
+  </data>
   <data name="New Notifications" xml:space="preserve">
     <value>إشعارات جديدة</value>
     <comment>NOTIFICATION</comment>
@@ -340,6 +428,10 @@
   <data name="New Registration Request" xml:space="preserve">
     <value>طلب تسجيل جديد</value>
     <comment>NOTIFICATION_CONTENT</comment>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>الأخبار</value>
+    <comment>DSA</comment>
   </data>
   <data name="Next" xml:space="preserve">
     <value>التالي</value>
@@ -368,6 +460,14 @@
   <data name="Options" xml:space="preserve">
     <value>خيارات</value>
     <comment>NAME</comment>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>الصفحة</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>الصفحات</value>
+    <comment>DSA</comment>
   </data>
   <data name="Passive" xml:space="preserve">
     <value>غير فعال</value>
@@ -469,6 +569,10 @@
     <value>طلبات التسجيل</value>
     <comment>NAV</comment>
   </data>
+  <data name="Slug" xml:space="preserve">
+    <value>الترميز</value>
+    <comment>Language</comment>
+  </data>
   <data name="Starts With" xml:space="preserve">
     <value>يبدأ ب</value>
     <comment>FILTER OP</comment>
@@ -488,6 +592,14 @@
   <data name="Total" xml:space="preserve">
     <value>الكلي</value>
     <comment>NAME</comment>
+  </data>
+  <data name="TrainingCourseType" xml:space="preserve">
+    <value>نوع الدورة التدريبية</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="TrainingCourseTypes" xml:space="preserve">
+    <value>أنوع الدورة التدريبية</value>
+    <comment>DSA</comment>
   </data>
   <data name="Translation" xml:space="preserve">
     <value>ترجمة</value>
