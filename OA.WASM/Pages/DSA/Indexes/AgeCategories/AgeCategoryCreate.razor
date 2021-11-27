@@ -1,0 +1,18 @@
+﻿@inherits AgeCategoryCreateBase
+@page "/AgeCategory/Create"
+@attribute [Authorize(Policy = "indexes-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Create"] @Localizer["AgeCategory"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <AgeCategoryForm AgeCategory="EntityItem" />
+
+    <SubmitBtn Text="Create" Busy="CreateBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/AgeCategories/List"))" />
+

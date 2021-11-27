@@ -5,16 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OA.WASM.Pages.DSA.Indexes.Adjectives
+namespace OA.WASM.Pages.DSA.Indexes.ArrowTypes
 {
-    public partial class AdjectiveForm : ComponentBase
+    public partial class ArrowTypeForm : ComponentBase
     {
-
 
         [Parameter]
         public bool IsEdit { get; set; }
+
         [Parameter]
-        public Adjective Adjective { get; set; } = new Adjective();
+        public ArrowType ArrowType { get; set; } = new ArrowType();
 
         public string Active { get; set; } = "";
 
@@ -23,5 +23,6 @@ namespace OA.WASM.Pages.DSA.Indexes.Adjectives
             Active = (IsEdit) ? "active" : "";
 
         }
+
     }
 }

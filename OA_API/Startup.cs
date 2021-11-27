@@ -175,15 +175,7 @@ namespace OA_API
             #endregion
 
             #region "CORS"
-            // Allow cross origin
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy(name: AllowAllPolicy, builder =>
-            //                      {
-            //                          builder.WithOrigins("https://uaearchery.online/",
-            //                                              "https://api.uaearchery.online/");
-            //                      });
-            //});
+
             services.AddCors(o => o.AddPolicy(AllowAllPolicy, builder =>
             {
                 builder.AllowAnyOrigin()
@@ -261,10 +253,7 @@ namespace OA_API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            app.UseWebSockets();
-            //now handle other requests (default, static files, mvc actions, ...)
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
+          
 
 
             if (env.IsDevelopment())
@@ -276,7 +265,7 @@ namespace OA_API
             {
                 app.UseExceptionHandler("/Error");
             }
-
+          
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
             {

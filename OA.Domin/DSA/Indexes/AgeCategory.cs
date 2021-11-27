@@ -16,19 +16,19 @@ namespace OA.Domin.DSA.Indexes
         /// <summary>
         /// سنة التولد/الحد الأدنى
         /// </summary>
-        public int? MinimumAge { get; set; }
+        public string MinimumAge { get; set; }
         /// <summary>
         /// سنة التولد/الحد الأقصى
         /// </summary>
-        public int? MaximumAge { get; set; }
+        public string MaximumAge { get; set; }
         /// <summary>
         /// الدرجة
         /// </summary>
-        public int? Degree { get; set; }
+        public string Degree { get; set; }
         /// <summary>
         /// حدود الانتقال بالدرجات
         /// </summary>
-        public int? DegreesLimits { get; set; }
+        public string DegreesLimits { get; set; }
         
             
 

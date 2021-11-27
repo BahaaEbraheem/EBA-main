@@ -4,10 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-namespace OA.WASM.Pages.DSA.Indexes.Nationalities
+namespace OA.WASM.Pages.DSA.Indexes.AgeCategories
 {
-    public class NationalityEditBase : EditBase<Nationality>
+    public class AgeCategoryCreateBase : CreateBase<AgeCategory>
     {
     }
 }

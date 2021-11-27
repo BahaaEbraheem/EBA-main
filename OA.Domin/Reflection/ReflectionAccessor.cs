@@ -46,7 +46,6 @@ namespace OA.Domin.Reflection
                 { nameof(Adjective), "Adjective" },
                 { nameof(AgeCategory), "AgeCategory" },
                 { nameof(ArrowType), "ArrowType" },
-                
                 { nameof(ChampionshipRanking), "ChampionshipRanking" },
                  { nameof(TrainingCourseType), "TrainingCourseType" },
             };

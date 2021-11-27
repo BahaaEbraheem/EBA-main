@@ -221,7 +221,7 @@
     <value>فئة</value>
     <comment>DSA</comment>
   </data>
-  <data name="ChampionshipRanking" xml:space="preserve">
+  <data name="ChampionshipsRanking" xml:space="preserve">
     <value>تصنيف البطولات</value>
     <comment>DSA</comment>
   </data>

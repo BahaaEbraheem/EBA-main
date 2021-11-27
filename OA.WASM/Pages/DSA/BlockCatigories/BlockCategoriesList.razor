@@ -49,8 +49,7 @@ else
                 <td> <span> @Localizer["Is Active"] </span> <CheckMark Checked="context.IsActive" /> </td>
                 <td>
                     <GridRowOptions EditEvent="@(() => NavigationManager.NavigateTo($"/BlockCategory/Edit/{context.Id}"))"
-                                    DeleteEvent="@(() => DeleteItem(context.Id) )"
-                                    >
+                                    DeleteEvent="@(() => DeleteItem(context.Id) )">
                     </GridRowOptions>
                 </td>
             </GridRow>

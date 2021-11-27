@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OA.DataAccess;
 
 namespace OA.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211127163051_FixNationalityOld")]
+    partial class FixNationalityOld
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1605,11 +1607,11 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Degree")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Degree")
+                        .HasColumnType("int");
 
-                    b.Property<string>("DegreesLimits")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("DegreesLimits")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -1621,11 +1623,11 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("MaximumAge")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("MaximumAge")
+                        .HasColumnType("int");
 
-                    b.Property<string>("MinimumAge")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("MinimumAge")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name_Ar")
                         .HasColumnType("nvarchar(max)");

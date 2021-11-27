@@ -1,0 +1,28 @@
+﻿@using OA.Domin.DSA.Indexes
+
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="AgeCategory.Name_Ar" For="@(() => AgeCategory.Name_Ar)" Id="Name_Ar" EntityType="typeof(AgeCategory)" PropName="Name_Ar" Active="@Active" />
+    </div>
+    <div class="col-sm-6">
+        <MInputText @bind-Value="AgeCategory.Name_En" For="@(() => AgeCategory.Name_En)" Id="Name_En" EntityType="typeof(AgeCategory)" PropName="Name_En" Active="@Active" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="AgeCategory.MinimumAge" For="@(() => AgeCategory.MinimumAge)" Id="MinimumAge" EntityType="typeof(AgeCategory)" PropName="MinimumAge" Active="@Active" />
+    </div>
+    <div class="col-sm-6">
+    <MInputText @bind-Value="AgeCategory.MaximumAge" For="@(() => AgeCategory.MaximumAge)" Id="MaximumAge" EntityType="typeof(AgeCategory)" PropName="MaximumAge" Active="@Active" />
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-6">
+        <MInputText @bind-Value="AgeCategory.Degree" For="@(() => AgeCategory.Degree)" Id="Degree" EntityType="typeof(AgeCategory)" PropName="Degree" Active="@Active" />
+    </div>
+    <div class="col-sm-6">
+        <MInputText @bind-Value="AgeCategory.DegreesLimits" For="@(() => AgeCategory.DegreesLimits)" Id="DegreesLimits" EntityType="typeof(AgeCategory)" PropName="DegreesLimits" Active="@Active" />
+    </div>
+</div>

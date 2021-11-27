@@ -1,4 +1,4 @@
-﻿@*@inherits NationalityEditBase
+﻿@inherits NationalityEditBase
 @page "/Nationality/Edit/{id}"
 @attribute [Authorize(Policy = "indexes-control")]
 
@@ -14,4 +14,4 @@
 
 </EditForm>
 
-<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/Nationalities/List"))" />*@
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/Nationalities/List"))" />
