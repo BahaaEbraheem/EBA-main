@@ -128,7 +128,14 @@ namespace OA.WASM
             builder.Services.AddScoped<ServiceBase<ArrowType>, ArrowTypesService>();
             builder.Services.AddScoped<ServiceBase<TrainingCourseType>, TrainingCourseTypesService>();
             builder.Services.AddScoped<ServiceBase<AgeCategory>, AgeCategoriesService>();
-         
+
+
+
+            builder.Services.AddScoped<ServiceBase<AdministrationBoard>, AdministrationBoardsService>();
+            builder.Services.AddScoped<ServiceBase<Person>, PeopleService>();
+            builder.Services.AddScoped<ServiceBase<PType>, PTypesService>();
+            builder.Services.AddScoped<ServiceBase<PersonType>, PersonTypesService>();
+
 
             var host = builder.Build();
 

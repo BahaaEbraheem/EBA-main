@@ -46,8 +46,16 @@ namespace OA.Domin.Reflection
                 { nameof(Adjective), "Adjective" },
                 { nameof(AgeCategory), "AgeCategory" },
                 { nameof(ArrowType), "ArrowType" },
-                { nameof(ChampionshipRanking), "ChampionshipRanking" },
-                 { nameof(TrainingCourseType), "TrainingCourseType" },
+                { nameof(ChampionshipRanking), "ChampionshipRanking"},
+                { nameof(TrainingCourseType), "TrainingCourseType" },
+
+                  { nameof(AdministrationBoard), "AdministrationBoard" },
+                  { nameof(Person), "People" },
+                   { nameof(PType), "PTypes" },
+                   { nameof(PersonType), "Person Types" },
+
+
+
             };
 
             //typeof(BaseEntity).GetNestedTypes();
@@ -87,7 +95,20 @@ namespace OA.Domin.Reflection
             { nameof(ArrowType), typeof(ArrowType) },
             { nameof(ChampionshipRanking), typeof(ChampionshipRanking) },
             { nameof(TrainingCourseType), typeof(TrainingCourseType) },
-          
+
+            { nameof(AdministrationBoard), typeof(AdministrationBoard) },
+            { nameof(Person), typeof(Person) },
+            { nameof(PType), typeof(PType) },
+            { nameof(PersonType), typeof(PersonType) },
+
+
+
+
+
+
+
+
+
 
             { nameof(ExceptionLog), typeof(ExceptionLog)}
         };

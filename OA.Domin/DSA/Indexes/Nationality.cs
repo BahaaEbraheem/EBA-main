@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace OA.Domin.DSA.Indexes
@@ -11,8 +12,10 @@ namespace OA.Domin.DSA.Indexes
         /// الرمز
         /// </summary>
         public string Code { get; set; }
-        public string Title_Ar { get; set; }
-        public string Title_En { get; set; }
+        [DisplayName("Name/Ar")]
+        public string Name { get; set; }
+        [DisplayName("Name/En")]
+        public string Name_En { get; set; }
         /// <summary>
         /// رمز الهاتف
         /// </summary>

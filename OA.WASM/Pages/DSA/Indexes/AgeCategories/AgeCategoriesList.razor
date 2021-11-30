@@ -36,8 +36,8 @@ else
     {
         <Grid Items="ListData">
             <GridHeader>
-                <th> @Localizer["Name_Ar"] </th>
-                <th> @Localizer["Name_En"] </th>
+                <th> @Localizer["Name/Ar"] </th>
+                <th> @Localizer["Name/En"] </th>
                 <th> @Localizer["MinimumAge"] </th>
                 <th> @Localizer["MaximumAge"] </th>
                 <th> @Localizer["Degree"] </th>
@@ -45,7 +45,7 @@ else
                 <th> @Localizer["Options"] </th>
             </GridHeader>
             <GridRow>
-                <td> <span> @Localizer["Name_Ar"] </span> @context.Name_Ar</td>
+                <td> <span> @Localizer["Name"] </span> @context.Name</td>
                 <td> <span> @Localizer["Name_En"] </span> @context?.Name_En</td>
                 <td> <span> @Localizer["MinimumAge"] </span> @context?.MinimumAge</td>
                 <td> <span> @Localizer["MaximumAge"] </span> @context?.MaximumAge</td>

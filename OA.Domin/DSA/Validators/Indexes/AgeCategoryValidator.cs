@@ -12,7 +12,7 @@ namespace OA.Domin.DSA.Validators.Indexes
 
         public AgeCategoryValidator()
         {
-            RuleFor(nat => nat.Name_Ar).NotEmpty().WithMessage(Messages.REQUIRED);
+            RuleFor(nat => nat.Name).NotEmpty().WithMessage(Messages.REQUIRED);
             
         }
 

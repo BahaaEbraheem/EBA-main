@@ -124,8 +124,8 @@
                         <li><a href="/Adjectives/List"> @Localizer["Adjectives"] </a></li>
                         <li><a href="/AgeCategories/List"> @Localizer["AgeCategories"] </a></li>
                         <li><a href="/ArrowTypes/List"> @Localizer["ArrowTypes"] </a></li>
-                        <li><a href="/ChampionshipRanking/List"> @Localizer["Championship Ranking"] </a></li>
-                        <li><a href="/TrainingCourseTypes/List"> @Localizer["TrainingCourse Types"] </a></li>
+                        <li><a href="/ChampionshipsRanking/List"> @Localizer["ChampionshipsRanking"] </a></li>
+                        <li><a href="/TrainingCourseTypes/List"> @Localizer["TrainingCourseTypes"] </a></li>
 
                     </ul>
                 </div>
@@ -160,20 +160,7 @@
                 </div>
             </Authorized>
         </AuthorizeView>
-        @*<AuthorizeView Policy="news-control">
-            <Authorized>
-                <div class="submenu-group @sub[10]">
-                    <i class="fa fa-calendar"></i>
-                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(10))"> @Localizer["News"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
-                    <ul class="submenu">
-                        <li><a href="/News/List"> @Localizer["News"] </a></li>
-                        <li><a href="/NewCategories/List"> @Localizer["Categories"] </a></li>
-                        <li><a href="/NewTranslations/List"> @Localizer["Translation"] </a></li>
-                        <li><a href="/NewCategoryTranslations/List"> @Localizer["Categories Translations"] </a></li>
-                    </ul>
-                </div>
-            </Authorized>
-        </AuthorizeView>*@
+
         <AuthorizeView Policy="pages-control">
             <Authorized>
                 <div class="submenu-group @sub[5]">
@@ -216,7 +203,7 @@
         </AuthorizeView>
         <AuthorizeView Policy="news-control">
             <Authorized>
-                <div class="submenu-group @sub[0]">
+                <div class="submenu-group @sub[8]">
                     <i class="fa fa-calendar"></i>
                     <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(0))"> @Localizer["News"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
                     <ul class="submenu">
@@ -228,6 +215,24 @@
                 </div>
             </Authorized>
         </AuthorizeView>
+
+
+        <AuthorizeView Policy="people-control">
+            <Authorized>
+                <div class="submenu-group @sub[0]">
+                    <i class="fa fa-calendar"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(0))"> @Localizer["the Union"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        <li><a href="/AdministrationBoards/List"> @Localizer["administrationBoards"] </a></li>
+                        <li><a href="/People/List"> @Localizer["People"] </a></li>
+                        <li><a href="/PersonTypes/List"> @Localizer["Person Types"] </a></li>
+                        <li><a href="/PTypes/List"> @Localizer["PTypes"] </a></li>
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+
         <AuthorizeView Policy="attachments-control">
             <Authorized>
                 <a href="/Attachments/List">
@@ -237,7 +242,7 @@
             </Authorized>
         </AuthorizeView>
 
- 
+
 
         <div class="resp-sidenav-link">
             <CultureSelect></CultureSelect>
@@ -266,7 +271,7 @@
 
     IEnumerable<KeyValuePair<string, object>> attr = new List<KeyValuePair<string, object>>() { new KeyValuePair<string, object>("checked", "checked") };
 
-    List<string> sub = new List<string>() { string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty };
+    List<string> sub = new List<string>() { string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty };
 
     public void ToggleSubMenu(int i)
     {

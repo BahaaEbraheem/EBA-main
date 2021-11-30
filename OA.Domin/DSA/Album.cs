@@ -27,10 +27,12 @@ namespace OA.Domin.DSA
         /// <summary>
         /// اسم الألبوم عربي
         /// </summary>
-        public string Name_Ar { get; set; }
+        [DisplayName("Name/Ar")]
+        public string Name { get; set; }
         /// <summary>
         /// اسم الألبوم أجنبي
         /// </summary>
+        [DisplayName("Name/En")]
         public string Name_En { get; set; }
         /// <summary>
         ///  معرف الدورة التدريبية 
@@ -81,7 +83,7 @@ namespace OA.Domin.DSA
         /// <summary>
         /// هل هو مدمج 
         /// </summary>
-        public bool? Bulit_In { get; set; } 
+        public bool Bulit_In { get; set; } 
         /// <summary>
         /// هل هو YouTube
         /// </summary>

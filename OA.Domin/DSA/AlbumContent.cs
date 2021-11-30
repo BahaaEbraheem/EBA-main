@@ -25,7 +25,8 @@ namespace OA.Domin.DSA
         /// <summary>
         /// اسم الصورة
         /// </summary>
-        public string Name_Ar { get; set; }
+        [DisplayName("Name/Ar")]
+        public string Name { get; set; }
 
         /// <summary>
         ///  معرف الألبوم 

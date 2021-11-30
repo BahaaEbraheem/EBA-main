@@ -154,9 +154,61 @@
     <comment>DSA</comment>
   </data>
   <data name="AgeCategory" xml:space="preserve">
-    <value>الفئة الععمرية</value>
+    <value>الفئة العمرية</value>
     <comment>DSA</comment>
   </data>
+    <data name="Name" xml:space="preserve">
+    <value>الإسم</value>
+    <comment>DSA</comment>
+  </data>
+
+     <data name="Code" xml:space="preserve">
+    <value>الرمز</value>
+    <comment>DSA</comment>
+  </data>
+       <data name="PhoneCode" xml:space="preserve">
+    <value>رمز الهاتف</value>
+    <comment>DSA</comment>
+  </data>
+      <data name="Description" xml:space="preserve">
+    <value>الوصف</value>
+    <comment>DSA</comment>
+  </data>
+
+  <data name="Name/Ar" xml:space="preserve">
+    <value>الإسم/Ar</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Name/En" xml:space="preserve">
+    <value>الإسم/En</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="MinimumAge" xml:space="preserve">
+    <value>سنةالتولد/الحدالأدنى</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="MaximumAge" xml:space="preserve">
+    <value>سنةالتولد/الحدالأقصى</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="Degree" xml:space="preserve">
+    <value>الدرجة</value>
+    <comment>DSA</comment>
+  </data>
+  <data name="DegreesLimits" xml:space="preserve">
+    <value>حدودالانتقال بالدرجات</value>
+    <comment>DSA</comment>
+  </data>
+    <data name="ChampionshipsRanking" xml:space="preserve">
+    <value>تصنيف البطولات</value>
+    <comment>DSA</comment>
+  </data>
+       <data name="TrainingCourseTypes" xml:space="preserve">
+    <value>نوع الدورات</value>
+    <comment>DSA</comment>
+  </data>
+    
+  
   <data name="Al-Ibdaa Bank Loans Service Portal" xml:space="preserve">
     <value>بوابة خدمات القروض ل بنك الإبداع</value>
     <comment>HOME</comment>
@@ -178,7 +230,7 @@
     <comment>DSA</comment>
   </data>
   <data name="ArrowTypes" xml:space="preserve">
-    <value>أنواع السهم</value>
+    <value>نوع القوس</value>
     <comment>DSA</comment>
   </data>
   <data name="Article" xml:space="preserve">
@@ -321,14 +373,8 @@
     <value>عالج الطلب من إدارة طلبات التسجيل</value>
     <comment>NOTIFICATION_CONTENT</comment>
   </data>
-  <data name="In Process Loans" xml:space="preserve">
-    <value>قروض قيد المعالجة</value>
-    <comment>NAV</comment>
-  </data>
-  <data name="In-Process Loans" xml:space="preserve">
-    <value>قروض قيد المعالجة</value>
-    <comment>HOME</comment>
-  </data>
+
+
   <data name="Indexes" xml:space="preserve">
     <value>الفهارس</value>
     <comment>NAV</comment>
@@ -401,12 +447,12 @@
     <value>القوائم</value>
     <comment>DSA</comment>
   </data>
-  <data name="Name_Ar" xml:space="preserve">
-    <value>الإسم/عربي</value>
+  <data name="Name/Ar" xml:space="preserve">
+    <value>الإسم/Ar</value>
     <comment>DSA</comment>
   </data>
   <data name="Name_En" xml:space="preserve">
-    <value>الإسم/إنكليزي</value>
+    <value>الإسم/En</value>
     <comment>DSA</comment>
   </data>
   <data name="Nationalities" xml:space="preserve">
@@ -597,10 +643,7 @@
     <value>نوع الدورة التدريبية</value>
     <comment>DSA</comment>
   </data>
-  <data name="TrainingCourseTypes" xml:space="preserve">
-    <value>أنوع الدورة التدريبية</value>
-    <comment>DSA</comment>
-  </data>
+
   <data name="Translation" xml:space="preserve">
     <value>ترجمة</value>
     <comment>DSA</comment>

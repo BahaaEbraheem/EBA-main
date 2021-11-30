@@ -26,7 +26,7 @@ namespace OA.Domin.DSA
         /// اسم اللجنة بالعربي
         /// </summary>
         [DisplayName("Name/Ar")]
-        public string Name_Ar { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// اسم اللجنة بالأجنبي
         /// </summary>

@@ -26,7 +26,7 @@ namespace OA.Domin.DSA.Indexes
         ///اسم الدورة التدريبية بالعربي
         /// </summary>
         [DisplayName("Name/Ar")]
-        public string Name_Ar { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// اسم الدورة التدريبية بالأجنبي
         /// </summary>

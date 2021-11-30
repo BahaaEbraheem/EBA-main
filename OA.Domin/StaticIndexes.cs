@@ -74,6 +74,12 @@ namespace OA.Domin
             {"Male", "Male" },
             {"Female", "Female" }
         };
+        //public enum Gender : byte
+        //{
+
+        //    Male = 1,
+        //    Female = 2
+        //}
         //public static Dictionary<string, string> ClubType = new Dictionary<string, string>
         //{
         //    {"نادي", "نادي" },

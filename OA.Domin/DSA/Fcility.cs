@@ -24,10 +24,12 @@ namespace OA.Domin.DSA.Indexes
         /// <summary>
         ///اسم المنشأة بالعربي
         /// </summary>
-        public string Name_Ar { get; set; }
+        [DisplayName("Name/Ar")]
+        public string Name { get; set; }
         /// <summary>
         /// اسم المنشأة بالأجنبي
         /// </summary>
+        [DisplayName("Name/En")]
         public string Name_En { get; set; }
         /// <summary>
         ///  النادي 

@@ -22,7 +22,7 @@ namespace OA.WASM.Services.Auth.Extention
                 options.AddPolicy("push-notification-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "push-notification-control")));
                 options.AddPolicy("reporting-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "reporting-control")));
                 options.AddPolicy("indexes-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "indexes-control")));
-
+              
                 options.AddPolicy("menues-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "menues-control")));
                 options.AddPolicy("blocks-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "blocks-control")));
                 options.AddPolicy("pages-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "pages-control")));
@@ -30,6 +30,11 @@ namespace OA.WASM.Services.Auth.Extention
                 options.AddPolicy("news-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "news-control")));
                 options.AddPolicy("articles-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "articles-control")));
                 options.AddPolicy("attachments-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "attachments-control")));
+               
+                
+                
+                
+                options.AddPolicy("people-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "People-control")));
 
             });
 

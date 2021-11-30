@@ -1,0 +1,19 @@
+﻿@using OA.Domin.DSA.Indexes
+
+
+<div class="form-group row">
+
+
+    <div class="col-sm-6">
+        <MInputText @bind-Value="ChampionshipRanking.Name" For="@(() => ChampionshipRanking.Name)" Id="Name" EntityType="typeof(ChampionshipRanking)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-6">
+        <MInputText @bind-Value="ChampionshipRanking.Name_En" For="@(() => ChampionshipRanking.Name_En)" Id="Name_En" EntityType="typeof(ChampionshipRanking)" PropName="Name_En" Active="@Active" />
+    </div>
+</div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            <MInputText @bind-Value="ChampionshipRanking.Description" For="@(() => ChampionshipRanking.Description)" Id="Description" EntityType="typeof(ChampionshipRanking)" PropName="Description" Active="@Active" />
+        </div>
+    </div>
+

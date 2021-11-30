@@ -1,0 +1,99 @@
+﻿@using OA.Domin.DSA
+@using OA.Domin.Settings
+
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Person.Name" For="@(() => Person.Name)" Id="Name" EntityType="typeof(Person)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Person.Name_En" For="@(() => Person.Name_En)" Id="Name_En" EntityType="typeof(Person)" PropName="Name_En" Active="@Active" />
+    </div>
+    <div class="col-sm-3">
+        <MInputDate Type="date" @bind-Value="Person.DateOfBirth" For="@(() => Person.DateOfBirth)" Id="DateOfBirth" EntityType="typeof(Person)" PropName="DateOfBirth" />
+    </div>
+    <div class="col-sm-3 select-col">
+        <MInputSelect @bind-Value="Person.NationalityId" For="@(() => Person.NationalityId)" Items="PersonNationalityItems" Id="NationalityId" EntityType="typeof(Person)" PropName="NationalityId" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3 select-col">
+        @*<label asp-for="Person.Gender" class="control-label"></label>
+        <select asp-for="Person.Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control"></select>
+        <span asp-validation-for="Person.Gender" class="text-danger"></span>*@
+
+            <MInputSelect @bind-Value="Person.Gender" For="@(() => Person.Gender)" Items="GenderItems" Id="Gender" EntityType="typeof(Person)" PropName="Gender" />
+     
+    </div>
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Person.PassporNumber" For="@(() => Person.PassporNumber)" Id="PassporNumber" EntityType="typeof(Person)" PropName="PassporNumber" Active="@Active" />
+    </div>
+    <div class="col-sm-3">
+        <MInputDate Type="date" @bind-Value="Person.PassporEndDate" For="@(() => Person.PassporEndDate)" Id="PassporEndDate" EntityType="typeof(Person)" PropName="PassporEndDate" />
+    </div>
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Person.IdentificationNumber" For="@(() => Person.IdentificationNumber)" Id="IdentificationNumber" EntityType="typeof(Person)" PropName="IdentificationNumber" Active="@Active" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Person.Employer" For="@(() => Person.Employer)" Id="Employer" EntityType="typeof(Person)" PropName="Employer" Active="@Active" />
+    </div>
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Person.Fax" For="@(() => Person.Fax)" Id="Fax" EntityType="typeof(Person)" PropName="Fax" Active="@Active" />
+    </div>
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Person.Email" For="@(() => Person.Email)" Id="Email" EntityType="typeof(Person)" PropName="Email" Active="@Active" />
+    </div>
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Person.Qualification" For="@(() => Person.Qualification)" Id="Qualification" EntityType="typeof(Person)" PropName="Qualification" Active="@Active" />
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Person.City" For="@(() => Person.City)" Id="City" EntityType="typeof(Person)" PropName="City" Active="@Active" />
+    </div>
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Person.Address" For="@(() => Person.Address)" Id="Address" EntityType="typeof(Person)" PropName="Address" Active="@Active" />
+    </div>
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Person.PhoneNumber" For="@(() => Person.PhoneNumber)" Id="PhoneNumber" EntityType="typeof(Person)" PropName="PhoneNumber" Active="@Active" />
+    </div>
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Person.Description" For="@(() => Person.Description)" Id="Description" EntityType="typeof(Person)" PropName="Description" Active="@Active" />
+    </div>
+</div>
+<div class="form-group row">
+
+    <div class="col-sm-6">
+        <UploadFile @ref="ImageUploadControl"
+                    Label="Image"
+                    Types='FileSettings.MimeTypes["Image"]'
+                    ImagePreview="true"
+                    ShowUploaded="false"
+                    MaxSize="1024 * 1024 * 1"
+                    OnValidUpload="@(() => Person.Image = ImageUploadControl.Files[0] )"
+                    OnStartPreUpload="@(() => UploadBusy = true)"
+                    OnEndPreUpload="@(() => UploadBusy = false)" />
+        @if (IsEdit)
+        {
+            <div>
+                @Person.ImagePath
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="M-center">
+            @if (UploadBusy)
+            {
+                <MiniLoading />
+            }
+        </div>
+    </div>
+</div>
+

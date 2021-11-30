@@ -77,6 +77,7 @@ namespace OA.WASM.Shared
 
             var dic = new Dictionary<string, string>();
             list.ForEach(i => dic.Add($"{i.Id}", $"{i.Name}"));
+          
 
             return dic;
         }

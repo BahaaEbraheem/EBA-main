@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace OA.Domin.DSA.Indexes
@@ -7,11 +8,13 @@ namespace OA.Domin.DSA.Indexes
     public class AgeCategory : BaseEntity
     {
 
-        
-      /// <summary>
-      /// اسم الفئة العمرية
-      /// </summary>
-        public string Name_Ar { get; set; }
+
+        /// <summary>
+        /// اسم الفئة العمرية
+        /// </summary>
+        [DisplayName("Name/Ar")]
+        public string Name { get; set; }
+        [DisplayName("Name/En")]
         public string Name_En { get; set; }
         /// <summary>
         /// سنة التولد/الحد الأدنى

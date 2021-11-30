@@ -1,0 +1,51 @@
+﻿@using OA.Domin.DSA
+@inherits PersonDetailsBase
+@page "/Person/Details/{id}"
+@attribute [Authorize("people-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Person"] @Localizer["Details"]
+</div>
+
+
+<DetailItem EntityType="typeof(Person)" PropName="Name" Value="@EntityItem.Name" />
+
+<DetailItem EntityType="typeof(Person)" PropName="Name_En" Value="@EntityItem.Name_En" />
+
+<DetailItem EntityType="typeof(Person)" PropName="DateOfBirth" Value="@EntityItem.DateOfBirth.ToString()" />
+
+<DetailItem EntityType="typeof(Person)" PropName="NationalityId" Value="@EntityItem.Nationality?.Name" />
+
+<DetailItem EntityType="typeof(Person)" PropName="Gender" Value="@EntityItem.Gender.ToString()" />
+
+<DetailItem EntityType="typeof(Person)" PropName="PassporNumber" Value="@EntityItem.PassporNumber" />
+
+<DetailItem EntityType="typeof(Person)" PropName="PassporEndDate" Value="@EntityItem.PassporEndDate.ToString()" />
+
+<DetailItem EntityType="typeof(Person)" PropName="IdentificationNumber" Value="@EntityItem.IdentificationNumber" />
+
+<DetailItem EntityType="typeof(Person)" PropName="Employer" Value="@EntityItem.Employer" />
+
+<DetailItem EntityType="typeof(Person)" PropName="Fax" Value="@EntityItem.Fax" />
+
+<DetailItem EntityType="typeof(Person)" PropName="Email" Value="@EntityItem.Email" />
+
+<DetailItem EntityType="typeof(Person)" PropName="Qualification" Value="@EntityItem.Qualification" />
+
+<DetailItem EntityType="typeof(Person)" PropName="City" Value="@EntityItem.City" />
+
+<DetailItem EntityType="typeof(Person)" PropName="PhoneNumber" Value="@EntityItem.PhoneNumber" />
+
+<DetailItem EntityType="typeof(Person)" PropName="Description" Value="@EntityItem.Description" />
+
+<DetailItem EntityType="typeof(Person)" PropName="ImagePath" Value="@EntityItem.ImagePath" />
+
+<div class="row mt-3">
+    <div class="col-md-6">
+        <img src="@($"{PathPrefix}{EntityItem.ImagePath}")" class="doc-preview-image" />
+    </div>
+</div>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/People/List"))" />
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($"/Person/Edit/{EntityItem.Id}"))" />

@@ -24,7 +24,9 @@ namespace OA.Domin.DSA.Indexes
         /// <summary>
         ///اسم نوع اللعبة
         /// </summary>
-        public string Name_Ar { get; set; }
+        [DisplayName("Name/Ar")]
+        public string Name { get; set; }
+        [DisplayName("Name/En")]
         public string Name_En { get; set; }
 
         /// <summary>

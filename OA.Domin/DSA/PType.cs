@@ -3,6 +3,7 @@ using OA.Domin.Attributes;
 using OA.Domin.RequestFeatures;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -23,7 +24,9 @@ namespace OA.Domin.DSA
         /// <summary>
         /// اسم نوع الشخص
         /// </summary>
-        public string Name_Ar { get; set; }
+        [DisplayName("Name/Ar")]
+        public string Name { get; set; }
+        [DisplayName("Name/En")]
         public string Name_En { get; set; }
         public string Description { get; set; }
         [PropFlag("FK_REF_COLL")]

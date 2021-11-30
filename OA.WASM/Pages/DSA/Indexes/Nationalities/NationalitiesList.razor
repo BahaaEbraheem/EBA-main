@@ -36,16 +36,16 @@ else
     {
         <Grid Items="ListData">
             <GridHeader>
-                <th> @Localizer["Title_Ar"] </th>
-                <th> @Localizer["Title_En"] </th>
+                <th> @Localizer["Name/Ar"] </th>
+                <th> @Localizer["Name/En"] </th>
                 <th> @Localizer["Code"] </th>
                 <th> @Localizer["PhoneCode"] </th>
                 <th> @Localizer["Description"] </th>
                 <th> @Localizer["Options"] </th>
             </GridHeader>
             <GridRow>
-                <td> <span> @Localizer["Title_Ar"] </span> @context.Title_Ar</td>
-                <td> <span> @Localizer["Title_En"] </span> @context?.Title_En</td>
+                <td> <span> @Localizer["Name"] </span> @context.Name</td>
+                <td> <span> @Localizer["Name_En"] </span> @context?.Name_En</td>
                 <td> <span> @Localizer["Code"] </span> @context?.Code</td>
                 <td> <span> @Localizer["PhoneCode"] </span> @context?.PhoneCode</td>
                 <td> <span> @Localizer["Description"] </span> @context?.Description</td>

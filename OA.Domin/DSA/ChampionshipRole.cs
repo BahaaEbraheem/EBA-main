@@ -26,7 +26,7 @@ namespace OA.Domin.DSA.Indexes
         ///اسم دور البطولة
         /// </summary>
         [DisplayName("Name/Ar")]
-        public string Name_Ar { get; set; }
+        public string Name { get; set; }
         [DisplayName("Name/En")]
 
         public string Name_En { get; set; }

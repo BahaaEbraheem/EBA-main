@@ -119,10 +119,9 @@ namespace OA.DataAccess
         public DbSet<Adjective> Adjectives { get; set; }
         public DbSet<AgeCategory> AgeCategories { get; set; }
         public DbSet<ArrowType> ArrowTypes { get; set; }
-        public DbSet<ChampionshipRanking> ChampionshipRanking { get; set; }
+        public DbSet<ChampionshipRanking> ChampionshipsRanking { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<TrainingCourseType> TrainingCourseTypes { get; set; }
-
 
         //Testing functionality
         //public DbSet<WeatherForecast> WeatherForecasts { get; set; }

@@ -454,7 +454,7 @@ namespace OA.DataAccess.Migrations
                     b.Property<byte>("AlbumType")
                         .HasColumnType("tinyint");
 
-                    b.Property<bool?>("Bulit_In")
+                    b.Property<bool>("Bulit_In")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("CreatedAt")
@@ -489,7 +489,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -546,7 +546,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Url")
@@ -1037,7 +1037,7 @@ namespace OA.DataAccess.Migrations
                     b.Property<int?>("MenCategory")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -1147,7 +1147,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -1542,7 +1542,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -1580,7 +1580,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -1627,7 +1627,7 @@ namespace OA.DataAccess.Migrations
                     b.Property<string>("MinimumAge")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -1665,7 +1665,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -1724,7 +1724,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -1773,7 +1773,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -1781,7 +1781,7 @@ namespace OA.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ChampionshipRanking");
+                    b.ToTable("ChampionshipsRanking");
                 });
 
             modelBuilder.Entity("OA.Domin.DSA.Indexes.ChampionshipRole", b =>
@@ -1820,7 +1820,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -1869,7 +1869,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -1912,7 +1912,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -1961,7 +1961,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -2010,7 +2010,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -2051,7 +2051,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PersonId")
@@ -2263,13 +2263,13 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_En")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhoneCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title_Ar")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title_En")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -2398,7 +2398,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -2537,7 +2537,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -2591,7 +2591,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -2629,7 +2629,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -3013,7 +3013,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -3145,7 +3145,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<DateTime?>("DateOfBirth")
+                    b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -3157,8 +3157,8 @@ namespace OA.DataAccess.Migrations
                     b.Property<string>("Employer")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("Fax")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Fax")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
@@ -3179,7 +3179,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Name_Ar")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name_En")
@@ -3188,14 +3188,14 @@ namespace OA.DataAccess.Migrations
                     b.Property<int?>("NationalityId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PassporEndDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("PassporEndDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("PassporNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PhoneNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Qualification")
                         .HasColumnType("nvarchar(max)");

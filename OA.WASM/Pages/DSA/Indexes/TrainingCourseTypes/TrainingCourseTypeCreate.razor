@@ -1,0 +1,17 @@
+﻿@inherits TrainingCourseTypeCreateBase
+@page "/TrainingCourseType/Create"
+@attribute [Authorize(Policy = "indexes-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Create"] @Localizer["TrainingCourseType"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <TrainingCourseTypeForm TrainingCourseType="EntityItem" />
+
+    <SubmitBtn Text="Create" Busy="CreateBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/TrainingCourseTypes/List"))" />

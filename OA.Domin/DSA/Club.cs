@@ -28,7 +28,7 @@ namespace OA.Domin.DSA
         /// اسم النادي بالعربي
         /// </summary>
         [DisplayName("Name/Ar")]
-        public string Name_Ar { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// اسم النادي بالأجنبي
         /// </summary>

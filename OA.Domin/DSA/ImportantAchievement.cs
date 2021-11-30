@@ -24,7 +24,8 @@ namespace OA.Domin.DSA.Indexes
         /// <summary>
         ///اسم الإنجاز بالعربي
         /// </summary>
-        public string Name_Ar { get; set; }
+        [DisplayName("Name/Ar")]
+        public string Name{ get; set; }
 
         /// <summary>
         /// نوع الإنجاز
