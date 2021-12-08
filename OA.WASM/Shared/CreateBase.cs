@@ -40,7 +40,6 @@ namespace OA.WASM.Shared
         protected async override Task OnInitializedAsync()
         {
             InterceptorService.RegisterEvents();
-
             await base.OnInitializedAsync();
         }
 

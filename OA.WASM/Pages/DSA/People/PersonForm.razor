@@ -19,12 +19,8 @@
 
 <div class="form-group row">
     <div class="col-sm-3 select-col">
-        @*<label asp-for="Person.Gender" class="control-label"></label>
-        <select asp-for="Person.Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control"></select>
-        <span asp-validation-for="Person.Gender" class="text-danger"></span>*@
 
             <MInputSelect @bind-Value="Person.Gender" For="@(() => Person.Gender)" Items="GenderItems" Id="Gender" EntityType="typeof(Person)" PropName="Gender" />
-     
     </div>
     <div class="col-sm-3">
         <MInputText @bind-Value="Person.PassporNumber" For="@(() => Person.PassporNumber)" Id="PassporNumber" EntityType="typeof(Person)" PropName="PassporNumber" Active="@Active" />

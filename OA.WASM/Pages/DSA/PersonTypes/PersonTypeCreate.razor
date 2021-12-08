@@ -1,0 +1,17 @@
+﻿@inherits PersonTypeCreateBase
+@page "/PersonType/Create"
+@attribute [Authorize(Policy = "people-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Create"] @Localizer["Person Type"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <PersonTypeForm PersonType="EntityItem" PTypeItems="PTypeItems" PersonItems="PersonItems" />
+
+    <SubmitBtn Text="Create" Busy="CreateBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/PersonTypes/List"))" />

@@ -409,7 +409,7 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<DateTime?>("ElectoralCycle")
+                    b.Property<DateTime>("ElectoralCycle")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -424,9 +424,6 @@ namespace OA.DataAccess.Migrations
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
-
-                    b.Property<byte>("MemberType")
-                        .HasColumnType("tinyint");
 
                     b.Property<int>("PersonId")
                         .HasColumnType("int");
@@ -2543,7 +2540,7 @@ namespace OA.DataAccess.Migrations
                     b.Property<string>("Name_En")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PersonTypeId")
+                    b.Property<int?>("PersonTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("RegistrationEndDate")
@@ -3224,7 +3221,7 @@ namespace OA.DataAccess.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("EndDate")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -3244,11 +3241,14 @@ namespace OA.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
+                    b.Property<string>("PTypeName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("PersonId")
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("StartDate")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -3273,8 +3273,8 @@ namespace OA.DataAccess.Migrations
                     b.Property<int?>("AgeCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("Coach")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Coach")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -3282,9 +3282,6 @@ namespace OA.DataAccess.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -3971,9 +3968,7 @@ namespace OA.DataAccess.Migrations
                 {
                     b.HasOne("OA.Domin.DSA.PersonType", "PersonType")
                         .WithMany("TrainingCourse")
-                        .HasForeignKey("PersonTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PersonTypeId");
 
                     b.HasOne("OA.Domin.DSA.Indexes.TrainingCourseType", "TrainingCourseType")
                         .WithMany()

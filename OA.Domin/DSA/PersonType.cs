@@ -53,19 +53,23 @@ namespace OA.Domin.DSA
         /// <summary>
         /// تاريخ البداية
         /// </summary>
-        public DateTime? StartDate { get; set; }
+        [DisplayName("Start Date")]
+        public DateTime StartDate { get; set; }
         /// <summary>
         /// تاريخ النهاية
         /// </summary>
-        public DateTime? EndDate { get; set; }
+        [DisplayName("End Date")]
+
+        public DateTime EndDate { get; set; }
         /// <summary>
         /// وصف 
         /// </summary>
         public string Description { get; set; }
         [DisplayName("Active")]
         public bool IsActive { get; set; } = true;
+
         [PropFlag("FK_REF_COLL")]
         public virtual ICollection<TrainingCourse> TrainingCourse { get; set; }
-
+        public string PTypeName { get; set; }
     }
 }

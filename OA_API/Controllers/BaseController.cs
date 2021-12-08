@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using OA.DataAccess;
 using OA.Domin;
 using OA.Domin.DataFilter;
+using OA.Domin.DSA;
+using OA.Domin.DSA.ViewModels;
 using OA.Domin.Paging;
 using OA.Domin.Reflection;
 using OA.Domin.RequestFeatures;
@@ -14,6 +16,7 @@ using OA.Domin.Requests;
 using OA.Domin.Resources;
 using OA.Domin.Responces;
 using OA.Domin.Settings;
+using OA.Services.DSA.Interfaces;
 using OA.Services.Notifications;
 using OA.Services.Reporting;
 using OA.Services.Seeding;
@@ -32,12 +35,15 @@ namespace OA_API.Controllers
     {
         protected readonly DbSet<T> DbSet;
         protected readonly AppDbContext Context;
+        protected readonly IAdministrationBoardService AdministrationBoardService;
 
         public BaseController(AppDbContext context)
         {          
             this.Context = context;
             this.DbSet = Context.Set<T>();
         }
+
+
 
         [HttpGet]
         public virtual async Task<IActionResult> Get([FromQuery] RequestParameters pagingParameters)
@@ -57,6 +63,8 @@ namespace OA_API.Controllers
             return Ok(resultList);
         }
 
+ 
+
         [HttpGet("{id}")]
         public virtual async Task<IActionResult> Get(int id)
         {
@@ -72,7 +80,6 @@ namespace OA_API.Controllers
         {
             DbSet.Add(entity);
             var c = await Context.SaveChangesAsync();
-
             var result = new Response<T>()
             {
                 Result = entity,

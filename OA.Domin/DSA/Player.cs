@@ -21,7 +21,7 @@ namespace OA.Domin.DSA
 
         public Player()
         {
-
+            Person = new Person();
         }
         /// <summary>
         /// معرف الشخص
@@ -69,7 +69,7 @@ namespace OA.Domin.DSA
         /// <summary>
         /// تاريخ ميلاده
         /// </summary>
-        public DateTime? Coach { get; set; }
+        public string Coach { get; set; }
 
         /// <summary>
         /// الجنس
@@ -83,10 +83,7 @@ namespace OA.Domin.DSA
         /// رقم الهوية
         /// </summary>
         public string WeaponModel { get; set; }
-        /// <summary>
-        /// نبذة
-        /// </summary>
-        public string Description { get; set; }
+
         [DisplayName("Active")]
 
         public bool IsActive { get; set; } = true;

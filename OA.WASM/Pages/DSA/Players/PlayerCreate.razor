@@ -1,0 +1,18 @@
+﻿@using OA.WASM.Pages.DSA.People
+@inherits PlayerCreateBase
+@page "/Player/Create"
+@attribute [Authorize(Policy = "people-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Create"] @Localizer["Player"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    @*<PersonForm Person="EntityItem.Person"  />*@
+    <PlayerForm  Player="EntityItem" Person="EntityItem.Person" AdjectiveItems="AdjectiveItems" AgeCategoryItems="AgeCategoryItems"  />
+    <SubmitBtn Text="Create" Busy="CreateBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/Players/List"))" />

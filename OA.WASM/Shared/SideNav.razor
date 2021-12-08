@@ -223,10 +223,11 @@
                     <i class="fa fa-calendar"></i>
                     <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(0))"> @Localizer["the Union"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
                     <ul class="submenu">
-                        <li><a href="/AdministrationBoards/List"> @Localizer["administrationBoards"] </a></li>
+                        <li><a href="/AdministrationBoards/List"> @Localizer["AdministrationBoards"] </a></li>
                         <li><a href="/People/List"> @Localizer["People"] </a></li>
-                        <li><a href="/PersonTypes/List"> @Localizer["Person Types"] </a></li>
-                        <li><a href="/PTypes/List"> @Localizer["PTypes"] </a></li>
+                        @*<li><a href="/PersonTypes/List"> @Localizer["Person Types"] </a></li>
+                        <li><a href="/PTypes/List"> @Localizer["PTypes"] </a></li>*@
+                        <li><a href="/Players/List"> @Localizer["Players"] </a></li>
                     </ul>
                 </div>
             </Authorized>

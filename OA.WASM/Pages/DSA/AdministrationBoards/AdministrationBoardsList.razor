@@ -1,0 +1,80 @@
+﻿@using OA.Domin.DSA
+@using OA.Domin.DSA.ViewModels
+@page "/AdministrationBoards/List"
+@inherits AdministrationBoardsListBase
+@attribute [Authorize(Policy = "people-control")]
+
+@if (ListData == null)
+{
+    <Loading></Loading>
+}
+else
+{
+    <div style="position:relative" class="mb-4">
+
+        <div class="page-title filter-title"> @Localizer["AdministrationBoards"] </div>
+
+        <GridFilter T="AdministrationBoard" SearchSubmit="SearchEvent" @ref="GridFilterRef"></GridFilter>
+
+        <div class="filter-link">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-plus" ClickCallBack='@(() => NavigationManager.NavigateTo("/AdministrationBoard/Create") )'></IconBtn>
+        </div>
+
+        <div class="export-links">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="far fa-file-excel i-lg" ClickCallBack="@(() => Export("Exel", nameof(AdministrationBoard)))"></IconBtn>
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="far fa-file-pdf i-lg" ClickCallBack="@(() => Export("Pdf", nameof(AdministrationBoard)))"></IconBtn>
+            @if (ExportBusy)
+            {<MiniLoading size="25px"></MiniLoading>}
+        </div>
+
+    </div>
+
+    if (GetBusy)
+    {
+        <Loading></Loading>
+    }
+    else
+    {
+        <Grid Items="ListData">
+            <GridHeader>
+                <th> @Localizer["Name/Ar"] </th>
+                <th> @Localizer["Name/En"]</th>
+                <th> @Localizer["Date OfBirth"]</th>
+                <th> @Localizer["Electoral Cycle"]</th>
+                <th> @Localizer["Passpor Number"]</th>
+                <th> @Localizer["Identification Number"]</th>
+                <th> @Localizer["Job"]</th>
+                <th> @Localizer["Position"]</th>
+                <th> @Localizer["Attachments"]</th>
+                <th> @Localizer["Options"] </th>
+            </GridHeader>
+            <GridRow>
+                <td> <span> @Localizer["Name"]            </span> @context.Person.Name</td>
+        <td> <span> @Localizer["Name_En"]         </span> @context.Person.Name_En</td>
+        <td> <span> @Localizer["DateOfBirth"]     </span> @context.Person.DateOfBirth.ToShortDateString()</td>
+                <td> <span> @Localizer["Electoral Cycle"] </span> @context.ElectoralCycle.ToShortDateString()</td>
+                <td> <span> @Localizer["PassporNumber"]   </span> @context.Person.PassporNumber</td>
+        <td> <span> @Localizer["IdentificationNumber"] </span> @context.Person.IdentificationNumber</td>
+                <td> <span> @Localizer["Job"]             </span> @context.Job</td>
+                <td> <span> @Localizer["Position"]        </span> @context.Position</td>
+
+                <td>
+                    <span> @Localizer["Attachments"] </span>
+                    <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fa fa-paperclip" ClickCallBack="@(() => NavigationManager.NavigateTo($"/ItemAttachments/{nameof(AdministrationBoard)}/{context.Id}"))"></IconBtn>
+                </td>
+                <td>
+                    <GridRowOptions EditEvent="@(() => NavigationManager.NavigateTo($"/AdministrationBoard/Edit/{context.Id}"))"
+                                    DeleteEvent="@(() => DeleteItem(context.Id) )"
+                                    DetailsEvent="@(() => NavigationManager.NavigateTo($"AdministrationBoard/Details/{context.Id}"))">
+                    </GridRowOptions>
+                </td>
+            </GridRow>
+        </Grid>
+
+        <Pagination PagingData="PagingMetaData" SelectedPage="SelectedPageEvent" Spread="2"></Pagination>
+    }
+}
+
+<Confirm ConfirmationChanged="ConfirmationEvent" @ref="Confirmation" ConfirmTxt="Confirm" Title="Confirm Delete"> </Confirm>
+
+

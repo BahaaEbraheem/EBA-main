@@ -5,6 +5,7 @@ using OA.Domin.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using static OA.Domin.StaticIndexes;
@@ -18,10 +19,9 @@ namespace OA.Domin.DSA
         {
             Loader = loader;
         }
-
         public Person()
         {
-
+          
         }
         /// <summary>
         /// اسم الشخص بالعربي
@@ -36,6 +36,7 @@ namespace OA.Domin.DSA
         /// <summary>
         /// تاريخ ميلاده
         /// </summary>
+
         public DateTime DateOfBirth { get; set; }
       
         /// <summary>

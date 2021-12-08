@@ -41,9 +41,13 @@ using OA_API.Extentions;
 using OA.Domin.Notifications;
 using FluentValidation.AspNetCore;
 using OA.Domin.DSA.Validators;
-//using Catel.Services;
-//using OA.Services.DSA;
+using OA.Services.DSA.Interfaces;
+using OA.Services.DSA;
+
 //using OA.Services.DSA.Interfaces;
+//using OA.Services.DSA;
+//using Catel.Services;
+
 
 namespace OA_API
 {
@@ -241,10 +245,10 @@ namespace OA_API
             services.AddScoped<IAdministrationService, AdministrationService>();
             services.AddScoped<ReportingService>();
             services.AddScoped<UploadService>();
-
+            services.AddScoped<IAdministrationBoardService, AdministrationBoardService>();
             //Services
-            //services.AddScoped<IDonationService, DonationService>();
-            
+            //services.AddScoped<IAdministrationBoardService, AdministrationBoardService>();
+
             #endregion
         }
 

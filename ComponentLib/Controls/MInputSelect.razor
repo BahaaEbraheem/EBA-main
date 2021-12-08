@@ -1,7 +1,7 @@
 ﻿@typeparam T
 @inherits MInputSelectBase<T>
 
-<select class="form-control @Cls" id="@Id" style="width:100%" @bind="CurrentValue" >
+<select class="form-control @Cls" id="@Id" style="width:100%" @bind="CurrentValue">
     <option value=""></option>
     @foreach (var item in Items)
     {
@@ -9,8 +9,8 @@
             @item.Value
         </option>
     }
-</select>
 
+</select>
 
 <CustomValidationMessage For="For" />
 

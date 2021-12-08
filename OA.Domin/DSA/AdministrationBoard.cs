@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Infrastructure;
 using OA.Domin.Attributes;
+using OA.Domin.DSA.ViewModels;
 using OA.Domin.RequestFeatures;
 using System;
 using System.Collections.Generic;
@@ -21,8 +22,10 @@ namespace OA.Domin.DSA
 
         public AdministrationBoard()
         {
-
+            Person = new Person();
         }
+
+
         /// <summary>
         /// معرف الشخص
         /// </summary>
@@ -37,17 +40,14 @@ namespace OA.Domin.DSA
             get => Loader.Load(this, ref _Person);
             set => _Person = value;
         }
+
+
         /// <summary>
         /// تاريخ الدورة الانتخابية
         /// </summary>
         [DisplayName("Electoral Cycle")]
-        public DateTime? ElectoralCycle { get; set; }
-        /// <summary>
-        /// نوع العضو (لجان - مجلس إدارة( 
-        /// </summary>
-        //public int? Type { get; set; }
-        public MemberType MemberType { get; set; }
-
+        public DateTime ElectoralCycle { get; set; }
+    
         /// <summary>
         /// الوظيفة
         /// </summary>
@@ -56,8 +56,6 @@ namespace OA.Domin.DSA
         /// المنصب
         /// </summary>
         public string Position { get; set; }
-
-
 
 
     }

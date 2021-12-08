@@ -1,0 +1,28 @@
+﻿@using OA.Domin.DSA
+
+
+<div class="form-group row">
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="PersonType.PTypeId" For="@(() => PersonType.PTypeId)" Items="PTypeItems" Id="PTypeId" EntityType="typeof(PersonType)" PropName="PTypeId" />
+    </div>
+    <div class="col-sm-6 select-col">
+        <MInputSelect @bind-Value="PersonType.PersonId" For="@(() => PersonType.PersonId)" Items="PersonItems" Id="PersonId" EntityType="typeof(PersonType)" PropName="PersonId" />
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-4">
+        <MInputDate Type="date" @bind-Value="PersonType.StartDate" For="@(() => PersonType.StartDate)" Id="StartDate" EntityType="typeof(PersonType)" PropName="StartDate" />
+    </div>
+    <div class="col-sm-4">
+        <MInputDate Type="date" @bind-Value="PersonType.EndDate" For="@(() => PersonType.EndDate)" Id="EndDate" EntityType="typeof(PersonType)" PropName="EndDate" />
+    </div>
+    <div class="col-sm-4 select-col">
+        <CheckBoxBtn Checked="PersonType.IsActive" Text="Active" OnChange="@((bool value) => PersonType.IsActive = value)" />
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-12">
+        <MInputText @bind-Value="PersonType.Description" For="@(() => PersonType.Description)" Id="Description" EntityType="typeof(PersonType)" PropName="Description" Active="@Active" />
+    </div>
+</div>
+

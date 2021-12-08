@@ -1,0 +1,41 @@
+﻿@using OA.Domin.DSA
+@using OA.Domin.Settings
+@using OA.WASM.Pages.DSA.People
+
+
+<CollapseContainer Title="Responsible Person">
+    <PersonForm Person="Player.Person" IsEdit="IsEdit" />
+</CollapseContainer>
+
+<div class="form-group row">
+
+    <div class="col-sm-3 ">
+        <MInputText @bind-Value="Player.Coach" For="@(() => Player.Coach)" Id="Coach" EntityType="typeof(Player)" PropName="Coach" />
+    </div>
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Player.WeaponType" For="@(() => Player.WeaponType)" Id="WeaponType" EntityType="typeof(Player)" PropName="WeaponType" Active="@Active" />
+    </div>
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Player.WeaponNumber" For="@(() => Player.WeaponNumber)" Id="WeaponNumber" EntityType="typeof(Player)" PropName="WeaponNumber" Active="@Active" />
+    </div>
+    <div class="col-sm-3">
+        <MInputText @bind-Value="Player.WeaponModel" For="@(() => Player.WeaponModel)" Id="WeaponModel" EntityType="typeof(Player)" PropName="WeaponModel" Active="@Active" />
+    </div>
+
+</div>
+<div class="form-group row">
+    <div class="col-sm-4 ">
+        <CheckBoxBtn Checked="Player.IsActive" Text="Active" OnChange="@((bool value) => Player.IsActive = value)" />
+    </div>
+    <div class="col-sm-4 select-col">
+        <MInputSelect @bind-Value="Player.AdjectiveId" For="@(() => Player.AdjectiveId)" Items="AdjectiveItems" Id="AdjectiveId" EntityType="typeof(Player)" PropName="AdjectiveId" />
+    </div>
+    <div class="col-sm-4 select-col">
+        <MInputSelect @bind-Value="Player.AgeCategoryId" For="@(() => Player.AgeCategoryId)" Items="AgeCategoryItems" Id="AgeCategoryId" EntityType="typeof(Player)" PropName="AgeCategoryId" />
+    </div>
+</div>
+
+
+
+
+

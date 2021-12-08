@@ -5,12 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="DSA\**" />
-    <EmbeddedResource Remove="DSA\**" />
-    <None Remove="DSA\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="ClosedXML" Version="0.95.3" />
     <PackageReference Include="HtmlToOpenXml.dll" Version="2.2.0" />

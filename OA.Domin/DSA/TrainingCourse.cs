@@ -66,15 +66,12 @@ namespace OA.Domin.DSA.Indexes
             set => _TrainingCourseType = value;
         }
         /// <summary>
-        ///  معرف نوع الشخص 
+        ///  معرف الإداري أو الفني 
         /// </summary>
         [PropFlag("FK")]
         [DisplayName("Person Type")]
-        [Required]
-        public int PersonTypeId { get; set; }
-
+        public int? PersonTypeId { get; set; }
         private PersonType _PersonType;
-
         [PropFlag("FK_REF")]
         public PersonType PersonType
         {

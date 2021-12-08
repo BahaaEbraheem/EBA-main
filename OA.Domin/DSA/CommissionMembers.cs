@@ -17,7 +17,6 @@ namespace OA.Domin.DSA
         {
             Loader = loader;
         }
-
         public CommissionMembers()
         {
 

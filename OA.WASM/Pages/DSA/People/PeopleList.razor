@@ -38,39 +38,40 @@ else
             <GridHeader>
                 <th> @Localizer["Name/Ar"] </th>
                 <th> @Localizer["Name/En"]</th>
-                <th> @Localizer["Date OfBirth"]</th>
+                @*<th> @Localizer["Date OfBirth"]</th>*@
                 <th> @Localizer["Nationality"]</th>
-                <th> @Localizer["Gender"]</th>
+                @*<th> @Localizer["Gender"]</th>*@
                 <th> @Localizer["Passpor Number"]</th>
                 <th> @Localizer["Passpor EndDate"]</th>
                 <th> @Localizer["Identification Number"]</th>
                 <th> @Localizer["Employer"]</th>
-                <th> @Localizer["Fax"]</th>
+                @*<th> @Localizer["Fax"]</th>
                 <th> @Localizer["Email"]</th>
                 <th> @Localizer["Qualification"]</th>
-                <th> @Localizer["City"]</th>
+                <th> @Localizer["City"]</th>*@
                 <th> @Localizer["Address"]</th>
-                <th> @Localizer["Phone Number"]</th>
-                <th> @Localizer["Description"]</th>
+                @*<th> @Localizer["Phone Number"]</th>
+                <th> @Localizer["Description"]</th>*@
                 <th> @Localizer["Attachments"]</th>
                 <th> @Localizer["Options"] </th>
             </GridHeader>
             <GridRow>
                 <td> <span> @Localizer["Name"] </span> @context.Name</td>
                 <td> <span> @Localizer["Name_En"] </span> @context.Name_En</td>
-                <td> <span> @Localizer["DateOfBirth"] </span> @context.DateOfBirth</td>
+                @*<td> <span> @Localizer["DateOfBirth"] </span> @context.DateOfBirth</td>*@
                 <td> <span> @Localizer["Nationality"] </span> @context.Nationality?.Name</td>
-                <td> <span> @Localizer["Gender"] </span> @context.Gender</td>
+                @*<td> <span> @Localizer["Gender"] </span> @context.Gender</td>*@
                 <td> <span> @Localizer["PassporNumber"] </span> @context.PassporNumber</td>
-                <td> <span> @Localizer["PassporEndDate"] </span> @context.PassporEndDate</td>
+                <td> <span> @Localizer["PassporEndDate"] </span> @context.PassporEndDate.ToShortDateString()</td>
                 <td> <span> @Localizer["IdentificationNumber"] </span> @context.IdentificationNumber</td>
                 <td> <span> @Localizer["Employer"] </span> @context.Employer</td>
-                <td> <span> @Localizer["Fax"] </span> @context.Fax</td>
-                <td> <span> @Localizer["Email"] </span> @context.Email</td>
-                <td> <span> @Localizer["Qualification"] </span> @context.Qualification</td>
-                <td> <span> @Localizer["City"] </span> @context.City</td>
-                <td> <span> @Localizer["PhoneNumber"] </span> @context.PhoneNumber</td>
-                <td> <span> @Localizer["Description"] </span> @context.Description</td>
+                @*<td> <span> @Localizer["Fax"] </span> @context.Fax</td>
+        <td> <span> @Localizer["Email"] </span> @context.Email</td>
+        <td> <span> @Localizer["Qualification"] </span> @context.Qualification</td>
+        <td> <span> @Localizer["City"] </span> @context.City</td>*@
+                <td> <span> @Localizer["Address"] </span> @context.Address</td>
+                @*<td> <span> @Localizer["PhoneNumber"] </span> @context.PhoneNumber</td>
+        <td> <span> @Localizer["Description"] </span> @context.Description</td>*@
                 <td>
                     <span> @Localizer["Attachments"] </span>
                     <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fa fa-paperclip" ClickCallBack="@(() => NavigationManager.NavigateTo($"/ItemAttachments/{nameof(Person)}/{context.Id}"))"></IconBtn>

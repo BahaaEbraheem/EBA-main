@@ -24,18 +24,6 @@ namespace OA.WASM.Pages.DSA.People
         [Parameter]
         public Dictionary<string, string> GenderItems { get; set; } = new Dictionary<string, string>();
 
-        //private Gender genderItems;
-
-        //public Gender GetGenderItems()
-        //{
-
-        //    return genderItems;
-        //}
-
-        //public void SetGenderItems(Gender value)
-        //{
-        //    genderItems = value;
-        //}
 
 
 

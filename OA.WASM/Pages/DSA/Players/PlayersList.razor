@@ -1,0 +1,81 @@
+﻿@using OA.Domin.DSA
+@page "/Players/List"
+@inherits PlayersListBase
+@attribute [Authorize(Policy = "people-control")]
+
+@if (ListData == null)
+{
+    <Loading></Loading>
+}
+else
+{
+    <div style="position:relative" class="mb-4">
+
+        <div class="page-title filter-title"> @Localizer["Players"] </div>
+
+        <GridFilter T="Player" SearchSubmit="SearchEvent" GetIndexData="GetIndexDataEvent" @ref="GridFilterRef"></GridFilter>
+
+        <div class="filter-link">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-plus" ClickCallBack='@(() => NavigationManager.NavigateTo("/Player/Create") )'></IconBtn>
+        </div>
+
+        <div class="export-links">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="far fa-file-excel i-lg" ClickCallBack="@(() => Export("Exel", nameof(Player)))"></IconBtn>
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="far fa-file-pdf i-lg" ClickCallBack="@(() => Export("Pdf", nameof(Player)))"></IconBtn>
+            @if (ExportBusy)
+            {<MiniLoading size="25px"></MiniLoading>}
+        </div>
+
+    </div>
+
+    if (GetBusy)
+    {
+        <Loading></Loading>
+    }
+    else
+    {
+        <Grid Items="ListData">
+            <GridHeader>
+                <th> @Localizer["Name/Ar"] </th>
+                <th> @Localizer["Name/En"]</th>
+                <th> @Localizer["Date OfBirth"]</th>
+                <th> @Localizer["Coach"]</th>
+                <th> @Localizer["Passpor Number"]</th>
+                <th> @Localizer["Identification Number"]</th>
+                <th> @Localizer["WeaponType"]</th>
+                <th> @Localizer["WeaponNumber"]</th>
+                <th> @Localizer["Description"]</th>
+                <th> @Localizer["Attachments"]</th>
+                <th> @Localizer["Options"] </th>
+            </GridHeader>
+            <GridRow>
+                <td> <span> @Localizer["Name"]            </span> @context.Person.Name</td>
+                <td> <span> @Localizer["Name_En"]         </span> @context.Person.Name_En</td>
+                <td> <span> @Localizer["DateOfBirth"]     </span> @context.Person.DateOfBirth.ToShortDateString()</td>
+                <td> <span> @Localizer["Coach"] </span> @context.Coach</td>
+                <td> <span> @Localizer["PassporNumber"]   </span> @context.Person.PassporNumber</td>
+                <td> <span> @Localizer["IdentificationNumber"] </span> @context.Person.IdentificationNumber</td>
+                <td> <span> @Localizer["WeaponType"]             </span> @context.WeaponType</td>
+                <td> <span> @Localizer["WeaponNumber"]        </span> @context.WeaponNumber</td>
+                <td> <span> @Localizer["Description"]     </span> @context.Person.Description</td>
+
+                <td>
+                    <span> @Localizer["Attachments"] </span>
+                    <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fa fa-paperclip" ClickCallBack="@(() => NavigationManager.NavigateTo($"/ItemAttachments/{nameof(Player)}/{context.Id}"))"></IconBtn>
+                </td>
+                <td>
+                    <GridRowOptions EditEvent="@(() => NavigationManager.NavigateTo($"/Player/Edit/{context.Id}"))"
+                                    DeleteEvent="@(() => DeleteItem(context.Id) )"
+                                    DetailsEvent="@(() => NavigationManager.NavigateTo($"Player/Details/{context.Id}"))">
+                    </GridRowOptions>
+                </td>
+            </GridRow>
+        </Grid>
+
+        <Pagination PagingData="PagingMetaData" SelectedPage="SelectedPageEvent" Spread="2"></Pagination>
+    }
+}
+
+<Confirm ConfirmationChanged="ConfirmationEvent" @ref="Confirmation" ConfirmTxt="Confirm" Title="Confirm Delete"> </Confirm>
+
+

@@ -1,0 +1,42 @@
+﻿@using OA.Domin.DSA
+@inherits AdministrationBoardDetailsBase
+@page "/AdministrationBoard/Details/{id}"
+@attribute [Authorize("people-control")]
+
+<div class="page-title mb-5">
+    @Localizer["AdministrationBoard"] @Localizer["Details"]
+</div>
+
+
+<DetailItem EntityType="typeof(Person)" PropName="Name" Value="@EntityItem.Person.Name" />
+
+<DetailItem EntityType="typeof(Person)" PropName="Name_En" Value="@EntityItem.Person.Name_En" />
+
+<DetailItem EntityType="typeof(Person)" PropName="DateOfBirth" Value="@EntityItem.Person.DateOfBirth.ToShortDateString()" />
+
+<DetailItem EntityType="typeof(AdministrationBoard)" PropName="ElectoralCycle" Value="@EntityItem.ElectoralCycle.ToShortDateString()" />
+
+<DetailItem EntityType="typeof(Person)" PropName="PassporNumber" Value="@EntityItem.Person.PassporNumber" />
+
+<DetailItem EntityType="typeof(Person)" PropName="IdentificationNumber" Value="@EntityItem.Person.IdentificationNumber" />
+
+<DetailItem EntityType="typeof(AdministrationBoard)" PropName="Job" Value="@EntityItem.Job" />
+
+<DetailItem EntityType="typeof(AdministrationBoard)" PropName="Position" Value="@EntityItem.Position" />
+
+<DetailItem EntityType="typeof(Person)" PropName="Description" Value="@EntityItem.Person.Description" />
+
+
+<DetailItem EntityType="typeof(Person)" PropName="ImagePath" Value="@EntityItem.Person.ImagePath" />
+
+<div class="row mt-3">
+    <div class="col-md-6">
+        <img src="@($" {PathPrefix}{EntityItem.Person.ImagePath}")" class="doc-preview-image" />
+    </div>
+</div>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo(" /AdministrationBoards/List"))" />
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($" /AdministrationBoard/Edit/{EntityItem.Id}"))" />
+
+
+

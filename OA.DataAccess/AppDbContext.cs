@@ -20,6 +20,8 @@ using OA.Domin.Auditing;
 using OA.Domin.Reporting.TemplateReporting;
 using OA.Domin.DSA;
 using OA.Domin.DSA.Indexes;
+using OA.Domin.DSA.ViewModels;
+using System.ComponentModel.DataAnnotations.Schema;
 //using OA.Domin.DSA.Indexes;
 
 namespace OA.DataAccess
@@ -79,7 +81,6 @@ namespace OA.DataAccess
         public DbSet<ArticleCategory> ArticleCategories { get; set; }
         public DbSet<ArticleTranslation> ArticleTranslations { get; set; }
         public DbSet<Attachment> Attachments { get; set; }
-
 
         public DbSet<AdministrationBoard> AdministrationBoards { get; set; }
         public DbSet<Album> Albums { get; set; }

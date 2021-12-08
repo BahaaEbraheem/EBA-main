@@ -2,6 +2,7 @@
 using OA.Domin.Attributes;
 using OA.Domin.DSA;
 using OA.Domin.DSA.Indexes;
+using OA.Domin.DSA.ViewModels;
 //using OA.Domin.DSA.Indexes;
 using OA.Domin.Logging;
 using System;
@@ -49,13 +50,16 @@ namespace OA.Domin.Reflection
                 { nameof(ChampionshipRanking), "ChampionshipRanking"},
                 { nameof(TrainingCourseType), "TrainingCourseType" },
 
-                  { nameof(AdministrationBoard), "AdministrationBoard" },
+                  { nameof(AdministrationBoard), "AdministrationBoards" },
                   { nameof(Person), "People" },
                    { nameof(PType), "PTypes" },
                    { nameof(PersonType), "Person Types" },
+                   { nameof(Commission), "Commissions" },
 
-
-
+                   { nameof(CommissionMembers), "Commission Members" },
+                   { nameof(Decision), "Decisions" },
+                   { nameof(Player), "Players" },
+                   
             };
 
             //typeof(BaseEntity).GetNestedTypes();
@@ -100,7 +104,10 @@ namespace OA.Domin.Reflection
             { nameof(Person), typeof(Person) },
             { nameof(PType), typeof(PType) },
             { nameof(PersonType), typeof(PersonType) },
-
+            { nameof(Commission), typeof(Commission) },
+            { nameof(CommissionMembers), typeof(CommissionMembers) },
+            { nameof(Decision), typeof(Decision) },
+             { nameof(Player), typeof(Player) },
 
 
 
