@@ -22,7 +22,7 @@ namespace OA.Domin.DSA.ViewModels
 
         public AdministrationBoardVM()
         {
-          
+           
         }
 
 

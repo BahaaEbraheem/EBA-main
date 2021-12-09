@@ -217,21 +217,7 @@
         </AuthorizeView>
 
 
-        <AuthorizeView Policy="people-control">
-            <Authorized>
-                <div class="submenu-group @sub[0]">
-                    <i class="fa fa-calendar"></i>
-                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(0))"> @Localizer["the Union"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
-                    <ul class="submenu">
-                        <li><a href="/AdministrationBoards/List"> @Localizer["AdministrationBoards"] </a></li>
-                        <li><a href="/People/List"> @Localizer["People"] </a></li>
-                        @*<li><a href="/PersonTypes/List"> @Localizer["Person Types"] </a></li>
-                        <li><a href="/PTypes/List"> @Localizer["PTypes"] </a></li>*@
-                        <li><a href="/Players/List"> @Localizer["Players"] </a></li>
-                    </ul>
-                </div>
-            </Authorized>
-        </AuthorizeView>
+
 
 
         <AuthorizeView Policy="attachments-control">
@@ -242,8 +228,33 @@
                 </a>
             </Authorized>
         </AuthorizeView>
-
-
+        <AuthorizeView Policy="people-control">
+            <Authorized>
+                <div class="submenu-group @sub[0]">
+                    <i class="fa fa-calendar"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(0))"> @Localizer["UnionManage"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                        <li><a href="/AdministrationBoards/List"> @Localizer["AdministrationBoards"] </a></li>
+                        <li><a href="/People/List"> @Localizer["People"] </a></li>
+                        @*<li><a href="/PersonTypes/List"> @Localizer["Person Types"] </a></li>
+                        <li><a href="/PTypes/List"> @Localizer["PTypes"] </a></li>
+                        <li><a href="/Players/List"> @Localizer["Players"] </a></li>*@
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+        <AuthorizeView Policy="people-control">
+            <Authorized>
+                <div class="submenu-group @sub[11]">
+                    <i class="fa fa-calendar"></i>
+                    <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(11))"> @Localizer["ClubManage"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
+                    <ul class="submenu">
+                 
+                        <li><a href="/Players/List"> @Localizer["Players"] </a></li>
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
 
         <div class="resp-sidenav-link">
             <CultureSelect></CultureSelect>
@@ -272,7 +283,7 @@
 
     IEnumerable<KeyValuePair<string, object>> attr = new List<KeyValuePair<string, object>>() { new KeyValuePair<string, object>("checked", "checked") };
 
-    List<string> sub = new List<string>() { string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty };
+    List<string> sub = new List<string>() { string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty };
 
     public void ToggleSubMenu(int i)
     {
