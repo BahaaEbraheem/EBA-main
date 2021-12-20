@@ -12,9 +12,7 @@ namespace OA.Domin.AutoMapper
     {
         public MappingProfile()
         {
-            CreateMap<AdministrationBoard, AdministrationBoardVM>()
-                    .ReverseMap();
-
+         
           //  CreateMap<PersonType, AdministrationBoardVM>()
           //.ForMember(dest => dest.PersonType.PTypeId, opt => opt.MapFrom(src => src.PTypeId)).ReverseMap();
 

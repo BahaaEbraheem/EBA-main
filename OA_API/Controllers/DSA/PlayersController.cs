@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using OA.DataAccess;
 using OA.Domin.DSA;
 using OA.Domin.Responces;
-using OA.Services.DSA.Interfaces;
+using OA.Services.COM_ADM;
 using OA.Services.Upload;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace OA_API.Controllers.DSA
     public class PlayersController : BaseController<Player>
     {
         private readonly UploadService UploadService;
-        public PlayersController(AppDbContext context, UploadService uploadService, IAdministrationBoardService administrationboardService) : base(context)
+        public PlayersController(AppDbContext context, UploadService uploadService) : base(context)
         {
             UploadService = uploadService;
         }

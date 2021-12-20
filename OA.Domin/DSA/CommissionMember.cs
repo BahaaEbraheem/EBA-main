@@ -10,29 +10,31 @@ using System.Text;
 
 namespace OA.Domin.DSA
 {
-    public class CommissionMembers : BaseEntity
+    public class CommissionMember : BaseEntity
     {
         private readonly ILazyLoader Loader;
-        public CommissionMembers(ILazyLoader loader)
+        public CommissionMember(ILazyLoader loader)
         {
             Loader = loader;
         }
-        public CommissionMembers()
+        public CommissionMember()
         {
-
+            //AdministrationBoard = new AdministrationBoard();
+            //Commission = new Commission();
+            //Decision = new Decision();
         }
         [PropFlag("FK")]
         [DisplayName("Administration Board")]
 
-        public int? PersonId { get; set; }
+        public int? AdministrationBoardId { get; set; }
 
-        private Person _Person;
+        private AdministrationBoard _AdministrationBoard;
 
         [PropFlag("FK_REF")]
-        public Person Person
+        public AdministrationBoard AdministrationBoard
         {
-            get => Loader.Load(this, ref _Person);
-            set => _Person = value;
+            get => Loader.Load(this, ref _AdministrationBoard);
+            set => _AdministrationBoard = value;
         }
 
         [PropFlag("FK")]
@@ -47,18 +49,31 @@ namespace OA.Domin.DSA
             get => Loader.Load(this, ref _Commission);
             set => _Commission = value;
         }
+
+        [PropFlag("FK")]
+        [DisplayName("Decision")]
+        public int? DecisionId { get; set; }
+
+        private Decision _Decision;
+
+        [PropFlag("FK_REF")]
+        public Decision Decision
+        {
+            get => Loader.Load(this, ref _Decision);
+            set => _Decision = value;
+        }
         /// <summary>
         /// تاريخ البداية
         /// </summary>
         [DisplayName("Start Date")]
 
-        public DateTime? StartDate { get; set; }
+        public DateTime StartDate { get; set; }
         /// <summary>
         /// تاريخ النهاية
         /// </summary>
         [DisplayName("End Date")]
 
-        public DateTime? EndDate { get; set; }
+        public DateTime EndDate { get; set; }
         /// <summary>
         /// وصف 
         /// </summary>

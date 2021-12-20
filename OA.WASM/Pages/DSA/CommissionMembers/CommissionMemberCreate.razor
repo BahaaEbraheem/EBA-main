@@ -1,0 +1,19 @@
+﻿@using OA.WASM.Pages.DSA
+@using OA.Domin.DSA
+
+@inherits CommissionMemberCreateBase
+@page "/CommissionMember/Create"
+@attribute [Authorize(Policy = "people-control")]
+
+<div class="page-title mt-3 mb-4"> @Localizer["Create"] @Localizer["Commission Member"] </div>
+
+<EditForm Model="EntityItem" OnValidSubmit="HandelSubmit">
+
+    <FluentValidationValidator />
+
+    <CommissionMemberForm CommissionMember="EntityItem"  administrationboardsItems="administrationboardsItems" CommissionsItems="CommissionsItems" />
+    <SubmitBtn Text="Create" Busy="CreateBusy" />
+
+</EditForm>
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo("/CommissionMembers/List"))" />

@@ -3,10 +3,10 @@
 @using OA.WASM.Pages.DSA.People
 @using OA.Domin.DSA.ViewModels
 
-<CollapseContainer Title="Responsible Person">
-    <PersonForm Person="AdministrationBoard. Person" IsEdit="IsEdit" />
-</CollapseContainer>
 
+<CollapseContainer Title="Responsible Person">
+    <PersonForm Person="AdministrationBoard.Person" IsEdit="IsEdit" />
+</CollapseContainer>
 <div class="form-group row">
 
     <div class="col-sm-3">
@@ -19,7 +19,7 @@
         <MInputText @bind-Value="AdministrationBoard.Position" For="@(() => AdministrationBoard.Position)" Id="Position" EntityType="typeof(AdministrationBoard)" PropName="Position" Active="@Active" />
     </div>
     @*<div class="col-sm-3">
-        <MInputSelect @bind-Value="AdministrationBoardVM.PTypeName" For="@(() => AdministrationBoardVM.PTypeName)" Id="PTypeName" EntityType="typeof(AdministrationBoardVM)" Items="PtypeItems" ValueSelectedEvent="DonatorTypeSelected" PropName="PTypeName"  />
+        <MInputSelect @bind-Value="AdministrationBoardVM.PTypeName" For="@(() => AdministrationBoardVM.PTypeName)" Id="PTypeName" EntityType="typeof(AdministrationBoardVM)" Items="PtypeItems"  PropName="PTypeName"  />
     </div>*@
 </div>
 

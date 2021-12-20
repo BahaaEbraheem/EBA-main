@@ -11,22 +11,15 @@ using static OA.Domin.StaticIndexes;
 
 namespace OA.Domin.DSA.ViewModels
 {
-
+    [NotMapped]
     public class AdministrationBoardVM
     {
-        private readonly ILazyLoader Loader;
-        public AdministrationBoardVM(ILazyLoader loader)
-        {
-            Loader = loader;
-        }
+  
+       public List<AdministrationBoard> AdministrationBoardList { get; set; }
+        public CommissionMember CommissionMember { get; set; }
+        public Commission Commission { get; set; }
+        public int CommissionId { get; set; }
 
-        public AdministrationBoardVM()
-        {
-           
-        }
-
-
-       public AdministrationBoard AdministrationBoard { get; set; }
         public PersonType PersonType { get; set; }
         public Person Person { get; set; }
         

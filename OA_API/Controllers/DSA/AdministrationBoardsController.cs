@@ -6,8 +6,7 @@ using OA.Domin.AutoMapper;
 using OA.Domin.DSA;
 using OA.Domin.DSA.ViewModels;
 using OA.Domin.Responces;
-using OA.Services.DSA;
-using OA.Services.DSA.Interfaces;
+using OA.Services.COM_ADM;
 using OA.Services.Upload;
 using OA_API.Extentions;
 using System;
@@ -23,13 +22,19 @@ namespace OA_API.Controllers.DSA
     public class AdministrationBoardsController : BaseController<AdministrationBoard>
     {
         private readonly UploadService UploadService;
-        public AdministrationBoardsController(AppDbContext context, UploadService uploadService, IAdministrationBoardService administrationboardService) : base(context)
+        public AdministrationBoardsController(AppDbContext context, UploadService uploadService ) : base(context)
         {
             UploadService = uploadService;
         }
-       
-  
 
+
+        //[HttpPost("CommissionMembersCreate")]
+        //public async Task<IActionResult> AdministrationBoardCreate(AdministrationBoardVM administrationboardvm)
+        //{
+        //    var result = await AdministrationBoardService.AdministrationBoardCreate(administrationboardvm);
+
+        //    return Ok(result);
+        //}
         public async override Task<IActionResult> Create(AdministrationBoard administrationboard)
         {
             var result = new Response<AdministrationBoard> { Result = administrationboard };

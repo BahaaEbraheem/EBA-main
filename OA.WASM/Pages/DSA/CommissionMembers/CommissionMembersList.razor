@@ -1,0 +1,76 @@
+﻿@using OA.Domin.DSA
+
+@page "/CommissionMembers/List"
+@inherits CommissionMembersListBase
+@attribute [Authorize(Policy = "people-control")]
+
+@if (ListData == null)
+{
+    <Loading></Loading>
+}
+else
+{
+    <div style="position:relative" class="mb-4">
+
+        <div class="page-title filter-title"> @Localizer["Commission Members"] </div>
+
+        <GridFilter T="CommissionMember" SearchSubmit="SearchEvent" GetIndexData="GetIndexDataEvent" @ref="GridFilterRef"></GridFilter>
+
+        <div class="filter-link">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-plus" ClickCallBack='@(() => NavigationManager.NavigateTo("/CommissionMember/Create") )'></IconBtn>
+        </div>
+
+        <div class="export-links">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="far fa-file-excel i-lg" ClickCallBack="@(() => Export("Exel", nameof(CommissionMember)))"></IconBtn>
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="far fa-file-pdf i-lg" ClickCallBack="@(() => Export("Pdf", nameof(CommissionMember)))"></IconBtn>
+            @if (ExportBusy)
+            {<MiniLoading size="25px"></MiniLoading>}
+        </div>
+
+    </div>
+
+    if (GetBusy)
+    {
+        <Loading></Loading>
+    }
+    else
+    {
+        <Grid Items="ListData">
+            <GridHeader>
+                <th> @Localizer["Commissions"] </th>
+                @*<th> @Localizer["Members"] </th>*@
+                <th> @Localizer["Start Date"]</th>
+                <th> @Localizer["End Date"]</th>
+                @*<th> @Localizer["Description"]</th>*@
+                <th> @Localizer["Attachments"]</th>
+                <th> @Localizer["Options"] </th>
+            </GridHeader>
+            <GridRow>
+                <td> <span> @Localizer["Commissions"] </span> @context.Commission?.Name</td>
+                @*<td> <span> @Localizer["Members"] </span> @context.AdministrationBoard?.Person.Name</td>*@
+                <td> <span> @Localizer["Start Date"] </span> @context.StartDate.ToShortDateString()</td>
+                <td> <span> @Localizer["End Date"] </span> @context.EndDate.ToShortDateString()</td>
+
+                @*<td> <span> @Localizer["Description"] </span> @context.Description</td>*@
+
+
+                <td>
+                    <span> @Localizer["Attachments"] </span>
+                    <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fa fa-paperclip" ClickCallBack="@(() => NavigationManager.NavigateTo($"/ItemAttachments/{nameof(CommissionMember)}/{context.Id}"))"></IconBtn>
+                </td>
+                <td>
+                    <GridRowOptions EditEvent="@(() => NavigationManager.NavigateTo($"/CommissionMember/Edit/{context.Id}"))"
+                                    DeleteEvent="@(() => DeleteItem(context.Id) )"
+                                    DetailsEvent="@(() => NavigationManager.NavigateTo($"CommissionMember/Details/{context.Id}"))">
+                    </GridRowOptions>
+                </td>
+            </GridRow>
+        </Grid>
+
+        <Pagination PagingData="PagingMetaData" SelectedPage="SelectedPageEvent" Spread="2"></Pagination>
+    }
+}
+
+<Confirm ConfirmationChanged="ConfirmationEvent" @ref="Confirmation" ConfirmTxt="Confirm" Title="Confirm Delete"> </Confirm>
+
+

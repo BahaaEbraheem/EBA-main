@@ -11,20 +11,23 @@ using System.Threading.Tasks;
 
 namespace OA.WASM.Pages.DSA.AdministrationBoards
 {
-    public class AdministrationBoardCreateBase : CreateBase<AdministrationBoard>
+    public class AdministrationBoardCreateBase :  CreateBase<AdministrationBoard>
     {
 
+        [Parameter]
+        public AdministrationBoardVM AdministrationBoardVM { get; set; } = new AdministrationBoardVM();
         public Dictionary<string, string> PtypeItems { get; set; } = new Dictionary<string, string>();
-       
+
         public Dictionary<string, string> PersonNationalityItems { get; set; } = new Dictionary<string, string>();
         protected async override Task OnInitializedAsync()
         {
-            await base.OnInitializedAsync();
+
+
 
             PtypeItems = await GetIndexData<PType>();
 
             PersonNationalityItems = await GetIndexData<Nationality>();
-
+            await base.OnInitializedAsync();
         }
 
 

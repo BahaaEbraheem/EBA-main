@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OA.WASM.Services.DSA
 {
-    public class CommissionMembersService : ServiceBase<CommissionMembers>
+    public class CommissionMembersService : ServiceBase<CommissionMember>
     {
 
         public CommissionMembersService(HttpClient client) : base(client, "CommissionMembers")

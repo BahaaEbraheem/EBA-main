@@ -91,7 +91,7 @@ namespace OA.DataAccess
         public DbSet<Club> Clubs { get; set; }
         public DbSet<ClubPerson> ClubPersons { get; set; }
         public DbSet<Commission> Commissions { get; set; }
-        public DbSet<CommissionMembers> CommissionMembers { get; set; }
+        public DbSet<CommissionMember> CommissionMembers { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseSubscriberRequest> CourseSubscriberRequests { get; set; }
         public DbSet<Decision> Decisions { get; set; }

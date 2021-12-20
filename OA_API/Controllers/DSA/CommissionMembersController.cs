@@ -15,7 +15,7 @@ namespace OA_API.Controllers.DSA
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Policy = "people-control")]
-    public class CommissionMembersController : BaseController<CommissionMembers>
+    public class CommissionMembersController : BaseController<CommissionMember>
     {
         public CommissionMembersController(AppDbContext context) : base(context)
         {

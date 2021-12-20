@@ -1,0 +1,75 @@
+﻿@using OA.Domin.DSA
+
+@page "/Decisions/List"
+@inherits DecisionsListBase
+@attribute [Authorize(Policy = "people-control")]
+
+@if (ListData == null)
+{
+    <Loading></Loading>
+}
+else
+{
+    <div style="position:relative" class="mb-4">
+
+        <div class="page-title filter-title"> @Localizer["Decisions"] </div>
+
+        <GridFilter T="Decision" SearchSubmit="SearchEvent" @ref="GridFilterRef"></GridFilter>
+
+        <div class="filter-link">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fas fa-plus" ClickCallBack='@(() => NavigationManager.NavigateTo("/Decision/Create") )'></IconBtn>
+        </div>
+
+        <div class="export-links">
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="far fa-file-excel i-lg" ClickCallBack="@(() => Export("Exel", nameof(Decision)))"></IconBtn>
+            <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="far fa-file-pdf i-lg" ClickCallBack="@(() => Export("Pdf", nameof(Decision)))"></IconBtn>
+            @if (ExportBusy)
+            {<MiniLoading size="25px"></MiniLoading>}
+        </div>
+
+    </div>
+
+    if (GetBusy)
+    {
+        <Loading></Loading>
+    }
+    else
+    {
+        <Grid Items="ListData">
+            <GridHeader>
+                <th> @Localizer["Decision Number"] </th>
+                <th> @Localizer["Date"]</th>
+                <th> @Localizer["Title"]</th>
+                <th> @Localizer["Description"]</th>
+                @*<th> @Localizer["Content"]</th>*@
+                <th> @Localizer["Attachments"]</th>
+                <th> @Localizer["Options"] </th>
+            </GridHeader>
+            <GridRow>
+                <td> <span> @Localizer["Decision Number"]            </span> @context.DecisionNum.</td>
+                <td> <span> @Localizer["Date"]         </span> @context.Date.ToShortDateString()</td>
+                <td> <span> @Localizer["Title"]     </span> @context.Title</td>
+                <td> <span> @Localizer["Description"] </span> @context.Description</td>
+                @*<td> <span> @Localizer["Content"] </span> @context.Content</td>*@
+
+
+                <td>
+                    <span> @Localizer["Attachments"] </span>
+                    <IconBtn ClassList="btn btn-outline btn-rounded btn-sm px-2" IconClassList="fa fa-paperclip" ClickCallBack="@(() => NavigationManager.NavigateTo($"/ItemAttachments/{nameof(Decision)}/{context.Id}"))"></IconBtn>
+                </td>
+                <td>
+                    <GridRowOptions EditEvent="@(() => NavigationManager.NavigateTo($"/Decision/Edit/{context.Id}"))"
+                                    DeleteEvent="@(() => DeleteItem(context.Id) )"
+                                    DetailsEvent="@(() => NavigationManager.NavigateTo($"Decision/Details/{context.Id}"))">
+                    </GridRowOptions>
+                </td>
+            </GridRow>
+        </Grid>
+
+        <Pagination PagingData="PagingMetaData" SelectedPage="SelectedPageEvent" Spread="2"></Pagination>
+    }
+}
+
+<Confirm ConfirmationChanged="ConfirmationEvent" @ref="Confirmation" ConfirmTxt="Confirm" Title="Confirm Delete"> </Confirm>
+
+

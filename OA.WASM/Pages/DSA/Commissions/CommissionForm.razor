@@ -1,0 +1,31 @@
+﻿@using OA.Domin.DSA
+@using OA.Domin.Settings
+
+
+
+
+<div class="form-group row">
+    <div class="col-sm-6">
+
+        <MInputText @bind-Value="Commission.Name" For="@(() => Commission.Name)" Id="Name" EntityType="typeof(Commission)" PropName="Name" Active="@Active" />
+    </div>
+    <div class="col-sm-6">
+        <MInputText @bind-Value="Commission.Name_En" For="@(() => Commission.Name_En)" Id="Name_En" EntityType="typeof(Commission)" PropName="Name_En" Active="@Active" />
+    </div>
+</div>
+    <div class="form-group row">
+
+
+        <div class="col-sm-12">
+            <MInputText @bind-Value="Commission.Description" For="@(() => Commission.Description)" Id="Description" EntityType="typeof(Commission)" PropName="Description" Active="@Active" />
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+

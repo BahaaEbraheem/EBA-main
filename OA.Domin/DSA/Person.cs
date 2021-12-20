@@ -120,8 +120,7 @@ namespace OA.Domin.DSA
         [PropFlag("IGNORE")]
         public virtual RequestFileData Image { get; set; }
 
-        [PropFlag("FK_REF_COLL")]
-        public virtual ICollection<CommissionMembers> CommissionMembers { get; set; }
+
         [PropFlag("FK_REF_COLL")]
         public virtual ICollection<Club> ClubBossPerson { get; set; }
         [PropFlag("FK_REF_COLL")]

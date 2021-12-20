@@ -1,9 +1,14 @@
 ﻿@using OA.Domin.DSA
+@using System.ComponentModel.DataAnnotations.Schema;
 @using OA.Domin.DSA.ViewModels
 @page "/AdministrationBoards/List"
+@page "/AdministrationBoards/List/{Param}"
 @inherits AdministrationBoardsListBase
 @attribute [Authorize(Policy = "people-control")]
+@*@inject IAdministrationBoardService AdministrationBoardService*@
 
+
+@*<p>@message</p>*@
 @if (ListData == null)
 {
     <Loading></Loading>
@@ -35,6 +40,7 @@ else
     }
     else
     {
+
         <Grid Items="ListData">
             <GridHeader>
                 <th> @Localizer["Name/Ar"] </th>
@@ -49,12 +55,13 @@ else
                 <th> @Localizer["Options"] </th>
             </GridHeader>
             <GridRow>
+               
                 <td> <span> @Localizer["Name"]            </span> @context.Person.Name</td>
-        <td> <span> @Localizer["Name_En"]         </span> @context.Person.Name_En</td>
-        <td> <span> @Localizer["DateOfBirth"]     </span> @context.Person.DateOfBirth.ToShortDateString()</td>
+                <td> <span> @Localizer["Name_En"]         </span> @context.Person.Name_En</td>
+                <td> <span> @Localizer["DateOfBirth"]     </span> @context.Person.DateOfBirth.ToShortDateString()</td>
                 <td> <span> @Localizer["Electoral Cycle"] </span> @context.ElectoralCycle.ToShortDateString()</td>
                 <td> <span> @Localizer["PassporNumber"]   </span> @context.Person.PassporNumber</td>
-        <td> <span> @Localizer["IdentificationNumber"] </span> @context.Person.IdentificationNumber</td>
+                <td> <span> @Localizer["IdentificationNumber"] </span> @context.Person.IdentificationNumber</td>
                 <td> <span> @Localizer["Job"]             </span> @context.Job</td>
                 <td> <span> @Localizer["Position"]        </span> @context.Position</td>
 
@@ -72,9 +79,35 @@ else
         </Grid>
 
         <Pagination PagingData="PagingMetaData" SelectedPage="SelectedPageEvent" Spread="2"></Pagination>
-    }
+        }
 }
 
 <Confirm ConfirmationChanged="ConfirmationEvent" @ref="Confirmation" ConfirmTxt="Confirm" Title="Confirm Delete"> </Confirm>
 
 
+@*@code {
+    private string message = "Not set";
+
+    [Parameter]
+    public string Param { get; set; }
+    public CommissionMember comm_Mem { get; set; }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+
+        //var x = ListData.Where(a => a.CommissionMembers.Where(s => s.CommissionId == int.Parse(Param)).Contains());
+
+        if (parameters.TryGetValue<string>(nameof(Param), out var value))
+        {
+            if (value is null)
+            {
+                message = "The value of 'Param' is null.";
+            }
+            else
+            {
+                message = $"The value of 'Param' is {value}.";
+            }
+        }
+
+        await base.SetParametersAsync(parameters);
+    }}*@

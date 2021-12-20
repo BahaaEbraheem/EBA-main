@@ -17,11 +17,7 @@ namespace OA.Domin.DSA
         {
             Loader = loader;
         }
-
-        public Commission()
-        {
-
-        }
+        public Commission() => CommissionMembers = new List<CommissionMember>();
         /// <summary>
         /// اسم اللجنة بالعربي
         /// </summary>
@@ -38,8 +34,7 @@ namespace OA.Domin.DSA
         public string Description { get; set; }
 
         [PropFlag("FK_REF_COLL")]
-        public virtual ICollection<CommissionMembers> CommissionMembers { get; set; }
-        [PropFlag("FK_REF_COLL")]
-        public virtual ICollection<Decision> Decision { get; set; }
+        public virtual ICollection<CommissionMember> CommissionMembers { get; set; }
+
     }
 }

@@ -218,6 +218,14 @@
 
 
 
+        @*<AuthorizeView Policy="COM_ADM-control">
+            <Authorized>
+                <a href="/COM_ADM">
+                    <i class="fa fa-paperclip"></i>
+                    <span> @Localizer["COM_ADM"] </span>
+                </a>
+            </Authorized>
+        </AuthorizeView>*@
 
 
         <AuthorizeView Policy="attachments-control">
@@ -235,10 +243,10 @@
                     <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(0))"> @Localizer["UnionManage"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
                     <ul class="submenu">
                         <li><a href="/AdministrationBoards/List"> @Localizer["AdministrationBoards"] </a></li>
+                        <li><a href="/Decisions/List"> @Localizer["Decisions"] </a></li>
+                        <li><a href="/CommissionMembers/List"> @Localizer["Commission Members"] </a></li>
+                        <li><a href="/Commissions/List"> @Localizer["Commissions"] </a></li>
                         <li><a href="/People/List"> @Localizer["People"] </a></li>
-                        @*<li><a href="/PersonTypes/List"> @Localizer["Person Types"] </a></li>
-                        <li><a href="/PTypes/List"> @Localizer["PTypes"] </a></li>
-                        <li><a href="/Players/List"> @Localizer["Players"] </a></li>*@
                     </ul>
                 </div>
             </Authorized>
@@ -249,7 +257,7 @@
                     <i class="fa fa-calendar"></i>
                     <span class="submenu-toggler" @onclick="@(() => ToggleSubMenu(11))"> @Localizer["ClubManage"] <i class="submenu-toggler-icon fa fa-chevron-down"></i>  </span>
                     <ul class="submenu">
-                 
+
                         <li><a href="/Players/List"> @Localizer["Players"] </a></li>
                     </ul>
                 </div>

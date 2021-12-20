@@ -1155,12 +1155,15 @@ namespace OA.DataAccess.Migrations
                     b.ToTable("Commissions");
                 });
 
-            modelBuilder.Entity("OA.Domin.DSA.CommissionMembers", b =>
+            modelBuilder.Entity("OA.Domin.DSA.CommissionMember", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AdministrationBoardId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("CommissionId")
                         .HasColumnType("int");
@@ -1172,10 +1175,13 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
+                    b.Property<int?>("DecisionId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("EndDate")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -1191,17 +1197,16 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<int?>("PersonId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("StartDate")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AdministrationBoardId");
+
                     b.HasIndex("CommissionId");
 
-                    b.HasIndex("PersonId");
+                    b.HasIndex("DecisionId");
 
                     b.ToTable("CommissionMembers");
                 });
@@ -1275,9 +1280,6 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CommissionId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
@@ -1288,11 +1290,11 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<DateTime?>("Date")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DecisionNum")
-                        .HasColumnType("int");
+                    b.Property<string>("DecisionNum")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -1311,8 +1313,6 @@ namespace OA.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CommissionId");
 
                     b.ToTable("Decisions");
                 });
@@ -3776,15 +3776,19 @@ namespace OA.DataAccess.Migrations
                         .HasForeignKey("PersonId");
                 });
 
-            modelBuilder.Entity("OA.Domin.DSA.CommissionMembers", b =>
+            modelBuilder.Entity("OA.Domin.DSA.CommissionMember", b =>
                 {
+                    b.HasOne("OA.Domin.DSA.AdministrationBoard", "AdministrationBoard")
+                        .WithMany("CommissionMembers")
+                        .HasForeignKey("AdministrationBoardId");
+
                     b.HasOne("OA.Domin.DSA.Commission", "Commission")
                         .WithMany("CommissionMembers")
                         .HasForeignKey("CommissionId");
 
-                    b.HasOne("OA.Domin.DSA.Person", "Person")
+                    b.HasOne("OA.Domin.DSA.Decision", "Decision")
                         .WithMany("CommissionMembers")
-                        .HasForeignKey("PersonId");
+                        .HasForeignKey("DecisionId");
                 });
 
             modelBuilder.Entity("OA.Domin.DSA.CourseSubscriberRequest", b =>
@@ -3800,13 +3804,6 @@ namespace OA.DataAccess.Migrations
                     b.HasOne("OA.Domin.DSA.Indexes.TrainingCourse", "TrainingCourse")
                         .WithMany("CourseSubscriberRequest")
                         .HasForeignKey("TrainingCourseId");
-                });
-
-            modelBuilder.Entity("OA.Domin.DSA.Decision", b =>
-                {
-                    b.HasOne("OA.Domin.DSA.Commission", "Commission")
-                        .WithMany("Decision")
-                        .HasForeignKey("CommissionId");
                 });
 
             modelBuilder.Entity("OA.Domin.DSA.Event", b =>

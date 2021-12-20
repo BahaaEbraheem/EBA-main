@@ -13,7 +13,7 @@ namespace OA.WASM.Pages.DSA.AdministrationBoards
     public class AdministrationBoardEditBase : EditBase<AdministrationBoard>
     {
 
-
+       
 
     }
 }

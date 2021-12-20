@@ -1,0 +1,31 @@
+﻿@using OA.Domin.DSA
+@inherits DecisionDetailsBase
+@page "/Decision/Details/{id}"
+@attribute [Authorize("people-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Decision"] @Localizer["Details"]
+</div>
+
+
+<DetailItem EntityType="typeof(Decision)" PropName="Title" Value="@EntityItem.Title" />
+
+<DetailItem EntityType="typeof(Decision)" PropName="DecisionNum" Value="@EntityItem.DecisionNum" />
+
+<DetailItem EntityType="typeof(Decision)" PropName="Date" Value="@EntityItem.Date.ToShortDateString()" />
+
+<DetailItem EntityType="typeof(Decision)" PropName="Description" Value="@EntityItem.Description" />
+
+
+<DetailItem EntityType="typeof(Decision)" PropName="Content" Value="@EntityItem.Content" />
+
+
+
+
+
+
+<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo(" /Decisions/List"))" />
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($" /Decision/Edit/{EntityItem.Id}"))" />
+
+
+

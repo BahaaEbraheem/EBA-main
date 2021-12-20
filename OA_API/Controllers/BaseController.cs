@@ -16,7 +16,7 @@ using OA.Domin.Requests;
 using OA.Domin.Resources;
 using OA.Domin.Responces;
 using OA.Domin.Settings;
-using OA.Services.DSA.Interfaces;
+using OA.Services.COM_ADM;
 using OA.Services.Notifications;
 using OA.Services.Reporting;
 using OA.Services.Seeding;
@@ -35,7 +35,7 @@ namespace OA_API.Controllers
     {
         protected readonly DbSet<T> DbSet;
         protected readonly AppDbContext Context;
-        protected readonly IAdministrationBoardService AdministrationBoardService;
+       // protected readonly IAdministrationBoardService AdministrationBoardService;
 
         public BaseController(AppDbContext context)
         {          

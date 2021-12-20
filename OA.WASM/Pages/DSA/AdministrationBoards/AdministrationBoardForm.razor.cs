@@ -24,6 +24,8 @@ namespace OA.WASM.Pages.DSA.AdministrationBoards
         [Parameter]
         public Dictionary<string, string> PersonNationalityItems { get; set; } = new Dictionary<string, string>();
         [Parameter]
+        public AdministrationBoardVM AdministrationBoardVM { get; set; } = new AdministrationBoardVM();
+        [Parameter]
         public AdministrationBoard AdministrationBoard { get; set; } = new AdministrationBoard();
 
         [Parameter]

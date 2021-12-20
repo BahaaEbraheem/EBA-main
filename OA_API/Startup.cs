@@ -41,8 +41,9 @@ using OA_API.Extentions;
 using OA.Domin.Notifications;
 using FluentValidation.AspNetCore;
 using OA.Domin.DSA.Validators;
-using OA.Services.DSA.Interfaces;
-using OA.Services.DSA;
+using OA.Services.COM_ADM;
+//using OA.Services.DSA.Interfaces;
+//using OA.Services.DSA;
 
 //using OA.Services.DSA.Interfaces;
 //using OA.Services.DSA;
@@ -55,16 +56,20 @@ namespace OA_API
     {
 
         private readonly string AllowAllPolicy = "AllowAllPolicy";
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            Env = env;
         }
-
+        public IWebHostEnvironment Env { get; }
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+          services.AddRazorPages().AddRazorRuntimeCompilation();
+
             #region "Controller"
             services.AddControllers(options =>
                     {
@@ -245,9 +250,17 @@ namespace OA_API
             services.AddScoped<IAdministrationService, AdministrationService>();
             services.AddScoped<ReportingService>();
             services.AddScoped<UploadService>();
-            services.AddScoped<IAdministrationBoardService, AdministrationBoardService>();
+
+
+            services.AddScoped<ICOM_ADMService, COM_ADMService>();
+
+
+
+
             //Services
             //services.AddScoped<IAdministrationBoardService, AdministrationBoardService>();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+            //services.AddMvc().AddRazorOptions(options => options.AllowRecompilingViewsOnFileChange = true);
 
             #endregion
         }

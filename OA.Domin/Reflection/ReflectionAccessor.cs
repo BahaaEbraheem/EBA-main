@@ -56,10 +56,11 @@ namespace OA.Domin.Reflection
                    { nameof(PersonType), "Person Types" },
                    { nameof(Commission), "Commissions" },
 
-                   { nameof(CommissionMembers), "Commission Members" },
+                   { nameof(CommissionMember), "Commission Members" },
                    { nameof(Decision), "Decisions" },
                    { nameof(Player), "Players" },
-                   
+                    //{ nameof(AdministrationBoardVM), "Administrator_Board" },
+
             };
 
             //typeof(BaseEntity).GetNestedTypes();
@@ -105,10 +106,11 @@ namespace OA.Domin.Reflection
             { nameof(PType), typeof(PType) },
             { nameof(PersonType), typeof(PersonType) },
             { nameof(Commission), typeof(Commission) },
-            { nameof(CommissionMembers), typeof(CommissionMembers) },
+            { nameof(CommissionMember), typeof(CommissionMember) },
             { nameof(Decision), typeof(Decision) },
              { nameof(Player), typeof(Player) },
 
+              //{ nameof(AdministrationBoardVM), typeof(AdministrationBoardVM) },
 
 
 

@@ -24,13 +24,13 @@ namespace OA.Domin.DSA
         /// <summary>
         /// رقم القرار
         /// </summary>
-        [DisplayName("Decision Num")]
+        [DisplayName("Decision Number")]
 
-        public int? DecisionNum { get; set; }
+        public string DecisionNum { get; set; }
         /// <summary>
         /// تاريخ القرار
         /// </summary>
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
         /// <summary>
         /// المحتوى
         /// </summary>
@@ -45,19 +45,7 @@ namespace OA.Domin.DSA
         public string Description { get; set; }
 
 
-        [PropFlag("FK")]
-        [DisplayName("Commission")]
-
-        public int? CommissionId { get; set; }
-
-        private Commission _Commission;
-
-        [PropFlag("FK_REF")]
-        public Commission Commission
-        {
-            get => Loader.Load(this, ref _Commission);
-            set => _Commission = value;
-        }
-
+        [PropFlag("FK_REF_COLL")]
+        public virtual ICollection<CommissionMember> CommissionMembers { get; set; }
     }
 }

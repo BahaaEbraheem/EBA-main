@@ -37,6 +37,7 @@ using OA.WASM.Services.DSA;
 using OA.Domin.DSA.Indexes;
 using OA.WASM.Services.DSA.Indexes;
 using OA.Domin.DSA.ViewModels;
+using OA.WASM.Services.COM_ADM;
 //using OA.Domin.DSA.Indexes;
 //using OA.WASM.Services.DSA.Indexes;
 
@@ -85,6 +86,7 @@ namespace OA.WASM
             //Services ErrorHandler Extention
             builder.Services.AddStateManagement();
 
+        
             builder.Services.AddScoped<IAdministrationService, AdministrationService>();
             builder.Services.AddScoped<IReportingService, ReportingService>();
             builder.Services.AddScoped<IUploadService, UploadService>();
@@ -136,10 +138,12 @@ namespace OA.WASM
             builder.Services.AddScoped<ServiceBase<PType>, PTypesService>();
             builder.Services.AddScoped<ServiceBase<PersonType>, PersonTypesService>();
             builder.Services.AddScoped<ServiceBase<Commission>, CommissionsService>();
-            builder.Services.AddScoped<ServiceBase<CommissionMembers>, CommissionMembersService>();
+            builder.Services.AddScoped<ServiceBase<CommissionMember>, CommissionMembersService>();
             builder.Services.AddScoped<ServiceBase<Decision>, DecisionsService>();
             builder.Services.AddScoped<ServiceBase<Player>, PlayersService>();
 
+
+            builder.Services.AddScoped<ICOM_ADMService, COM_ADMService>();
 
 
 

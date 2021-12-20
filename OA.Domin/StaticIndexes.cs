@@ -57,11 +57,16 @@ namespace OA.Domin
         //    {"متوفر", "متوفر" },
         //    {"مشغول", "مشغول" }
         //};
+        //public static Dictionary<string, string> MemberType = new Dictionary<string, string>
+        //{
+        //    {"MemberOfCommission", "MemberOfCommission" },
+        //    {"MemberOfAdministrationBoard", "MemberOfAdministrationBoard" }
+        //};
         //public enum MemberType : byte
         //{
 
         //    MemberOfCommission = 1,
-        //    MemberOfAdministrationBoard= 2
+        //    MemberOfAdministrationBoard = 2
         //}
 
         //public static Dictionary<string, string> MemberType = new Dictionary<string, string>

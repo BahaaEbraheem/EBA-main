@@ -1,0 +1,31 @@
+﻿<!--@using OA.Domin.DSA
+@inherits CommissionMemberDetailsBase
+@page "/CommissionMember/Details/{id}"
+@attribute [Authorize("people-control")]
+
+<div class="page-title mb-5">
+    @Localizer["Commission Member"] @Localizer["Details"]
+</div>-->
+
+
+@*<DetailItem EntityType="typeof(CommissionMember)" PropName="Title" Value="@EntityItem.Title" />
+
+<DetailItem EntityType="typeof(CommissionMember)" PropName="DecisionNum" Value="@EntityItem.DecisionNum" />
+
+<DetailItem EntityType="typeof(CommissionMember)" PropName="Date" Value="@EntityItem.Date.ToShortDateString()" />
+
+<DetailItem EntityType="typeof(CommissionMember)" PropName="Description" Value="@EntityItem.Description" />
+
+
+<DetailItem EntityType="typeof(CommissionMember)" PropName="Content" Value="@EntityItem.Content" />*@
+
+
+
+
+
+
+<!--<Btn ClassList="btn-sm btn-comp-s" Text="Back To List" ClickCallBack="@(() => NavigationManager.NavigateTo(" /CommissionMembers/List"))" />
+<Btn ClassList="btn-sm btn-comp-s" Text="Edit" ClickCallBack="@(() => NavigationManager.NavigateTo($" /CommissionMember/Edit/{EntityItem.Id}"))" />-->
+
+
+

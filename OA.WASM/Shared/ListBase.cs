@@ -57,9 +57,7 @@ namespace OA.WASM.Shared
 
         public async Task Get()
         {
-            
             var pagedResponce = await ListService.Get(PagingParameters);
-
             ListData = pagedResponce.Items;
             PagingMetaData = pagedResponce.PagingData;
         }
@@ -107,6 +105,9 @@ namespace OA.WASM.Shared
         }
 
         public bool ExportBusy = false;
+   
+
+ 
 
         public async Task Export(string exportAs, string typeName)
         {

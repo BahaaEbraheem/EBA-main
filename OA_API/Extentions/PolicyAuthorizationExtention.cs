@@ -15,6 +15,11 @@ namespace OA_API.Extentions
         {
 
             services.AddAuthorizationCore(options => {
+
+                options.AddPolicy("COM_ADM-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "COM_ADM-control")));
+
+
+
                 options.AddPolicy("administration-roles", policy => policy.RequireAssertion(context => AdminOrCan(context, "administration-roles")));
                 options.AddPolicy("administration-users", policy => policy.RequireAssertion(context => AdminOrCan(context, "administration-users")));
                 options.AddPolicy("app-settings-control", policy => policy.RequireAssertion(context => AdminOrCan(context, "app-settings-control")));

@@ -56,7 +56,8 @@ namespace OA.Domin.DSA
         /// المنصب
         /// </summary>
         public string Position { get; set; }
-
-
+  
+        [PropFlag("FK_REF_COLL")]
+        public virtual ICollection<CommissionMember> CommissionMembers { get; set; }
     }
 }

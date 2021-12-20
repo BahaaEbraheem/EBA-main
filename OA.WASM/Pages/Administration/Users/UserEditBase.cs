@@ -27,10 +27,9 @@ namespace OA.WASM.Pages.Administration.Users
 
         [Inject]
         public IAdministrationService AdministrationService { get; set; }
-
-
         [Inject]
         public IJSRuntime JSRT { get; set; }
+
 
         [Parameter]
         public string Id { get; set; }
@@ -105,7 +104,6 @@ namespace OA.WASM.Pages.Administration.Users
                 await JSRT.InvokeVoidAsync("Toast", Localizer["Changes Saved Successfully"].Value);
 
             EditBusy = false;
-
         }
 
         public void SetSelectedRoles()

@@ -5,7 +5,7 @@ using OA.DataAccess;
 using OA.Domin.AutoMapper;
 using OA.Domin.DSA;
 using OA.Domin.DSA.ViewModels;
-using OA.Services.DSA.Interfaces;
+using OA.Services.COM_ADM;
 using OA_API.Extentions;
 using System;
 using System.Collections.Generic;
